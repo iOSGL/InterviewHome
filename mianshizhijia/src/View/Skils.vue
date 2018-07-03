@@ -1,15 +1,15 @@
 <template>
-    <p>这里是主页</p>
+    <p>这里是技能页面</p>
 </template>
 
 <script>
     export default {
-        name: "Trending-view"
+        name: "Skils"
     }
 </script>
 
 <style scoped>
-    p{
-        color: orange;
+    body{
+        background-color: red;
     }
 </style>

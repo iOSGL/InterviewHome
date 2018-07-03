@@ -1,15 +1,15 @@
 <template>
-    <p>这里是主页</p>
+    <p>这里是个人中心</p>
 </template>
 
 <script>
     export default {
-        name: "Trending-view"
+        name: "Mine"
     }
 </script>
 
 <style scoped>
-    p{
-        color: orange;
+    body{
+        background-color: yellow;
     }
 </style>

@@ -3,51 +3,58 @@
                :tab-styles="tabStyles"
                title-type="icon"
                @wxcTabBarCurrentTabSelected="wxcTabBarCurrentTabSelected"
-               timing-function="false"
-               ref="wxc-tab-bar"
-               is-tab-view="false">
+               timing-function="false">
     <!-- 第一个页面内容-->
-    <div class="item-container" :style="contentStyle"><text>首页</text></div>
+    <div class="item-container" :style="contentStyle"><Trending></Trending></div>
 
     <!-- 第二个页面内容-->
-    <div class="item-container" :style="contentStyle"><text>特别推荐</text></div>
+    <div class="item-container" :style="contentStyle"><Skils></Skils></div>
 
     <!-- 第三个页面内容-->
-    <div class="item-container" :style="contentStyle"><text>消息中心</text></div>
+    <div class="item-container" :style="contentStyle"><Forum></Forum></div>
 
     <!-- 第四个页面内容-->
-    <div class="item-container" :style="contentStyle"><text>我的主页</text></div>
+    <div class="item-container" :style="contentStyle"><Mine></Mine></div>
   </wxc-tab-bar>
 </template>
 
 <script>
 
   import {WxcTabBar, Utils} from 'weex-ui';
+  import Trending from './View/Trending';
+  import Skils from './View/Skils';
+  import Forum from './View/Forum';
+  import Mine from './View/Mine'
+
   export default {
     name: 'App',
     components: {
-        WxcTabBar
+        WxcTabBar,
+        Trending,
+        Skils,
+        Forum,
+        Mine
     },
     data () {
     return {
         tabTitles: [
             {
-                title: '首页',
+                title: '趋势',
                 icon: 'https://gw.alicdn.com/tfs/TB1MWXdSpXXXXcmXXXXXXXXXXXX-72-72.png',
                 activeIcon: 'https://gw.alicdn.com/tfs/TB1kCk2SXXXXXXFXFXXXXXXXXXX-72-72.png'
             },{
-                title: '特别推荐',
+                title: '技能',
                 icon: 'https://gw.alicdn.com/tfs/TB1ARoKSXXXXXc9XVXXXXXXXXXX-72-72.png',
                 activeIcon: 'https://gw.alicdn.com/tfs/TB19Z72SXXXXXamXFXXXXXXXXXX-72-72.png'
             },
             {
-                title: '消息中心',
+                title: '乱弹',
                 icon: 'https://gw.alicdn.com/tfs/TB1VKMISXXXXXbyaXXXXXXXXXXX-72-72.png',
                 activeIcon: 'https://gw.alicdn.com/tfs/TB1aTgZSXXXXXazXFXXXXXXXXXX-72-72.png',
                 badge: 5
             },
             {
-                title: '我的主页',
+                title: '我的',
                 icon: 'https://gw.alicdn.com/tfs/TB1Do3tSXXXXXXMaFXXXXXXXXXX-72-72.png',
                 activeIcon: 'https://gw.alicdn.com/tfs/TB1LiNhSpXXXXaWXXXXXXXXXXXX-72-72.png',
                 dot: true
