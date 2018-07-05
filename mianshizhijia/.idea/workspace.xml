@@ -29,11 +29,8 @@
       <file leaf-file-name="index.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/index.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1926">
-              <caret line="99" column="28" selection-start-line="99" selection-start-column="28" selection-end-line="99" selection-end-column="28" />
-              <folding>
-                <element signature="e#710#751#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="429">
+              <caret line="59" column="19" selection-start-line="59" selection-start-column="16" selection-end-line="59" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -41,7 +38,7 @@
       <file leaf-file-name="index.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/node_modules/weex-ui/packages/wxc-tab-bar/index.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
+            <state relative-caret-position="2196">
               <caret line="122" column="17" selection-start-line="122" selection-start-column="17" selection-end-line="122" selection-end-column="17" />
             </state>
           </provider>
@@ -98,7 +95,7 @@
         <entry file="file://$PROJECT_DIR$/src/components/HelloWorld.vue">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="162">
-              <caret line="9" column="16" lean-forward="true" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
+              <caret line="9" column="16" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -106,7 +103,7 @@
       <file leaf-file-name="router.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/router.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
+            <state relative-caret-position="126">
               <caret line="9" column="53" selection-start-line="9" selection-start-column="45" selection-end-line="9" selection-end-column="53" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
@@ -134,8 +131,8 @@
         <option value="$PROJECT_DIR$/src/View/Skils.vue" />
         <option value="$PROJECT_DIR$/src/View/Mine.vue" />
         <option value="$PROJECT_DIR$/src/View/Forum.vue" />
-        <option value="$PROJECT_DIR$/src/index.vue" />
         <option value="$PROJECT_DIR$/src/View/Trending.vue" />
+        <option value="$PROJECT_DIR$/src/index.vue" />
       </list>
     </option>
   </component>
@@ -161,7 +158,7 @@
       <path value="$PROJECT_DIR$/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="x" value="64" />
     <option name="y" value="26" />
     <option name="width" value="1169" />
@@ -227,16 +224,16 @@
       <option name="presentableId" value="Default" />
       <updated>1530610262631</updated>
       <workItem from="1530610268638" duration="5677000" />
-      <workItem from="1530626289579" duration="2771000" />
+      <workItem from="1530626289579" duration="2963000" />
+      <workItem from="1530714223546" duration="561000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8448000" />
+    <option name="totallyTimeSpent" value="9201000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="64" y="26" width="1169" height="687" extended-state="0" />
-    <editor active="true" />
+    <frame x="64" y="26" width="1169" height="687" extended-state="1" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.29854578" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -266,6 +263,85 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/entry.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="6" column="50" selection-start-line="6" selection-start-column="47" selection-end-line="6" selection-end-column="50" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/weex-ui/packages/wxc-tab-bar/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2196">
+          <caret line="122" column="17" selection-start-line="122" selection-start-column="17" selection-end-line="122" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/View/Skils.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="12" column="30" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/View/Forum.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="12" column="32" selection-start-line="12" selection-start-column="32" selection-end-line="12" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/View/Mine.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="12" column="33" selection-start-line="12" selection-start-column="33" selection-end-line="12" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/View/Trending.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/weex-ui/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/HelloWorld.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="16" lean-forward="true" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/router.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="9" column="53" selection-start-line="9" selection-start-column="45" selection-end-line="9" selection-end-column="53" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#15#46#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1656">
+          <caret line="96" column="17" selection-start-line="96" selection-start-column="17" selection-end-line="96" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/entry.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
@@ -321,9 +397,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
           <caret line="14" column="9" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
-          <folding>
-            <element signature="e#710#751#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -345,14 +418,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/weex-ui/packages/wxc-tab-bar/index.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
+        <state relative-caret-position="2196">
           <caret line="122" column="17" selection-start-line="122" selection-start-column="17" selection-end-line="122" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/router.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
+        <state relative-caret-position="126">
           <caret line="9" column="53" selection-start-line="9" selection-start-column="45" selection-end-line="9" selection-end-column="53" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
@@ -364,7 +437,7 @@
     <entry file="file://$PROJECT_DIR$/src/components/HelloWorld.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
-          <caret line="9" column="16" lean-forward="true" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
+          <caret line="9" column="16" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
         </state>
       </provider>
     </entry>
@@ -408,11 +481,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/index.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1926">
-          <caret line="99" column="28" selection-start-line="99" selection-start-column="28" selection-end-line="99" selection-end-column="28" />
-          <folding>
-            <element signature="e#710#751#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="429">
+          <caret line="59" column="19" selection-start-line="59" selection-start-column="16" selection-end-line="59" selection-end-column="19" />
         </state>
       </provider>
     </entry>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<string>objc</string>
+	<string>unicode</string>
+	<string>Foundation</string>
+	<string>AppKit</string>
+	<string>WeexSDK</string>
+	<string>CoreGraphics</string>
+	<string>AVFoundation</string>
+	<string>mach</string>
+	<string>QuartzCore</string>
+	<string>SDWebImage</string>
+	<string>Security</string>
+	<string>GLKit</string>
+	<string>CoreText</string>
+	<string>libkern</string>
+	<string>JavaScriptCore</string>
+	<string>CoreServices</string>
+	<string>UIKit</string>
+	<string>sys</string>
+	<string>os</string>
+	<string>pthread</string>
+	<string>XCTest</string>
+	<string>OpenGLES</string>
+	<string>ImageIO</string>
+	<string>AVKit</string>
+	<string>MediaPlayer</string>
+	<string>CommonCrypto</string>
+</array>
+</plist>
