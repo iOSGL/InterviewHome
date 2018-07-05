@@ -9107,7 +9107,9 @@ _weexVueRender2.default.init(_vue2.default);
 /* weex initialized here, please do not move this line */
 var router = __webpack_require__(11);
 var App = __webpack_require__(41);
+var mixin = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./Vue.config/mixin\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
 /* eslint-disable no-new */
+_vue2.default.mixin(mixin);
 new _vue2.default(_vue2.default.util.extend({ el: '#root', router: router }, App));
 router.push('/');
 

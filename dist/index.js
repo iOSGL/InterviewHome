@@ -431,7 +431,9 @@ exports.default = Utils;
 /* weex initialized here, please do not move this line */
 var router = __webpack_require__(2);
 var App = __webpack_require__(27);
+
 /* eslint-disable no-new */
+
 new Vue(Vue.util.extend({ el: '#root', router: router }, App));
 router.push('/');
 
