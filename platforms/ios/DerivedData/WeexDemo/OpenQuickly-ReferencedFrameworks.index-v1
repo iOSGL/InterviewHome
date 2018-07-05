@@ -4,26 +4,30 @@
 <array>
 	<string>objc</string>
 	<string>Foundation</string>
-	<string>unicode</string>
 	<string>AppKit</string>
+	<string>unicode</string>
 	<string>WeexSDK</string>
-	<string>CoreGraphics</string>
+	<string>UMCommon</string>
 	<string>AVFoundation</string>
 	<string>mach</string>
+	<string>CoreGraphics</string>
 	<string>QuartzCore</string>
 	<string>Security</string>
-	<string>SDWebImage</string>
-	<string>GLKit</string>
 	<string>libkern</string>
+	<string>SDWebImage</string>
 	<string>CoreText</string>
+	<string>UMAnalytics</string>
 	<string>JavaScriptCore</string>
+	<string>GLKit</string>
 	<string>os</string>
 	<string>sys</string>
 	<string>UIKit</string>
+	<string>UMPush</string>
 	<string>CoreServices</string>
 	<string>pthread</string>
-	<string>XCTest</string>
 	<string>OpenGLES</string>
+	<string>XCTest</string>
+	<string>UMShare</string>
 	<string>ImageIO</string>
 	<string>AVKit</string>
 	<string>MediaPlayer</string>

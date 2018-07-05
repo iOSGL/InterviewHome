@@ -62,6 +62,9 @@
 #endif
     
     [self render];
+    
+    
+
 }
 
 - (void)viewDidAppear:(BOOL)animated

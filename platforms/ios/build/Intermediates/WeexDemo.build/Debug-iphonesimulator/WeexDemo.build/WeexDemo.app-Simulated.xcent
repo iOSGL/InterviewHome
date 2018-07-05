@@ -3,10 +3,8 @@
 <plist version="1.0">
 <dict>
 	<key>application-identifier</key>
-	<string>A4MC62Y5RA.com.taobao.WeexPlayground</string>
-	<key>keychain-access-groups</key>
-	<array>
-		<string>A4MC62Y5RA.com.taobao.WeexPlayground</string>
-	</array>
+	<string>DMLGJX6EPE.com.weimian.mianshizhijia</string>
+	<key>aps-environment</key>
+	<string>development</string>
 </dict>
 </plist>

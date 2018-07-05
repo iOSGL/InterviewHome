@@ -3,6 +3,26 @@ PODS:
     - SDWebImage/Core (= 3.7.5)
   - SDWebImage/Core (3.7.5)
   - SocketRocket (0.4.2)
+  - UMCAnalytics (5.5.0):
+    - UMCCommon
+  - UMCCommon (1.5.2)
+  - UMCPush (3.2.2):
+    - UMCCommon
+  - UMCSecurityPlugins (1.0.6)
+  - UMCShare/Core (6.9.3):
+    - UMCCommon
+  - UMCShare/Social/ReducedQQ (6.9.3):
+    - UMCCommon
+    - UMCShare/Core
+  - UMCShare/Social/ReducedSina (6.9.3):
+    - UMCCommon
+    - UMCShare/Core
+  - UMCShare/Social/ReducedWeChat (6.9.3):
+    - UMCCommon
+    - UMCShare/Core
+  - UMCShare/UI (6.9.3):
+    - UMCCommon
+    - UMCShare/Core
   - WeexPluginLoader (0.0.1.9.1):
     - WeexSDK
   - WeexSDK (0.18.0)
@@ -10,6 +30,14 @@ PODS:
 DEPENDENCIES:
   - SDWebImage (= 3.7.5)
   - SocketRocket (= 0.4.2)
+  - UMCAnalytics
+  - UMCCommon
+  - UMCPush
+  - UMCSecurityPlugins
+  - UMCShare/Social/ReducedQQ
+  - UMCShare/Social/ReducedSina
+  - UMCShare/Social/ReducedWeChat
+  - UMCShare/UI
   - WeexPluginLoader
   - WeexSDK
 
@@ -17,15 +45,25 @@ SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - SDWebImage
     - SocketRocket
+    - UMCAnalytics
+    - UMCCommon
+    - UMCPush
+    - UMCSecurityPlugins
+    - UMCShare
     - WeexPluginLoader
     - WeexSDK
 
 SPEC CHECKSUMS:
   SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
   SocketRocket: ffe08119b00ef982f6c37052a4705a057c8494ad
+  UMCAnalytics: 4667788559a72f2fa5077117d1b8802a3b6eb6bb
+  UMCCommon: 4392868ac47ff1b101663106bb114ba616fabbad
+  UMCPush: 5ab89bdbcc1fe90b1c669ff79213b44dc4821ec5
+  UMCSecurityPlugins: 0831a08f3988f3cea9f1d3a7626cd9bee4fef150
+  UMCShare: 023886b10d11119331c9c46d8e8a0c31fe67c23e
   WeexPluginLoader: 85c1304f8ba29864e58531614a0acfeceef1b85c
   WeexSDK: ac56f255ce9a48e93ebc2e003956ab20da33321d
 
-PODFILE CHECKSUM: ec0e31166e143bcabfaa1962c9ed874f00c462e6
+PODFILE CHECKSUM: 43c89b6ead0a8c46c88d8dc1e5c68cded95a6c9c
 
 COCOAPODS: 1.5.0
