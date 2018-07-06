@@ -14,6 +14,7 @@
 #import <UMCommon/UMCommon.h>
 #import <UMAnalytics/MobClick.h>
 #import <UMPush/UMessage.h>
+#import <UMShare/UMShare.h>
 
 
 @interface AppDelegate () <UNUserNotificationCenterDelegate>
@@ -24,32 +25,39 @@
 #pragma mark
 #pragma mark application
 
+#pragma mark
+#pragma mark - Define
+
 #define UM_APPKEY @"5b3de566f29d980dae00007a"
+#define SINA_APPKEY @"3646337853"
+#define SINA_SECRET @"bee7d46f7512a6faa54739323d429ecc"
+#define QQ_APPKID @"1107024056"
+#define QQ_APPKEY @"E1Hf6wZZA8jue3m4"
+#define WX_APPKEY @""
+#define WX_APP_SECRETC @""
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    [self configUM];
-    [self configUMPush:launchOptions];
+    [self configUM]; // 配置友盟
+    [self configUMPush:launchOptions]; // 配置友盟推送
+    [self configUMSharePlatforms]; // 配置分享平台
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
     [WeexSDKManager setup];
     [self.window makeKeyAndVisible];
 //    [self startSplashScreen];
     
-    
-    
     //绑定别名
     [UMessage addAlias:@"2" type:@"test" response:^(id  _Nonnull responseObject, NSError * _Nonnull error) {
         
     }];
-    
     
     return YES;
 }
 
 
 #pragma mark
-#pragma mark - UMDelegate
+#pragma mark - UMPush Delegate
 
 //iOS10以下使用这两个方法接收通知
 -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
@@ -91,6 +99,18 @@
 //    NSLog(@"%@",[[[[deviceToken description] stringByReplacingOccurrencesOfString: @"<" withString: @""]
 //                  stringByReplacingOccurrencesOfString: @">" withString: @""]
 //                 stringByReplacingOccurrencesOfString: @" " withString: @""]);
+}
+
+#pragma mark
+#pragma mark - UMShare Call Back
+
+// 支持所有iOS系统
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    BOOL result = [[UMSocialManager defaultManager] handleOpenURL:url sourceApplication:sourceApplication annotation:annotation];
+    if (!result) {
+        // 其他如支付等SDK的回调
+    }
+    return result;
 }
 
 #pragma mark
@@ -155,6 +175,17 @@
             
         }
     }];
+}
+
+#pragma mark
+#pragma mark -
+
+- (void)configUMSharePlatforms {
+     [UMSocialGlobal shareInstance].isUsingHttpsWhenShareContent = NO;
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatSession appKey:WX_APPKEY appSecret:WX_APP_SECRETC redirectURL:@"http://mobile.umeng.com/social"];
+    [[UMSocialManager defaultManager] removePlatformProviderWithPlatformTypes:@[@(UMSocialPlatformType_WechatFavorite)]];
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_QQ appKey:QQ_APPKID/*设置QQ平台的appID*/  appSecret:nil redirectURL:@"http://mobile.umeng.com/social"];
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Sina appKey:SINA_APPKEY  appSecret:SINA_SECRET redirectURL:@"https://sns.whalecloud.com/sina2/callback"];
 }
 
 #pragma mark 
