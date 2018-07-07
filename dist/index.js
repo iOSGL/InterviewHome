@@ -80,6 +80,9 @@ var router = __webpack_require__(1);
 var App = __webpack_require__(19);
 var filters = __webpack_require__(29);
 
+// import * as filters from './filters/index'
+
+
 // register global utility filters.
 Object.keys(filters).forEach(function (key) {
     Vue.filter(key, filters[key]);
@@ -3184,7 +3187,7 @@ exports.default = {
     methods: {
         onTabTo: function onTabTo(_result) {
             var key = _result.data.key || '';
-            this.$router && this.$.router.push('/' + key);
+            this.$router && this.$router.push('/' + key);
         }
     }
 };
@@ -3352,7 +3355,9 @@ exports.default = {
             return this.pIndexKey === _c ? 'bar-active' : '';
         },
         tabTo: function tabTo(_key) {
-            if (this.pIndexKey === key) return;
+
+            // if (this.pIndexKey === key) return;
+            console.log('+++++' + _key);
             this.pIndexKey = _key;
             this.$emit('tabTo', {
                 status: 'tabTo',

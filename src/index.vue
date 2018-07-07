@@ -27,7 +27,7 @@
     methods:{
         onTabTo(_result) {
             let key = _result.data.key || '';
-            this.$router && this.$.router.push('/' + key);
+            this.$router && this.$router.push('/'+ key)
         }
     }
 }

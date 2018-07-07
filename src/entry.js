@@ -4,7 +4,9 @@
 
 const router = require('./router');
 const App = require('@/index.vue');
-const  filters = require('./filters/index');
+const  filters = require('@/filters/index');
+
+// import * as filters from './filters/index'
 
 
 // register global utility filters.
