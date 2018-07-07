@@ -1,5 +1,5 @@
 <template>
-    <p>这里是主页</p>
+    <p>trendingView</p>
 </template>
 
 <script>
