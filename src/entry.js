@@ -8,7 +8,7 @@ const  filters = require('./filters/index');
 
 
 // register global utility filters.
-Object.keys(filters)forEach(key=>{
+Object.keys(filters).forEach(key=>{
     Vue.filter(key, filters[key]);
 })
 
