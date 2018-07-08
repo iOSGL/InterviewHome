@@ -44,7 +44,7 @@ const config = {
     // just be aware of this issue when enabling this option.
     cssSourceMap: false,
     proxyTable: {},
-    autoOpenBrowser: false,
+    autoOpenBrowser: true,
     errorOverlay: true,
     notifyOnErrors: true,
     htmlOptions: {

@@ -1,6 +1,6 @@
 var stream = weex.requireModule('stream');
 let {fetch} = stream;
-export default {
+module.exports =  {
     methods: {
         jump(to){
             if (this.$router) {
