@@ -4,7 +4,19 @@
 
 <script>
     export default {
-        name: "Trending-view"
+        name: "Trending-view",
+        data() {
+            return {
+
+            }
+        },
+        created() {
+            this.POST('/trend/home').then(function (res) {
+                console.log(res);
+            }).catch(function (res) {
+                console.log(res);
+            })
+        },
     }
 </script>
 

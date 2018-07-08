@@ -2826,7 +2826,17 @@ Object.defineProperty(exports, "__esModule", {
 //
 
 exports.default = {
-    name: "Trending-view"
+    name: "Trending-view",
+    data: function data() {
+        return {};
+    },
+    created: function created() {
+        this.GET('/trend/home').then(function (res) {
+            console.log(res);
+        }).catch(function (res) {
+            console.log(res);
+        });
+    }
 };
 
 /***/ }),
@@ -3349,13 +3359,6 @@ exports.default = {
         return {
             pIndexKey: 'Trending'
         };
-    },
-    created: function created() {
-        this.GET('/trend/home').then(function (res) {
-            console.log(res);
-        }).catch(function (res) {
-            console.log(res);
-        });
     },
 
     methods: {
