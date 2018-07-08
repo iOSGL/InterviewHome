@@ -23,14 +23,18 @@ module.exports =  {
                 }
             })
         },
-        POST(api, params){
+        POST(api, params = {}){
             return new Promise((resolved, rejected)=>{
                 try{
+                    const string = JSON.stringify(params);
                     stream.fetch({
                         method: "POST",
                         url: `https://www.mianshihome.com`+api,
                         type: 'json',
-                        body: params
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: string
                     }, resolved)
                 }catch (err){
                     rejected(err)

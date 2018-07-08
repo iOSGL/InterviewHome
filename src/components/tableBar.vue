@@ -36,9 +36,6 @@
             }
         },
         created() {
-
-            console.log(this)
-
             this.POST('/trend/home').then(function (res) {
                 console.log(res);
             }).catch(function (res) {
