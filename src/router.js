@@ -10,7 +10,8 @@ Vue.use(Router)
 
 module.exports = new Router({
   routes: [
-      {path: '/', name: 'Trending', component: Trending},
+      {path: '/', redirect: '/Trending'},
+      {path: '/Trending', name: 'Trending', component: Trending},
       {path: '/Skils', name: 'Skils', component: Skils},
       {path: '/Forum', name: 'Forum', component: Forum},
       {path: '/Mine', name: 'Mine', component: Mine}

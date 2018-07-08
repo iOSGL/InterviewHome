@@ -79,6 +79,7 @@
 var router = __webpack_require__(1);
 var App = __webpack_require__(19);
 var filters = __webpack_require__(29);
+var mixins = __webpack_require__(30);
 
 // import * as filters from './filters/index'
 
@@ -87,6 +88,9 @@ var filters = __webpack_require__(29);
 Object.keys(filters).forEach(function (key) {
     Vue.filter(key, filters[key]);
 });
+
+// register global mixins
+Vue.mixin(mixins);
 
 /* eslint-disable no-new */
 new Vue(Vue.util.extend({ el: '#root', router: router }, App));
@@ -125,7 +129,7 @@ Vue.use(_vueRouter2.default); /*global Vue*/
 
 
 module.exports = new _vueRouter2.default({
-    routes: [{ path: '/', name: 'Trending', component: _Trending2.default }, { path: '/Skils', name: 'Skils', component: _Skils2.default }, { path: '/Forum', name: 'Forum', component: _Forum2.default }, { path: '/Mine', name: 'Mine', component: _Mine2.default }]
+    routes: [{ path: '/', redirect: '/Trending' }, { path: '/Trending', name: 'Trending', component: _Trending2.default }, { path: '/Skils', name: 'Skils', component: _Skils2.default }, { path: '/Forum', name: 'Forum', component: _Forum2.default }, { path: '/Mine', name: 'Mine', component: _Mine2.default }]
 });
 
 /***/ }),
@@ -3356,8 +3360,8 @@ exports.default = {
         },
         tabTo: function tabTo(_key) {
 
-            // if (this.pIndexKey === key) return;
-            console.log('+++++' + _key);
+            if (this.pIndexKey === _key) return;
+            console.log(_key);
             this.pIndexKey = _key;
             this.$emit('tabTo', {
                 status: 'tabTo',
@@ -3529,6 +3533,62 @@ module.exports.render._withStripped = true
 
 /***/ }),
 /* 29 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.host = host;
+exports.https = https;
+exports.timeAgo = timeAgo;
+exports.unescape = unescape;
+function host(url) {
+    if (!url) return '';
+    var host = url.replace(/^https?:\/\//, '').replace(/\/.*$/, '');
+    var parts = host.split('.').slice(-3);
+    if (parts[0] === 'www') parts.shift();
+    return parts.join('.');
+}
+
+function https(url) {
+    var env = weex.config.env || WXEnvironment;
+    if (env.platform === 'iOS' && typeof url === 'string') {
+        return url.replace(/^http\:/, 'https:');
+    }
+    return url;
+}
+
+function timeAgo(time) {
+    var between = Date.now() / 1000 - Number(time);
+    if (between < 3600) {
+        return pluralize(~~(between / 60), ' minute');
+    } else if (between < 86400) {
+        return pluralize(~~(between / 3600), ' hour');
+    } else {
+        return pluralize(~~(between / 86400), ' day');
+    }
+}
+
+function pluralize(time, label) {
+    if (time === 1) {
+        return time + label;
+    }
+    return time + label + 's';
+}
+
+function unescape(text) {
+    var res = text || '';[['<p>', '\n'], ['&amp;', '&'], ['&amp;', '&'], ['&apos;', '\''], ['&#x27;', '\''], ['&#x2F;', '/'], ['&#39;', '\''], ['&#47;', '/'], ['&lt;', '<'], ['&gt;', '>'], ['&nbsp;', ' '], ['&quot;', '"']].forEach(function (pair) {
+        res = res.replace(new RegExp(pair[0], 'ig'), pair[1]);
+    });
+
+    return res;
+}
+
+/***/ }),
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

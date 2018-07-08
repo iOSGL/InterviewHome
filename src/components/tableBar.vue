@@ -41,8 +41,8 @@
             },
             tabTo(_key) {
 
-                // if (this.pIndexKey === key) return;
-                console.log('+++++' + _key);
+                if (this.pIndexKey === _key) return;
+                console.log(_key);
                 this.pIndexKey = _key;
                 this.$emit(
                     'tabTo',
