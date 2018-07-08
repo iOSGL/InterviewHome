@@ -1,6 +1,5 @@
 var stream = weex.requireModule('stream');
-let {fetch} = stream;
-export default {
+module.exports = {
     methods: {
         jump(to){
             if (this.$router) {
@@ -13,7 +12,7 @@ export default {
         GET(api){
             return new Promise((resolved, rejected)=>{
                 try{
-                    fetch({
+                    stream.fetch({
                         method: "GET",
                         url: `https://www.mianshihome.com`+api,
                         type: 'json'
@@ -26,7 +25,7 @@ export default {
         POST(api, params){
             return new Promise((resolved, rejected)=>{
                 try{
-                    fetch({
+                    stream.fetch({
                         method: "POST",
                         url: `https://www.mianshihome.com`+api,
                         type: 'json',
@@ -37,6 +36,5 @@ export default {
                 }
             })
         },
-
     }
 }

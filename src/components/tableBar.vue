@@ -47,9 +47,7 @@
                 return this.pIndexKey === _c ? 'bar-active':'';
             },
             tabTo(_key) {
-
                 if (this.pIndexKey === _key) return;
-                console.log(_key);
                 this.pIndexKey = _key;
                 this.$emit(
                     'tabTo',

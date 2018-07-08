@@ -3363,9 +3363,7 @@ exports.default = {
             return this.pIndexKey === _c ? 'bar-active' : '';
         },
         tabTo: function tabTo(_key) {
-
             if (this.pIndexKey === _key) return;
-            console.log(_key);
             this.pIndexKey = _key;
             this.$emit('tabTo', {
                 status: 'tabTo',
@@ -3598,12 +3596,8 @@ function unescape(text) {
 "use strict";
 
 
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
 var stream = weex.requireModule('stream');
-var fetch = stream.fetch;
-exports.default = {
+module.exports = {
     methods: {
         jump: function jump(to) {
             if (this.$router) {
@@ -3616,7 +3610,7 @@ exports.default = {
         GET: function GET(api) {
             return new Promise(function (resolved, rejected) {
                 try {
-                    fetch({
+                    stream.fetch({
                         method: "GET",
                         url: 'https://www.mianshihome.com' + api,
                         type: 'json'
@@ -3629,7 +3623,7 @@ exports.default = {
         POST: function POST(api, params) {
             return new Promise(function (resolved, rejected) {
                 try {
-                    fetch({
+                    stream.fetch({
                         method: "POST",
                         url: 'https://www.mianshihome.com' + api,
                         type: 'json',
