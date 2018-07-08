@@ -10,12 +10,16 @@ module.exports =  {
         isIpx(){
             return weex && (weex.config.env.deviceModel === 'iPhone10,3' || weex.config.env.deviceModel === 'iPhone10,6');
         },
-        GET(api){
+        GET(api, params = {}){
             return new Promise((resolved, rejected)=>{
                 try{
+                
+                    let string = Object.keys(params).map(key=>{
+                        return `${key}=${params[key]}`
+                    }).join("&");
                     stream.fetch({
                         method: "GET",
-                        url: `https://www.mianshihome.com`+api,
+                        url: `https://www.mianshihome.com${api}?${string}`,
                         type: 'json'
                     }, resolved)
                 }catch (err){

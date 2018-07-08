@@ -1,7 +1,8 @@
 <template>
     <div>
         <input type="text" v-model="groupId">
-        <button @click="test">test</button>
+        <button @click="test">testPost</button>
+        <button @click="testGet">testGet</button>
 
     </div>
 
@@ -25,7 +26,8 @@
         methods:{
             test(){
                 const params = {
-                    groupId: this.groupId
+                    groupId: this.groupId,
+                   
                 }
                 this.POST('/skill/questionList', params).then(res=>{
                     console.log(res);
@@ -33,7 +35,19 @@
                     console.error(res)
                 });
                 
+            },
+            testGet(){
+                 const params = {
+                    groupId: this.groupId,
+                     test: "test"
+                }
+                this.GET('/skill/questionList', params).then(res=>{
+                    console.log(res);
+                }).catch(err=>{
+                    console.error(res)
+                });
             }
+
         }
     }
 </script>
