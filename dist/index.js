@@ -81,9 +81,6 @@ var App = __webpack_require__(19);
 var filters = __webpack_require__(29);
 var mixins = __webpack_require__(30);
 
-// import * as filters from './filters/index'
-
-
 // register global utility filters.
 Object.keys(filters).forEach(function (key) {
     Vue.filter(key, filters[key]);
@@ -3352,6 +3349,13 @@ exports.default = {
         return {
             pIndexKey: 'Trending'
         };
+    },
+    created: function created() {
+        this.GET('/trend/home').then(function (res) {
+            console.log(res);
+        }).catch(function (res) {
+            console.log(res);
+        });
     },
 
     methods: {

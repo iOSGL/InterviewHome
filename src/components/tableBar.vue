@@ -35,6 +35,13 @@
                 pIndexKey:'Trending'
             }
         },
+        created() {
+            this.GET('/trend/home').then(function (res) {
+                console.log(res);
+            }).catch(function (res) {
+                console.log(res);
+            })
+        },
         methods: {
             isActive: function (_c) {
                 return this.pIndexKey === _c ? 'bar-active':'';
