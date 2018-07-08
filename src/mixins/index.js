@@ -13,7 +13,7 @@ module.exports =  {
         GET(api){
             return new Promise((resolved, rejected)=>{
                 try{
-                    fetch({
+                    stream.fetch({
                         method: "GET",
                         url: `https://www.mianshihome.com`+api,
                         type: 'json'
@@ -26,7 +26,7 @@ module.exports =  {
         POST(api, params){
             return new Promise((resolved, rejected)=>{
                 try{
-                    fetch({
+                    stream.fetch({
                         method: "POST",
                         url: `https://www.mianshihome.com`+api,
                         type: 'json',
@@ -37,6 +37,5 @@ module.exports =  {
                 }
             })
         },
-
     }
 }

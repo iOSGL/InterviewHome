@@ -13,7 +13,7 @@ Object.keys(filters).forEach(key=>{
 })
 
 // register global mixins
-Vue.mixin(mixins)
+Vue.mixin(mixins);
 
 /* eslint-disable no-new */
 new Vue(Vue.util.extend({el: '#root', router}, App));
