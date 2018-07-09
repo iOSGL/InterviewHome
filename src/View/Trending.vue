@@ -1,5 +1,6 @@
 <template>
-    <div class="wrapper" v-bind:style="{background:'url('+pageBg+')'}">
+    <div class="wrapper">
+        <image class="bg-image" v-bind:src="pageBg" resize="cover"></image>
         <list class="list">
             <cell class="cell" v-for="obj in listItem">
                 <div class="panel">
@@ -13,14 +14,17 @@
 
 <style scoped>
     .wrapper{
-        height: 100%;
-        overflow: hidden;
-        background-size: cover!important;
-        background-repeat: no-repeat;
+        background-color: #eee;
     }
-    .list{
-        height: 100%;
+
+    .bg-image {
+        position: absolute;
+        top: 0px;
+        bottom: 0px;
+        left: 0;
+        right: 0;
     }
+
     .panel{
         flex: 1;
         flex-direction: column;
@@ -35,7 +39,6 @@
         border-color: #999;
         background-color: white;
     }
-
 
 </style>
 

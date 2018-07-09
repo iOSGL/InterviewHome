@@ -1,8 +1,8 @@
 {
-   "AppName":"WeexApp",
-   "Version":"0.1",
-   "BuildVersion":"0.1.0",
-   "AppId":"com.alibaba.weex",
+   "AppName":"面试之家",
+   "Version":"1.0.0",
+   "BuildVersion":"1",
+   "AppId":"com.weimian.mianshizhijia",
    "CodeSign":"",
    "Profile":"",
    "WeexBundle":"index.js"

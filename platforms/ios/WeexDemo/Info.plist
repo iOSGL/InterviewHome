@@ -9,7 +9,7 @@
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
-	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<string>com.weimian.mianshizhijia</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -133,13 +133,6 @@
 	<string>App需要您的同意,才能访问相册</string>
 	<key>Privacy - Contacts Usage Description </key>
 	<string>App需要您的同意，才能访问联系人</string>
-    
-    <key>NSAppTransportSecurity</key>
-    <dict>
-        <key>NSAllowsArbitraryLoads</key>
-        <true/>
-    </dict>
-    
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>
@@ -166,6 +159,14 @@
 	<key>WXEntryBundleURL</key>
 	<string>bundlejs/index.js</string>
 	<key>WXSocketConnectionURL</key>
-	<string>ws://10.0.89.92:8080</string>
+	<string>ws://192.168.1.11:8080</string>
+  <key>WXEntryBundleURL</key>
+  <string>bundlejs/index.js</string>
+  <key>WXSocketConnectionURL</key>
+  <string>ws://192.168.1.11:8080</string>
+  <key>WXEntryBundleURL</key>
+  <string>bundlejs/index.js</string>
+  <key>WXSocketConnectionURL</key>
+  <string>ws://192.168.1.11:8080</string>
 </dict>
 </plist>
