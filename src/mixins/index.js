@@ -1,5 +1,4 @@
 var stream = weex.requireModule('stream');
-let {fetch} = stream;
 module.exports =  {
     methods: {
         jump(to){
