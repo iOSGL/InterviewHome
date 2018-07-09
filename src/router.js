@@ -15,6 +15,5 @@ module.exports = new Router({
       {path: '/Skils', name: 'Skils', component: Skils},
       {path: '/Forum', name: 'Forum', component: Forum},
       {path: '/Mine', name: 'Mine', component: Mine}
-
   ]
 })

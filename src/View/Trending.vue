@@ -3,7 +3,7 @@
         <list class="list">
             <cell class="cell" v-for="obj in listItem">
                 <div class="panel">
-
+                    <text>123</text>
                 </div>
             </cell>
         </list>
@@ -20,12 +20,6 @@
     }
     .list{
         height: 100%;
-        overflow: scroll;
-    }
-    .bg-image {
-        width: 100%;
-        height: 100%;
-        position: absolute;
     }
     .panel{
         flex: 1;
@@ -38,8 +32,8 @@
         margin-bottom: 35px;
         border-width: 2px;
         border-style: solid;
-        border-color: rgb(162, 217, 192);
-        background-color: rgba(162, 217, 192, 0.2);
+        border-color: #999;
+        background-color: white;
     }
 
 
@@ -55,7 +49,6 @@
             }
         },
         created() {
-
             this.POST('/trend/home').then(res => {
                 this.pageBg = res.data.data.pageBg;
                 this.listItem = res.data.data.listItem;
@@ -64,7 +57,6 @@
             })
         },
         methods:{
-
 
         }
     }
