@@ -1,11 +1,11 @@
 <template>
     <div :class="['wrapper', isIpx&&isIpx()?'w-ipx':'']">
         <navigation-header title="趋势"></navigation-header>
-        <image class="bg-image" v-bind:src="pageBg" resize="cover"></image>
+        <!--<image class="bg-image" v-bind:src="pageBg" resize="cover"></image>-->
         <list class="list">
             <cell class="cell" v-for="obj in listItem">
-                <div class="panel">
-                    <text>123</text>
+                <div class="panel" v-on:click="jumpWeb('https://m.you.163.com/act/pub/DxDpYNfbBd.html')">
+                    <text class="content-title">{{obj.title}}</text>
                 </div>
             </cell>
         </list>
@@ -15,7 +15,8 @@
 
 <style scoped>
     .wrapper{
-        background-color: #f4f4f4;
+        /*background-color: #f4f4f4;*/
+        background-color: #f2efe6;
     }
     .w-ipx{
         margin-top: 40px;
@@ -24,31 +25,41 @@
 
     .bg-image {
         position: absolute;
-        top: 0px;
-        bottom: 0px;
+        top: 113px;
+        bottom: 90px;
         left: 0;
         right: 0;
+    }
+    .list {
+        margin-top: 113px;
+        margin-bottom: 98px;
     }
 
     .panel{
         flex: 1;
         flex-direction: column;
         justify-content: center;
+        align-items: center;
         height: 300px;
         margin-left: 75px;
         margin-right: 75px;
         margin-top: 35px;
         margin-bottom: 35px;
-        border-width: 2px;
-        border-style: solid;
-        border-color: #999;
-        background-color: white;
+        background-color: #f17c67;
+        border-radius: 15px;
+    }
+    .content-title {
+        font-size: 36px;
+        color: white;
     }
 
 </style>
 
 <script>
     import header from '../components/Header'
+    import util from '../util'
+    var navigator = weex.requireModule('navigator')
+
     export default {
         name: "Trending-view",
         components: {
@@ -68,8 +79,15 @@
 
             })
         },
-        methods:{
+        methods: {
+            jumpWeb (_url) {
+                const url = weex.config.bundleUrl;
+                navigator.push({
+                    url: util.setBundleUrl(url, 'Web/WebView.js?weburl='+_url),
+                    animated: true
+                });
 
+            }
         }
     }
 </script>
