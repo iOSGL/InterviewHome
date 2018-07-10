@@ -1,5 +1,6 @@
 <template>
-    <div class="wrapper">
+    <div :class="['wrapper', isIpx&&isIpx()?'w-ipx':'']">
+        <navigation-header title="趋势"></navigation-header>
         <image class="bg-image" v-bind:src="pageBg" resize="cover"></image>
         <list class="list">
             <cell class="cell" v-for="obj in listItem">
@@ -14,7 +15,11 @@
 
 <style scoped>
     .wrapper{
-        background-color: #eee;
+        background-color: #f4f4f4;
+    }
+    .w-ipx{
+        margin-top: 40px;
+        margin-bottom: 50px;
     }
 
     .bg-image {
@@ -43,8 +48,12 @@
 </style>
 
 <script>
+    import header from '../components/Header'
     export default {
         name: "Trending-view",
+        components: {
+            'navigation-header': header,
+        },
         data() {
             return {
                 pageBg:'',

@@ -48,7 +48,7 @@
     [self setupRightBarItem];
     self.view.backgroundColor = [UIColor whiteColor];
     
-    _weexHeight = self.view.frame.size.height - 64;
+    _weexHeight = self.view.frame.size.height;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationRefreshInstance:) name:@"RefreshInstance" object:nil];
     
 #if DEBUG
@@ -94,15 +94,15 @@
 - (void)viewDidLayoutSubviews
 {
     _weexHeight = self.view.frame.size.height;
-    UIEdgeInsets safeArea = UIEdgeInsetsZero;
-#ifdef __IPHONE_11_0
-    if (@available(iOS 11.0, *)) {
-        safeArea = self.view.safeAreaInsets;
-    } else {
-        // Fallback on earlier versions
-    }
-#endif
-    _instance.frame = CGRectMake(safeArea.left, safeArea.top, self.view.frame.size.width-safeArea.left-safeArea.right, _weexHeight-safeArea.bottom);
+//    UIEdgeInsets safeArea = UIEdgeInsetsZero;
+//#ifdef __IPHONE_11_0
+//    if (@available(iOS 11.0, *)) {
+//        safeArea = self.view.safeAreaInsets;
+//    } else {
+//        // Fallback on earlier versions
+//    }
+//#endif
+//    _instance.frame = CGRectMake(safeArea.left, safeArea.top, self.view.frame.size.width-safeArea.left-safeArea.right, _weexHeight-safeArea.bottom);
 
 }
 

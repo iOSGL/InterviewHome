@@ -5,6 +5,29 @@
   </div>
 </template>
 
+<style>
+  body{
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color:#333;
+  }
+</style>
+
+<style scoped>
+  .app-wrapper{
+    background-color: #f4f4f4;
+
+  }
+  .r-box{
+    position: absolute;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+</style>
+
 <script>
 
   import tableBar from './components/tableBar'
@@ -34,24 +57,3 @@
 </script>
 
 
-<style>
-  body{
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-    color:#333;
-  }
-</style>
-
-<style scoped>
-  .app-wrapper{
-    background-color: #f4f4f4;
-  }
-  .r-box{
-    position: absolute;
-    top:0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-  }
-</style>
