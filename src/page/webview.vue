@@ -1,5 +1,6 @@
 <template>
     <div class="wrapper">
+
         <div :class="['toolbar', isipx?'t-ipx':'']">
             <div class="left">
                 <text class="btnTxt iconfont"  @click="back">&#xe606;</text>
@@ -30,7 +31,7 @@
         created (_e) {
             util.initIconFont();
             this.url =  util.getUrlSearch(weex.config.bundleUrl,'weburl') || this.url0;
-           console.log('webPageURL', this.url )
+//            console.log('webPageURL', this.url )
         },
         computed:{
             isipx : function() {

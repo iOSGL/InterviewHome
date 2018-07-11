@@ -46,7 +46,8 @@ const getEntryFile = () => {
   fs.outputFileSync(entryFile, getEntryFileContent(helper.root(config.entryFilePath), routerFile));
   fs.outputFileSync(routerFile, getRouterFileContent(helper.root(config.routerFilePath)));
   return {
-    index: entryFile
+    index: entryFile,
+   
   }
 }
 
@@ -80,7 +81,8 @@ const plugins = [
 // Config for compile jsbundle for web.
 const webConfig = {
   entry: Object.assign(webEntry, {
-    'vendor': [path.resolve('node_modules/phantom-limb/index.js')]
+    'vendor': [path.resolve('node_modules/phantom-limb/index.js')],
+    'page/webview': path.resolve('temp/page/webview.js')
   }),
   output: {
     path: helper.rootNode('./dist'),
