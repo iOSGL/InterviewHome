@@ -11,7 +11,6 @@ const isWin = /^win/.test(process.platform);
 const weexEntry = {
   'index': helper.root('entry.js')
 }
-
 const getEntryFileContent = (source, routerpath) => {
   let dependence = `import Vue from 'vue'\n`;
   dependence += `import weex from 'weex-vue-render'\n`;
@@ -82,7 +81,6 @@ const plugins = [
 const webConfig = {
   entry: Object.assign(webEntry, {
     'vendor': [path.resolve('node_modules/phantom-limb/index.js')],
-    'page/webview': path.resolve('temp/page/webview.js')
   }),
   output: {
     path: helper.rootNode('./dist'),
@@ -159,6 +157,8 @@ const webConfig = {
   plugins: plugins
 };
 // Config for compile jsbundle for native.
+
+
 const weexConfig = {
   entry: weexEntry,
   output: {

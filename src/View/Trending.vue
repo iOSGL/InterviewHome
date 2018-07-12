@@ -82,9 +82,10 @@
         methods: {
             jumpWeb (_url) {
                 const url = weex.config.bundleUrl;
+                console.log('++++' + util.setBundleUrl(url, 'page/webview.js?weburl='+_url));
                 navigator.push({
                     url: util.setBundleUrl(url, 'page/webview.js?weburl='+_url),
-                    animated: true
+                    animated: "true"
                 });
 
             }

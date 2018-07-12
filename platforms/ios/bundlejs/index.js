@@ -3068,9 +3068,10 @@ exports.default = {
     methods: {
         jumpWeb: function jumpWeb(_url) {
             var url = weex.config.bundleUrl;
+            console.log('++++' + _util2.default.setBundleUrl(url, 'page/webview.js?weburl=' + _url));
             navigator.push({
                 url: _util2.default.setBundleUrl(url, 'page/webview.js?weburl=' + _url),
-                animated: true
+                animated: "true"
             });
         }
     }

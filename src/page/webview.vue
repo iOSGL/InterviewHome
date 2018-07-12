@@ -31,7 +31,7 @@
         created (_e) {
             util.initIconFont();
             this.url =  util.getUrlSearch(weex.config.bundleUrl,'weburl') || this.url0;
-//            console.log('webPageURL', this.url )
+           console.log('webPageURL', this.url )
         },
         computed:{
             isipx : function() {
