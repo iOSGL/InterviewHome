@@ -193,6 +193,7 @@
 
 - (void)setupRightBarItem
 {
+    // load by cdn will include reload action
     if ([self.url.scheme isEqualToString:@"http"]) {
         [self loadRefreshCtl];
     }

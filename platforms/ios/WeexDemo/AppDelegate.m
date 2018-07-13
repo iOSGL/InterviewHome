@@ -15,6 +15,7 @@
 #import <UMAnalytics/MobClick.h>
 #import <UMPush/UMessage.h>
 #import <UMShare/UMShare.h>
+#import "AppConfig.h"
 
 
 @interface AppDelegate () <UNUserNotificationCenterDelegate>
@@ -33,8 +34,8 @@
 #define SINA_SECRET @"bee7d46f7512a6faa54739323d429ecc"
 #define QQ_APPKID @"1107024056"
 #define QQ_APPKEY @"E1Hf6wZZA8jue3m4"
-#define WX_APPKEY @""
-#define WX_APP_SECRETC @""
+#define WX_APPKEY @"wx7479228bc30af11a"
+#define WX_APP_SECRETC @"1eb4d50dcd3ddf61fb92bb0885398f61"
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
@@ -44,6 +45,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
     [WeexSDKManager setup];
+    [AppConfig setUp];
     [self.window makeKeyAndVisible];
 //    [self startSplashScreen];
     

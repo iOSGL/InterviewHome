@@ -3044,6 +3044,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 
 var navigator = weex.requireModule('navigator');
+var um_module = weex.requireModule('UM_Event');
+var modal = weex.requireModule('modal');
 
 exports.default = {
     name: "Trending-view",
@@ -3067,12 +3069,13 @@ exports.default = {
 
     methods: {
         jumpWeb: function jumpWeb(_url) {
-            var url = weex.config.bundleUrl;
-            console.log('++++' + _util2.default.setBundleUrl(url, 'page/webview.js?weburl=' + _url));
-            navigator.push({
-                url: _util2.default.setBundleUrl(url, 'page/webview.js?weburl=' + _url),
-                animated: "true"
-            });
+            um_module.shareEvent({ 'type': 'link', 'title': '面试之家一款不错的应用', 'des': '面试之家你想要的全都有', 'picUrl': 'https://ws4.sinaimg.cn/large/006tKfTcgy1ft89152cmuj30z20yumx8.jpg', 'linkUrl': 'https://m.you.163.com/act/pub/DxDpYNfbBd.html' }, function (callback) {});
+
+            // const url = weex.config.bundleUrl;
+            // navigator.push({
+            //     url: util.setBundleUrl(url, 'page/webview.js?weburl='+_url),
+            //     animated: "true"
+            // });
         }
     }
 };

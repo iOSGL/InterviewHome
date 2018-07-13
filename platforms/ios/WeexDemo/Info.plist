@@ -27,6 +27,10 @@
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
 			<string>wx</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>wx7479228bc30af11a</string>
+			</array>
 		</dict>
 		<dict>
 			<key>CFBundleTypeRole</key>
@@ -159,50 +163,6 @@
 	<key>WXEntryBundleURL</key>
 	<string>bundlejs/index.js</string>
 	<key>WXSocketConnectionURL</key>
-	<string>ws://192.168.1.11:8080</string>
-  <key>WXEntryBundleURL</key>
-  <string>bundlejs/index.js</string>
-  <key>WXSocketConnectionURL</key>
-  <string>ws://192.168.1.11:8080</string>
-  <key>WXEntryBundleURL</key>
-  <string>bundlejs/index.js</string>
-  <key>WXSocketConnectionURL</key>
-  <string>ws://192.168.1.11:8080</string>
-  <key>WXEntryBundleURL</key>
-  <string>bundlejs/index.js</string>
-  <key>WXSocketConnectionURL</key>
-  <string>ws://10.0.89.25:8080</string>
-  <key>WXEntryBundleURL</key>
-  <string>bundlejs/index.js</string>
-  <key>WXSocketConnectionURL</key>
-  <string>ws://10.0.89.25:8080</string>
-  <key>WXEntryBundleURL</key>
-  <string>bundlejs/index.js</string>
-  <key>WXSocketConnectionURL</key>
-  <string>ws://10.0.89.25:8080</string>
-  <key>WXEntryBundleURL</key>
-  <string>bundlejs/index.js</string>
-  <key>WXSocketConnectionURL</key>
-  <string>ws://10.0.89.25:8080</string>
-  <key>WXEntryBundleURL</key>
-  <string>bundlejs/index.js</string>
-  <key>WXSocketConnectionURL</key>
-  <string>ws://10.0.88.197:8080</string>
-  <key>WXEntryBundleURL</key>
-  <string>bundlejs/index.js</string>
-  <key>WXSocketConnectionURL</key>
-  <string></string>
-  <key>WXEntryBundleURL</key>
-  <string>bundlejs/index.js</string>
-  <key>WXSocketConnectionURL</key>
-  <string>ws://10.0.88.197:8080</string>
-  <key>WXEntryBundleURL</key>
-  <string>bundlejs/index.js</string>
-  <key>WXSocketConnectionURL</key>
-  <string>ws://10.0.88.197:8080</string>
-  <key>WXEntryBundleURL</key>
-  <string>bundlejs/index.js</string>
-  <key>WXSocketConnectionURL</key>
-  <string>ws://10.0.88.197:8080</string>
+	<string>ws://10.0.88.197:8080</string>
 </dict>
 </plist>

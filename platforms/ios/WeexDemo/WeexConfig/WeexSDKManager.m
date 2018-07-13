@@ -11,6 +11,7 @@
 #import <WeexSDK/WeexSDK.h>
 #import "WXDemoViewController.h"
 #import "WXImgLoaderDefaultImpl.h"
+#import "UM_WeexModule.h"
 
 @implementation WeexSDKManager
 
@@ -42,14 +43,15 @@
 
 + (void)initWeexSDK
 {
-    [WXAppConfiguration setAppGroup:@"AliApp"];
-    [WXAppConfiguration setAppName:@"WeexDemo"];
-    [WXAppConfiguration setAppVersion:@"1.8.3"];
-    [WXAppConfiguration setExternalUserAgent:@"ExternalUA"];
+    [WXAppConfiguration setAppGroup:@"mianshihome"];
+    [WXAppConfiguration setAppName:@"面试之家"];
+    [WXAppConfiguration setAppVersion:@"1.0.0"];
+    [WXAppConfiguration setExternalUserAgent:@"mianshizhijia"];
     
     [WXSDKEngine initSDKEnvironment];
     
     [WXSDKEngine registerHandler:[WXImgLoaderDefaultImpl new] withProtocol:@protocol(WXImgLoaderProtocol)];
+    [WXSDKEngine registerModule:@"UM_Event" withClass:NSClassFromString(@"UM_WeexModule")]; // 注册友盟事件Module
     
 #ifdef DEBUG
     [WXLog setLogLevel:WXLogLevelLog];

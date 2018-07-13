@@ -3,6 +3,7 @@ PODS:
     - SDWebImage/Core (= 3.7.5)
   - SDWebImage/Core (3.7.5)
   - SocketRocket (0.4.2)
+  - SVProgressHUD (2.2.5)
   - UMCAnalytics (5.5.0):
     - UMCCommon
   - UMCCommon (1.5.2)
@@ -30,6 +31,7 @@ PODS:
 DEPENDENCIES:
   - SDWebImage (= 3.7.5)
   - SocketRocket (= 0.4.2)
+  - SVProgressHUD
   - UMCAnalytics
   - UMCCommon
   - UMCPush
@@ -45,6 +47,7 @@ SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - SDWebImage
     - SocketRocket
+    - SVProgressHUD
     - UMCAnalytics
     - UMCCommon
     - UMCPush
@@ -56,6 +59,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
   SocketRocket: ffe08119b00ef982f6c37052a4705a057c8494ad
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   UMCAnalytics: 4667788559a72f2fa5077117d1b8802a3b6eb6bb
   UMCCommon: 4392868ac47ff1b101663106bb114ba616fabbad
   UMCPush: 5ab89bdbcc1fe90b1c669ff79213b44dc4821ec5
@@ -64,6 +68,6 @@ SPEC CHECKSUMS:
   WeexPluginLoader: 85c1304f8ba29864e58531614a0acfeceef1b85c
   WeexSDK: ac56f255ce9a48e93ebc2e003956ab20da33321d
 
-PODFILE CHECKSUM: 43c89b6ead0a8c46c88d8dc1e5c68cded95a6c9c
+PODFILE CHECKSUM: d467492f4143f75c55455ac5af85838e8311bb78
 
 COCOAPODS: 1.5.0
