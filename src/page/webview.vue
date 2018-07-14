@@ -3,12 +3,12 @@
 
         <div :class="['toolbar', isipx?'t-ipx':'']">
             <div class="left">
-                <text class="btnTxt iconfont"  @click="back">&#xe606;</text>
-                <text class="btnTxt iconfont"  @click="close">&#xe68b;</text>
+                <text class="btnTxt iconfont"  @click="back">&#xe609;</text>
+                <text class="btnTxt iconfont"  @click="close">&#xe606;</text>
             </div>
             <text class="tlt"></text>
             <div class="right">
-                <text class="btnTxt iconfont" @click="reload">&#xe601;</text>
+                <text class="btnTxt iconfont" @click="reload">&#xe850;</text>
             </div>
         </div>
         <div :class="['webview-box', isipx?'web-ipx':'']">

@@ -125,7 +125,7 @@ var utilFunc = {
         var domModule = weex.requireModule('dom');
         domModule.addRule('fontFace', {
             'fontFamily': "iconfont",
-            'src': "url('http://at.alicdn.com/t/font_404010_f29c7wlkludz33di.ttf')"
+            'src': "url('http://at.alicdn.com/t/font_747453_802enm2kadq.ttf')"
         });
     },
     setBundleUrl: function setBundleUrl(url, jsFile) {
@@ -3069,13 +3069,16 @@ exports.default = {
 
     methods: {
         jumpWeb: function jumpWeb(_url) {
-            um_module.shareEvent({ 'type': 'link', 'title': '面试之家一款不错的应用', 'des': '面试之家你想要的全都有', 'picUrl': 'https://ws4.sinaimg.cn/large/006tKfTcgy1ft89152cmuj30z20yumx8.jpg', 'linkUrl': 'https://m.you.163.com/act/pub/DxDpYNfbBd.html' }, function (callback) {});
 
-            // const url = weex.config.bundleUrl;
-            // navigator.push({
-            //     url: util.setBundleUrl(url, 'page/webview.js?weburl='+_url),
-            //     animated: "true"
+            // um_module.shareEvent({'type':'link', 'title':'面试之家一款不错的应用', 'des':'面试之家你想要的全都有', 'picUrl':'https://ws4.sinaimg.cn/large/006tKfTcgy1ft89152cmuj30z20yumx8.jpg', 'linkUrl':'https://m.you.163.com/act/pub/DxDpYNfbBd.html'}, callback => {
+            //
             // });
+
+            var url = weex.config.bundleUrl;
+            navigator.push({
+                url: _util2.default.setBundleUrl(url, 'page/webview.js?weburl=' + _url),
+                animated: "true"
+            });
         }
     }
 };
@@ -3192,6 +3195,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "title": "趋势"
     }
+  }), _c('image', {
+    staticClass: ["bg-image"],
+    attrs: {
+      "src": _vm.pageBg,
+      "resize": "cover"
+    }
   }), _c('list', {
     staticClass: ["list"]
   }, _vm._l((_vm.listItem), function(obj) {
@@ -3205,7 +3214,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: ["panel"],
       on: {
         "click": function($event) {
-          _vm.jumpWeb('https://m.you.163.com/act/pub/DxDpYNfbBd.html')
+          _vm.jumpWeb(obj.webUrl ? obj.webUrl : 'https://m.you.163.com/act/pub/DxDpYNfbBd.html')
         }
       }
     }, [_c('text', {
@@ -3270,6 +3279,40 @@ module.exports = {
   "w-ipx": {
     "marginTop": "40",
     "marginBottom": "50"
+  },
+  "list": {
+    "marginTop": "113",
+    "marginBottom": "98"
+  },
+  "box": {
+    "height": "100"
+  },
+  "div-content": {
+    "alignItems": "center",
+    "flexDirection": "row",
+    "justifyContent": "space-between",
+    "backgroundColor": "#FFFFFF",
+    "borderBottomWidth": "2",
+    "borderBottomColor": "#eeeeee",
+    "borderBottomStyle": "solid"
+  },
+  "iconfont": {
+    "fontFamily": "iconfont"
+  },
+  "content": {
+    "flexDirection": "row",
+    "alignItems": "center"
+  },
+  "left": {
+    "paddingLeft": "40"
+  },
+  "classname": {
+    "marginLeft": "40",
+    "color": "#333333"
+  },
+  "righttext": {
+    "marginRight": "40",
+    "color": "#333333"
   }
 }
 
@@ -3299,10 +3342,72 @@ exports.default = {
         return {
             rightBtn: {
                 name: '编辑'
-            }
+            },
+            groupList: []
         };
+    },
+    created: function created() {
+        var _this = this;
+
+        this.POST('/skill/homeList').then(function (res) {
+            _this.groupList = res.data.data;
+            console.log(_this.groupList);
+        }).catch(function (res) {
+            console.log(res);
+        });
     }
 }; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3329,10 +3434,52 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: ['wrapper', _vm.isIpx && _vm.isIpx() ? 'w-ipx' : '']
   }, [_c('navigation-header', {
     attrs: {
-      "title": "技能",
-      "rightBtn": _vm.rightBtn
+      "title": "技能"
     }
-  })], 1)
+  }), _c('recycle-list', {
+    staticClass: ["list"],
+    appendAsTree: true,
+    attrs: {
+      "listData": _vm.groupList,
+      "bindingExpression": "groupList",
+      "alias": "obj",
+      "index": "index",
+      "append": "tree"
+    }
+  }, [_c('cell-slot', {
+    staticClass: ["box"],
+    appendAsTree: true,
+    attrs: {
+      "append": "tree"
+    }
+  }, [_c('div', {
+    staticClass: ["box", "div-content"]
+  }, [_c('div', {
+    staticClass: ["left", "content"]
+  }, [_c('text', {
+    staticClass: ["iconfont"],
+    attrs: {
+      "value": ""
+    }
+  }), _c('text', {
+    staticClass: ["classname"],
+    attrs: {
+      "value": {
+        "@binding": "obj.content"
+      }
+    }
+  })]), _c('div', {
+    staticClass: ["content"]
+  }, [_c('text', {
+    staticClass: ["righttext"],
+    attrs: {
+      "value": [{
+        "@binding": "obj.unlockTotal"
+      }, "/", {
+        "@binding": "obj.totalNum"
+      }]
+    }
+  })])])])], 1)], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 
@@ -3835,7 +3982,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('text', {
     staticClass: ["bar-ic", "iconfont"],
     class: [this.isActive('Trending')]
-  }, [_vm._v("")]), _c('text', {
+  }, [_vm._v("")]), _c('text', {
     staticClass: ["bar-txt"],
     class: [this.isActive('Trending')]
   }, [_vm._v("趋势")])]), _c('div', {
@@ -3848,7 +3995,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('text', {
     staticClass: ["bar-ic", "iconfont"],
     class: [this.pIndexKey == 'Skils' ? 'bar-active' : '']
-  }, [_vm._v("")]), _c('text', {
+  }, [_vm._v("")]), _c('text', {
     staticClass: ["bar-txt"],
     class: [this.pIndexKey == 'Skils' ? 'bar-active' : '']
   }, [_vm._v("技能")]), _c('text', {
@@ -3863,7 +4010,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('text', {
     staticClass: ["bar-ic", "iconfont"],
     class: [this.isActive('Forum')]
-  }, [_vm._v("")]), _c('text', {
+  }, [_vm._v("")]), _c('text', {
     staticClass: ["bar-txt"],
     class: [this.isActive('Forum')]
   }, [_vm._v("论坛")])]), _c('div', {
@@ -3876,7 +4023,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('text', {
     staticClass: ["bar-ic", "iconfont"],
     class: [this.isActive('Mine')]
-  }, [_vm._v("")]), _c('text', {
+  }, [_vm._v("")]), _c('text', {
     staticClass: ["bar-txt"],
     class: [this.isActive('Mine')]
   }, [_vm._v("我的")]), _c('text', {

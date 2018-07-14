@@ -9,12 +9,14 @@
 #import "UM_WeexModule.h"
 #import <UMShare/UMShare.h>
 #import <UShareUI/UShareUI.h>
+#import <UMPush/UMessage.h>
 
 @implementation UM_WeexModule
 
 @synthesize weexInstance;
 
 WX_EXPORT_METHOD(@selector(shareEvent: callback:))
+WX_EXPORT_METHOD(@selector(setalias:))
 
 - (void)shareEvent:(NSDictionary *)parames callback:(WXModuleKeepAliveCallback)callback {
     if (![parames isKindOfClass:NSClassFromString(@"NSDictionary")]) {
@@ -107,6 +109,12 @@ WX_EXPORT_METHOD(@selector(shareEvent: callback:))
                 [SVProgressHUD showSuccessWithStatus:@"分享成功"];
             }
         }];
+    }];
+}
+
+- (void)setalias:(NSDictionary *)params {
+    [UMessage addAlias:params[@"userID"] type:params[@"type"] response:^(id  _Nonnull responseObject, NSError * _Nonnull error) {
+        
     }];
 }
 

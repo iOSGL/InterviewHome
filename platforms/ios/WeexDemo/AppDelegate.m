@@ -49,11 +49,6 @@
     [self.window makeKeyAndVisible];
 //    [self startSplashScreen];
     
-    //绑定别名
-    [UMessage addAlias:@"2" type:@"test" response:^(id  _Nonnull responseObject, NSError * _Nonnull error) {
-        
-    }];
-    
     return YES;
 }
 

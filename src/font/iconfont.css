@@ -3,25 +3,23 @@
   font-family:iconfont !important;
 }
 
-.icon-search:before { content: "&#xe65c;"; }
+.icon-form:before { content: "&#xe6a2;"; }
 
-.icon-unfold:before { content: "&#xe661;"; }
+.icon-viewgallery:before { content: "&#xe6b4;"; }
 
-.icon-scan:before { content: "&#xe689;"; }
+.icon-lock:before { content: "&#xeb3f;"; }
 
-.icon-notice:before { content: "&#xe70a;"; }
+.icon-iosreload:before { content: "&#xe850;"; }
 
-.icon-home:before { content: "&#xe660;"; }
+.icon-back:before { content: "&#xe609;"; }
 
-.icon-tea:before { content: "&#xe744;"; }
+.icon-mine:before { content: "&#xe60d;"; }
 
-.icon-right:before { content: "&#xe63a;"; }
+.icon-aui-icon-close:before { content: "&#xe606;"; }
 
-.icon-shop:before { content: "&#xe61a;"; }
+.icon-Home:before { content: "&#xe615;"; }
 
-.icon-i:before { content: "&#xe639;"; }
+.icon-jiantouyou:before { content: "&#xe62d;"; }
 
-.icon-right1:before { content: "&#xe74b;"; }
-
-.icon-class:before { content: "&#xe605;"; }
+.icon-jiantouxia:before { content: "&#xe62e;"; }
 

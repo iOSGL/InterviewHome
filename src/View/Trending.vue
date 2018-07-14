@@ -1,10 +1,10 @@
 <template>
     <div :class="['wrapper', isIpx&&isIpx()?'w-ipx':'']">
         <navigation-header title="趋势"></navigation-header>
-        <!--<image class="bg-image" v-bind:src="pageBg" resize="cover"></image>-->
+        <image class="bg-image" v-bind:src="pageBg" resize="cover"></image>
         <list class="list">
             <cell class="cell" v-for="obj in listItem">
-                <div class="panel" v-on:click="jumpWeb('https://m.you.163.com/act/pub/DxDpYNfbBd.html')">
+                <div class="panel" v-on:click="jumpWeb(obj.webUrl?obj.webUrl:'https://m.you.163.com/act/pub/DxDpYNfbBd.html')">
                     <text class="content-title">{{obj.title}}</text>
                 </div>
             </cell>
@@ -83,15 +83,16 @@
         },
         methods: {
             jumpWeb (_url) {
-                um_module.shareEvent({'type':'link', 'title':'面试之家一款不错的应用', 'des':'面试之家你想要的全都有', 'picUrl':'https://ws4.sinaimg.cn/large/006tKfTcgy1ft89152cmuj30z20yumx8.jpg', 'linkUrl':'https://m.you.163.com/act/pub/DxDpYNfbBd.html'}, callback => {
 
-                });
-
-                // const url = weex.config.bundleUrl;
-                // navigator.push({
-                //     url: util.setBundleUrl(url, 'page/webview.js?weburl='+_url),
-                //     animated: "true"
+                // um_module.shareEvent({'type':'link', 'title':'面试之家一款不错的应用', 'des':'面试之家你想要的全都有', 'picUrl':'https://ws4.sinaimg.cn/large/006tKfTcgy1ft89152cmuj30z20yumx8.jpg', 'linkUrl':'https://m.you.163.com/act/pub/DxDpYNfbBd.html'}, callback => {
+                //
                 // });
+
+                const url = weex.config.bundleUrl;
+                navigator.push({
+                    url: util.setBundleUrl(url, 'page/webview.js?weburl='+_url),
+                    animated: "true"
+                });
 
             }
         }
