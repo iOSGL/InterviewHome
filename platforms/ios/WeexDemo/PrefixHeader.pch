@@ -11,6 +11,9 @@
 
 // ==============> Local Header <==============
 #import "MethodsUtil.h"
+#import "NSString+Code.h"
+#import "DataAnalytical.h"
+#import "BaseImageView.h"
 
 // ==============> Pods Header <==============
 
@@ -19,6 +22,7 @@
 #import <YYText/YYText.h>
 #import <YYModel.h>
 #import <YYCategories/YYCategories.h>
+#import <Masonry.h>
 
 
 //  字体自定义
@@ -26,3 +30,10 @@
 #define FONT_BOLD_SYSTEM_SIZE(s)            [UIFont boldSystemFontOfSize:s]
 
 #endif /* PrefixHeader_pch */
+
+//当前屏幕尺寸
+#define SCREEN_BOUNDS [UIScreen mainScreen].bounds
+#define SCREEN_WIDTH  [UIScreen mainScreen].bounds.size.width
+#define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
+
+#define ONE_PX_LINE 1.0f / [UIScreen mainScreen].scale

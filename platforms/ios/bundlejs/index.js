@@ -3275,82 +3275,12 @@ module.exports = __vue_exports__
 /***/ (function(module, exports) {
 
 module.exports = {
-  "@TRANSITION": {
-    "fade-enter-active": {
-      "property": "opacity",
-      "duration": 500
-    },
-    "fade-leave-active": {
-      "property": "opacity",
-      "duration": 500
-    }
-  },
-  "fade-enter-active": {
-    "transitionProperty": "opacity",
-    "transitionDuration": 500
-  },
-  "fade-leave-active": {
-    "transitionProperty": "opacity",
-    "transitionDuration": 500
-  },
-  "fade-enter": {
-    "opacity": 0
-  },
-  "fade-leave-to": {
-    "opacity": 0
-  },
   "wrapper": {
     "backgroundColor": "#f4f4f4"
   },
   "w-ipx": {
     "marginTop": "40",
     "marginBottom": "50"
-  },
-  "list": {
-    "marginTop": "113",
-    "marginBottom": "98"
-  },
-  "cell-box": {
-    "flexDirection": "column"
-  },
-  "content-view": {
-    "flexDirection": "column"
-  },
-  "box": {
-    "height": "100"
-  },
-  "div-content": {
-    "alignItems": "center",
-    "flexDirection": "row",
-    "justifyContent": "space-between",
-    "backgroundColor": "#FFFFFF",
-    "borderBottomWidth": "2",
-    "borderBottomColor": "#eeeeee",
-    "borderBottomStyle": "solid"
-  },
-  "iconfont": {
-    "fontFamily": "iconfont"
-  },
-  "content": {
-    "flexDirection": "row",
-    "alignItems": "center"
-  },
-  "left": {
-    "paddingLeft": "40"
-  },
-  "classname": {
-    "marginLeft": "40",
-    "color": "#333333"
-  },
-  "righttext": {
-    "marginRight": "40",
-    "color": "#333333"
-  },
-  "listview": {
-    "flexDirection": "column"
-  },
-  "list-content": {
-    "height": "150"
   }
 }
 
@@ -3372,91 +3302,6 @@ var _Header2 = _interopRequireDefault(_Header);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var modal = weex.requireModule('modal'); //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -3522,83 +3367,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "title": "技能"
     }
-  }), _c('recycle-list', {
-    staticClass: ["list"],
-    appendAsTree: true,
-    attrs: {
-      "listData": _vm.groupList,
-      "bindingExpression": "groupList",
-      "alias": "obj",
-      "index": "index",
-      "append": "tree"
-    }
-  }, [_c('cell-slot', {
-    staticClass: ["cell-box"],
-    appendAsTree: true,
-    attrs: {
-      "append": "tree"
-    }
-  }, [_c('div', {
-    staticClass: ["content-view"]
-  }, [_c('div', {
-    staticClass: ["box", "div-content"],
-    on: {
-      "click": {
-        handler: function($$_1, $event) {
-          _vm.clickFolder($$_1);
-        },
-        params: [{
-          "@binding": "index"
-        }]
-      }
-    }
-  }, [_c('div', {
-    staticClass: ["left", "content"]
-  }, [_c('text', {
-    staticClass: ["iconfont"],
-    attrs: {
-      "value": ""
-    }
-  }), _c('text', {
-    staticClass: ["classname"],
-    attrs: {
-      "value": {
-        "@binding": "obj.content"
-      }
-    }
-  })]), _c('div', {
-    staticClass: ["content"]
-  }, [_c('text', {
-    staticClass: ["righttext"],
-    attrs: {
-      "value": [{
-        "@binding": "obj.unlockTotal"
-      }, "/", {
-        "@binding": "obj.totalNum"
-      }]
-    }
-  })])]), _c('transition', {
-    attrs: {
-      "name": "fade",
-      "@inRecycleList": true
-    }
-  }, [_c('div', {
-    staticClass: ["listview"],
-    attrs: {
-      "[[match]]": "obj.openFolder",
-      "[[repeat]]": {
-        "@expression": "obj.pageList",
-        "@alias": "pageList",
-        "@index": "number"
-      }
-    }
-  }, [_c('div', {
-    staticClass: ["list-content"]
-  }, [_c('text', {
-    attrs: {
-      "value": "12121212121"
-    }
-  })])])])], 1)])], 1)], 1)
+  }), _c('NV_SkillCompent')], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 

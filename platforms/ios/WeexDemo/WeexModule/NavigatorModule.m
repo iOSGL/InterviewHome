@@ -88,6 +88,4 @@ WX_EXPORT_METHOD(@selector(popToViewController:toRoot:animation:))
     return nil;
 }
 
-
-
 @end

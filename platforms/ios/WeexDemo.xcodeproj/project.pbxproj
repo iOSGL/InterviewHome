@@ -29,7 +29,16 @@
 		A95D741120FC51E50012A0C5 /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A95D740F20FC51E40012A0C5 /* BaseNavigationController.m */; };
 		A95D741420FC521A0012A0C5 /* BaseImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = A95D741220FC52190012A0C5 /* BaseImageView.m */; };
 		A95D741820FC54B80012A0C5 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A95D741720FC54B80012A0C5 /* BaseViewController.m */; };
-		A95D741B20FC55600012A0C5 /* SkillsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A95D741A20FC55600012A0C5 /* SkillsViewController.m */; };
+		A95D742220FC79320012A0C5 /* SkillsComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = A95D742120FC79320012A0C5 /* SkillsComponent.m */; };
+		A95D742C20FC82ED0012A0C5 /* SkillsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A95D742820FC82ED0012A0C5 /* SkillsViewController.m */; };
+		A95D742F20FC83060012A0C5 /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A95D742E20FC83060012A0C5 /* BaseModel.m */; };
+		A95D743220FC84500012A0C5 /* SkillTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = A95D743120FC84500012A0C5 /* SkillTableView.m */; };
+		A95D743520FC87340012A0C5 /* BaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A95D743420FC87340012A0C5 /* BaseRequest.m */; };
+		A95D743920FC88B30012A0C5 /* SkillsApi.m in Sources */ = {isa = PBXBuildFile; fileRef = A95D743820FC88B30012A0C5 /* SkillsApi.m */; };
+		A95D743C20FC8B9F0012A0C5 /* NSString+Code.m in Sources */ = {isa = PBXBuildFile; fileRef = A95D743B20FC8B9F0012A0C5 /* NSString+Code.m */; };
+		A95D743F20FC8D750012A0C5 /* DataAnalytical.m in Sources */ = {isa = PBXBuildFile; fileRef = A95D743E20FC8D750012A0C5 /* DataAnalytical.m */; };
+		A95D744220FC8E8F0012A0C5 /* SkillsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A95D744120FC8E8F0012A0C5 /* SkillsModel.m */; };
+		A95D744520FC946D0012A0C5 /* SkillsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A95D744420FC946D0012A0C5 /* SkillsTableViewCell.m */; };
 		A971DF6720F866AA00240C91 /* UM_WeexModule.m in Sources */ = {isa = PBXBuildFile; fileRef = A971DF6620F866AA00240C91 /* UM_WeexModule.m */; };
 		A971DF6E20F884FF00240C91 /* AppConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = A971DF6D20F884FF00240C91 /* AppConfig.m */; };
 		D3DB97659EA84DC3ADEFA660 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B116DBF2254E48A0816816AE /* ImageIO.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -95,8 +104,26 @@
 		A95D741320FC521A0012A0C5 /* BaseImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseImageView.h; sourceTree = "<group>"; };
 		A95D741620FC54B80012A0C5 /* BaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		A95D741720FC54B80012A0C5 /* BaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
-		A95D741920FC55600012A0C5 /* SkillsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SkillsViewController.h; sourceTree = "<group>"; };
-		A95D741A20FC55600012A0C5 /* SkillsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SkillsViewController.m; sourceTree = "<group>"; };
+		A95D742020FC79320012A0C5 /* SkillsComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SkillsComponent.h; sourceTree = "<group>"; };
+		A95D742120FC79320012A0C5 /* SkillsComponent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SkillsComponent.m; sourceTree = "<group>"; };
+		A95D742820FC82ED0012A0C5 /* SkillsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkillsViewController.m; sourceTree = "<group>"; };
+		A95D742920FC82ED0012A0C5 /* SkillsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkillsViewController.h; sourceTree = "<group>"; };
+		A95D742D20FC83060012A0C5 /* BaseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
+		A95D742E20FC83060012A0C5 /* BaseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
+		A95D743020FC84500012A0C5 /* SkillTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SkillTableView.h; sourceTree = "<group>"; };
+		A95D743120FC84500012A0C5 /* SkillTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SkillTableView.m; sourceTree = "<group>"; };
+		A95D743320FC87340012A0C5 /* BaseRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseRequest.h; sourceTree = "<group>"; };
+		A95D743420FC87340012A0C5 /* BaseRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseRequest.m; sourceTree = "<group>"; };
+		A95D743720FC88B30012A0C5 /* SkillsApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SkillsApi.h; sourceTree = "<group>"; };
+		A95D743820FC88B30012A0C5 /* SkillsApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SkillsApi.m; sourceTree = "<group>"; };
+		A95D743A20FC8B9F0012A0C5 /* NSString+Code.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Code.h"; sourceTree = "<group>"; };
+		A95D743B20FC8B9F0012A0C5 /* NSString+Code.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Code.m"; sourceTree = "<group>"; };
+		A95D743D20FC8D750012A0C5 /* DataAnalytical.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataAnalytical.h; sourceTree = "<group>"; };
+		A95D743E20FC8D750012A0C5 /* DataAnalytical.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataAnalytical.m; sourceTree = "<group>"; };
+		A95D744020FC8E8F0012A0C5 /* SkillsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SkillsModel.h; sourceTree = "<group>"; };
+		A95D744120FC8E8F0012A0C5 /* SkillsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SkillsModel.m; sourceTree = "<group>"; };
+		A95D744320FC946D0012A0C5 /* SkillsTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SkillsTableViewCell.h; sourceTree = "<group>"; };
+		A95D744420FC946D0012A0C5 /* SkillsTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SkillsTableViewCell.m; sourceTree = "<group>"; };
 		A971DF6520F866AA00240C91 /* UM_WeexModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UM_WeexModule.h; sourceTree = "<group>"; };
 		A971DF6620F866AA00240C91 /* UM_WeexModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UM_WeexModule.m; sourceTree = "<group>"; };
 		A971DF6920F871C700240C91 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
@@ -257,6 +284,7 @@
 		A95D73FD20FC3BAE0012A0C5 /* Api */ = {
 			isa = PBXGroup;
 			children = (
+				A95D743620FC88990012A0C5 /* Skills */,
 				A95D73FE20FC3C030012A0C5 /* Base */,
 			);
 			path = Api;
@@ -267,6 +295,12 @@
 			children = (
 				A95D73FF20FC3C160012A0C5 /* UrlArgumentFilter.h */,
 				A95D740020FC3C160012A0C5 /* UrlArgumentFilter.m */,
+				A95D743320FC87340012A0C5 /* BaseRequest.h */,
+				A95D743420FC87340012A0C5 /* BaseRequest.m */,
+				A95D743A20FC8B9F0012A0C5 /* NSString+Code.h */,
+				A95D743B20FC8B9F0012A0C5 /* NSString+Code.m */,
+				A95D743D20FC8D750012A0C5 /* DataAnalytical.h */,
+				A95D743E20FC8D750012A0C5 /* DataAnalytical.m */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -289,6 +323,8 @@
 				A95D741220FC52190012A0C5 /* BaseImageView.m */,
 				A95D741620FC54B80012A0C5 /* BaseViewController.h */,
 				A95D741720FC54B80012A0C5 /* BaseViewController.m */,
+				A95D742D20FC83060012A0C5 /* BaseModel.h */,
+				A95D742E20FC83060012A0C5 /* BaseModel.m */,
 			);
 			path = BaseClass;
 			sourceTree = "<group>";
@@ -296,10 +332,66 @@
 		A95D741520FC54910012A0C5 /* Module */ = {
 			isa = PBXGroup;
 			children = (
-				A95D741920FC55600012A0C5 /* SkillsViewController.h */,
-				A95D741A20FC55600012A0C5 /* SkillsViewController.m */,
+				A95D742320FC82020012A0C5 /* Skills */,
 			);
 			path = Module;
+			sourceTree = "<group>";
+		};
+		A95D741F20FC78BA0012A0C5 /* WeexComments */ = {
+			isa = PBXGroup;
+			children = (
+				A95D742020FC79320012A0C5 /* SkillsComponent.h */,
+				A95D742120FC79320012A0C5 /* SkillsComponent.m */,
+			);
+			path = WeexComments;
+			sourceTree = "<group>";
+		};
+		A95D742320FC82020012A0C5 /* Skills */ = {
+			isa = PBXGroup;
+			children = (
+				A95D742720FC82ED0012A0C5 /* Controller */,
+				A95D742A20FC82ED0012A0C5 /* Model */,
+				A95D742B20FC82ED0012A0C5 /* View */,
+			);
+			path = Skills;
+			sourceTree = "<group>";
+		};
+		A95D742720FC82ED0012A0C5 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A95D742920FC82ED0012A0C5 /* SkillsViewController.h */,
+				A95D742820FC82ED0012A0C5 /* SkillsViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		A95D742A20FC82ED0012A0C5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A95D744020FC8E8F0012A0C5 /* SkillsModel.h */,
+				A95D744120FC8E8F0012A0C5 /* SkillsModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A95D742B20FC82ED0012A0C5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A95D743020FC84500012A0C5 /* SkillTableView.h */,
+				A95D743120FC84500012A0C5 /* SkillTableView.m */,
+				A95D744320FC946D0012A0C5 /* SkillsTableViewCell.h */,
+				A95D744420FC946D0012A0C5 /* SkillsTableViewCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A95D743620FC88990012A0C5 /* Skills */ = {
+			isa = PBXGroup;
+			children = (
+				A95D743720FC88B30012A0C5 /* SkillsApi.h */,
+				A95D743820FC88B30012A0C5 /* SkillsApi.m */,
+			);
+			path = Skills;
 			sourceTree = "<group>";
 		};
 		A971DF6420F8659300240C91 /* WeexModule */ = {
@@ -327,6 +419,7 @@
 		D5ADF0861C77133B00597CA6 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				A95D741F20FC78BA0012A0C5 /* WeexComments */,
 				A95D740920FC50940012A0C5 /* Native */,
 				A95D73FD20FC3BAE0012A0C5 /* Api */,
 				A971DF6B20F884E200240C91 /* Tool */,
@@ -419,7 +512,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 710;
-				ORGANIZATIONNAME = taobao;
+				ORGANIZATIONNAME = genglei;
 				TargetAttributes = {
 					775BEE7A1C1E8ECC008D1629 = {
 						CreatedOnToolsVersion = 7.1.1;
@@ -613,16 +706,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A3122AF1E1F41E30041B972 /* WeexSDKManager.m in Sources */,
+				A95D742220FC79320012A0C5 /* SkillsComponent.m in Sources */,
+				A95D742F20FC83060012A0C5 /* BaseModel.m in Sources */,
+				A95D742C20FC82ED0012A0C5 /* SkillsViewController.m in Sources */,
+				A95D744220FC8E8F0012A0C5 /* SkillsModel.m in Sources */,
+				A95D743C20FC8B9F0012A0C5 /* NSString+Code.m in Sources */,
+				A95D743F20FC8D750012A0C5 /* DataAnalytical.m in Sources */,
 				A95D740420FC3EFD0012A0C5 /* NavigatorModule.m in Sources */,
 				0A4A05FA1E0405070046E1BE /* WXDemoViewController.m in Sources */,
 				775BEE831C1E8ECC008D1629 /* AppDelegate.m in Sources */,
+				A95D743220FC84500012A0C5 /* SkillTableView.m in Sources */,
 				A971DF6720F866AA00240C91 /* UM_WeexModule.m in Sources */,
 				A95D741820FC54B80012A0C5 /* BaseViewController.m in Sources */,
+				A95D744520FC946D0012A0C5 /* SkillsTableViewCell.m in Sources */,
 				0A4A05F91E0405070046E1BE /* UIViewController+WXDemoNaviBar.m in Sources */,
 				A95D741420FC521A0012A0C5 /* BaseImageView.m in Sources */,
 				A971DF6E20F884FF00240C91 /* AppConfig.m in Sources */,
+				A95D743520FC87340012A0C5 /* BaseRequest.m in Sources */,
+				A95D743920FC88B30012A0C5 /* SkillsApi.m in Sources */,
 				A95D740820FC415E0012A0C5 /* MethodsUtil.m in Sources */,
-				A95D741B20FC55600012A0C5 /* SkillsViewController.m in Sources */,
 				A95D741120FC51E50012A0C5 /* BaseNavigationController.m in Sources */,
 				775BEE801C1E8ECC008D1629 /* main.m in Sources */,
 				A95D740120FC3C160012A0C5 /* UrlArgumentFilter.m in Sources */,
