@@ -3045,6 +3045,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var navigator = weex.requireModule('navigator');
 var um_module = weex.requireModule('UM_Event');
+var NV_Navigator = weex.requireModule('NV_Navigator');
 var modal = weex.requireModule('modal');
 
 exports.default = {
@@ -3074,11 +3075,12 @@ exports.default = {
             //
             // });
 
-            var url = weex.config.bundleUrl;
-            navigator.push({
-                url: _util2.default.setBundleUrl(url, 'page/webview.js?weburl=' + _url),
-                animated: "true"
-            });
+            // const url = weex.config.bundleUrl;
+            // navigator.push({
+            //     url: util.setBundleUrl(url, 'page/webview.js?weburl='+_url),
+            //     animated: "true"
+            // });
+            NV_Navigator.pushViewController('SkillsViewController', {}, true);
         }
     }
 };
@@ -3273,6 +3275,30 @@ module.exports = __vue_exports__
 /***/ (function(module, exports) {
 
 module.exports = {
+  "@TRANSITION": {
+    "fade-enter-active": {
+      "property": "opacity",
+      "duration": 500
+    },
+    "fade-leave-active": {
+      "property": "opacity",
+      "duration": 500
+    }
+  },
+  "fade-enter-active": {
+    "transitionProperty": "opacity",
+    "transitionDuration": 500
+  },
+  "fade-leave-active": {
+    "transitionProperty": "opacity",
+    "transitionDuration": 500
+  },
+  "fade-enter": {
+    "opacity": 0
+  },
+  "fade-leave-to": {
+    "opacity": 0
+  },
   "wrapper": {
     "backgroundColor": "#f4f4f4"
   },
@@ -3283,6 +3309,12 @@ module.exports = {
   "list": {
     "marginTop": "113",
     "marginBottom": "98"
+  },
+  "cell-box": {
+    "flexDirection": "column"
+  },
+  "content-view": {
+    "flexDirection": "column"
   },
   "box": {
     "height": "100"
@@ -3313,6 +3345,12 @@ module.exports = {
   "righttext": {
     "marginRight": "40",
     "color": "#333333"
+  },
+  "listview": {
+    "flexDirection": "column"
+  },
+  "list-content": {
+    "height": "150"
   }
 }
 
@@ -3333,6 +3371,112 @@ var _Header2 = _interopRequireDefault(_Header);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var modal = weex.requireModule('modal'); //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 exports.default = {
     name: "Skils",
     components: {
@@ -3343,7 +3487,8 @@ exports.default = {
             rightBtn: {
                 name: '编辑'
             },
-            groupList: []
+            groupList: [],
+            show: false
         };
     },
     created: function created() {
@@ -3355,75 +3500,16 @@ exports.default = {
         }).catch(function (res) {
             console.log(res);
         });
+    },
+
+    methods: {
+        clickFolder: function clickFolder(_index) {
+            var obj = this.groupList[_index];
+            obj.openFolder = !obj.openFolder;
+            this.$set(this.groupList, _index, obj);
+        }
     }
-}; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+};
 
 /***/ }),
 /* 15 */
@@ -3447,13 +3533,25 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "append": "tree"
     }
   }, [_c('cell-slot', {
-    staticClass: ["box"],
+    staticClass: ["cell-box"],
     appendAsTree: true,
     attrs: {
       "append": "tree"
     }
   }, [_c('div', {
-    staticClass: ["box", "div-content"]
+    staticClass: ["content-view"]
+  }, [_c('div', {
+    staticClass: ["box", "div-content"],
+    on: {
+      "click": {
+        handler: function($$_1, $event) {
+          _vm.clickFolder($$_1);
+        },
+        params: [{
+          "@binding": "index"
+        }]
+      }
+    }
   }, [_c('div', {
     staticClass: ["left", "content"]
   }, [_c('text', {
@@ -3479,7 +3577,28 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "@binding": "obj.totalNum"
       }]
     }
-  })])])])], 1)], 1)
+  })])]), _c('transition', {
+    attrs: {
+      "name": "fade",
+      "@inRecycleList": true
+    }
+  }, [_c('div', {
+    staticClass: ["listview"],
+    attrs: {
+      "[[match]]": "obj.openFolder",
+      "[[repeat]]": {
+        "@expression": "obj.pageList",
+        "@alias": "pageList",
+        "@index": "number"
+      }
+    }
+  }, [_c('div', {
+    staticClass: ["list-content"]
+  }, [_c('text', {
+    attrs: {
+      "value": "12121212121"
+    }
+  })])])])], 1)])], 1)], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 
@@ -3557,7 +3676,14 @@ exports.default = {
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('p', [_vm._v("这里是论坛页面")])
+  return _c('div', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (false),
+      expression: "false"
+    }]
+  }, [_c('text', [_vm._v("show")])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 

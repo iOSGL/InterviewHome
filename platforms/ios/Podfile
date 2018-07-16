@@ -20,6 +20,12 @@ def common
     # 集成新浪微博(精简版1M)
     pod 'UMCShare/Social/ReducedSina'
     pod 'SVProgressHUD'
+    pod 'YTKNetwork'
+    pod 'YYModel'
+    pod 'Masonry'
+    pod 'YYWebImage'
+    pod 'YYCategories'
+    pod 'YYText'
 end
 
 target 'WeexDemo' do

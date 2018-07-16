@@ -60,6 +60,7 @@
     import util from '../util'
     var navigator = weex.requireModule('navigator');
     var um_module = weex.requireModule('UM_Event');
+    var NV_Navigator = weex.requireModule('NV_Navigator');
     var modal = weex.requireModule('modal')
 
     export default {
@@ -88,12 +89,12 @@
                 //
                 // });
 
-                const url = weex.config.bundleUrl;
-                navigator.push({
-                    url: util.setBundleUrl(url, 'page/webview.js?weburl='+_url),
-                    animated: "true"
-                });
-
+                // const url = weex.config.bundleUrl;
+                // navigator.push({
+                //     url: util.setBundleUrl(url, 'page/webview.js?weburl='+_url),
+                //     animated: "true"
+                // });
+                NV_Navigator.pushViewController('SkillsViewController',{},true);
             }
         }
     }

@@ -1,5 +1,5 @@
 <template>
-    <p>这里是论坛页面</p>
+    <div v-show="false" ><text>show</text></div>
 </template>
 
 <script>

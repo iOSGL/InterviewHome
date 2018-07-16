@@ -23,6 +23,13 @@
 		84361D3B1CA10F8E00F43825 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 775BEE7F1C1E8ECC008D1629 /* main.m */; };
 		84361D5B1CA10F8E00F43825 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 775BEE8A1C1E8ECC008D1629 /* Assets.xcassets */; };
 		84D7CAC71CE3266C00D48D46 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7475ACA01CD8444A0044E96C /* libsqlite3.0.tbd */; };
+		A95D740120FC3C160012A0C5 /* UrlArgumentFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = A95D740020FC3C160012A0C5 /* UrlArgumentFilter.m */; };
+		A95D740420FC3EFD0012A0C5 /* NavigatorModule.m in Sources */ = {isa = PBXBuildFile; fileRef = A95D740320FC3EFD0012A0C5 /* NavigatorModule.m */; };
+		A95D740820FC415E0012A0C5 /* MethodsUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = A95D740720FC415E0012A0C5 /* MethodsUtil.m */; };
+		A95D741120FC51E50012A0C5 /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A95D740F20FC51E40012A0C5 /* BaseNavigationController.m */; };
+		A95D741420FC521A0012A0C5 /* BaseImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = A95D741220FC52190012A0C5 /* BaseImageView.m */; };
+		A95D741820FC54B80012A0C5 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A95D741720FC54B80012A0C5 /* BaseViewController.m */; };
+		A95D741B20FC55600012A0C5 /* SkillsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A95D741A20FC55600012A0C5 /* SkillsViewController.m */; };
 		A971DF6720F866AA00240C91 /* UM_WeexModule.m in Sources */ = {isa = PBXBuildFile; fileRef = A971DF6620F866AA00240C91 /* UM_WeexModule.m */; };
 		A971DF6E20F884FF00240C91 /* AppConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = A971DF6D20F884FF00240C91 /* AppConfig.m */; };
 		D3DB97659EA84DC3ADEFA660 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B116DBF2254E48A0816816AE /* ImageIO.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -76,6 +83,20 @@
 		983B223F3951480F8D2048E3 /* CoreLocation.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		A79EA8D70DAC9F1341C9E5F7 /* Pods-WeexUITestDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeexUITestDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeexUITestDemo/Pods-WeexUITestDemo.release.xcconfig"; sourceTree = "<group>"; };
 		A9127C6420EE56F70015EF73 /* WeexDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WeexDemo.entitlements; sourceTree = "<group>"; };
+		A95D73FF20FC3C160012A0C5 /* UrlArgumentFilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UrlArgumentFilter.h; sourceTree = "<group>"; };
+		A95D740020FC3C160012A0C5 /* UrlArgumentFilter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UrlArgumentFilter.m; sourceTree = "<group>"; };
+		A95D740220FC3EFD0012A0C5 /* NavigatorModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NavigatorModule.h; sourceTree = "<group>"; };
+		A95D740320FC3EFD0012A0C5 /* NavigatorModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NavigatorModule.m; sourceTree = "<group>"; };
+		A95D740620FC415E0012A0C5 /* MethodsUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MethodsUtil.h; sourceTree = "<group>"; };
+		A95D740720FC415E0012A0C5 /* MethodsUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MethodsUtil.m; sourceTree = "<group>"; };
+		A95D740F20FC51E40012A0C5 /* BaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
+		A95D741020FC51E40012A0C5 /* BaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
+		A95D741220FC52190012A0C5 /* BaseImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseImageView.m; sourceTree = "<group>"; };
+		A95D741320FC521A0012A0C5 /* BaseImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseImageView.h; sourceTree = "<group>"; };
+		A95D741620FC54B80012A0C5 /* BaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		A95D741720FC54B80012A0C5 /* BaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		A95D741920FC55600012A0C5 /* SkillsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SkillsViewController.h; sourceTree = "<group>"; };
+		A95D741A20FC55600012A0C5 /* SkillsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SkillsViewController.m; sourceTree = "<group>"; };
 		A971DF6520F866AA00240C91 /* UM_WeexModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UM_WeexModule.h; sourceTree = "<group>"; };
 		A971DF6620F866AA00240C91 /* UM_WeexModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UM_WeexModule.m; sourceTree = "<group>"; };
 		A971DF6920F871C700240C91 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
@@ -233,11 +254,61 @@
 			path = WeexDemoTests;
 			sourceTree = "<group>";
 		};
+		A95D73FD20FC3BAE0012A0C5 /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				A95D73FE20FC3C030012A0C5 /* Base */,
+			);
+			path = Api;
+			sourceTree = "<group>";
+		};
+		A95D73FE20FC3C030012A0C5 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				A95D73FF20FC3C160012A0C5 /* UrlArgumentFilter.h */,
+				A95D740020FC3C160012A0C5 /* UrlArgumentFilter.m */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		A95D740920FC50940012A0C5 /* Native */ = {
+			isa = PBXGroup;
+			children = (
+				A95D741520FC54910012A0C5 /* Module */,
+				A95D740E20FC51E40012A0C5 /* BaseClass */,
+			);
+			path = Native;
+			sourceTree = "<group>";
+		};
+		A95D740E20FC51E40012A0C5 /* BaseClass */ = {
+			isa = PBXGroup;
+			children = (
+				A95D741020FC51E40012A0C5 /* BaseNavigationController.h */,
+				A95D740F20FC51E40012A0C5 /* BaseNavigationController.m */,
+				A95D741320FC521A0012A0C5 /* BaseImageView.h */,
+				A95D741220FC52190012A0C5 /* BaseImageView.m */,
+				A95D741620FC54B80012A0C5 /* BaseViewController.h */,
+				A95D741720FC54B80012A0C5 /* BaseViewController.m */,
+			);
+			path = BaseClass;
+			sourceTree = "<group>";
+		};
+		A95D741520FC54910012A0C5 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				A95D741920FC55600012A0C5 /* SkillsViewController.h */,
+				A95D741A20FC55600012A0C5 /* SkillsViewController.m */,
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
 		A971DF6420F8659300240C91 /* WeexModule */ = {
 			isa = PBXGroup;
 			children = (
 				A971DF6520F866AA00240C91 /* UM_WeexModule.h */,
 				A971DF6620F866AA00240C91 /* UM_WeexModule.m */,
+				A95D740220FC3EFD0012A0C5 /* NavigatorModule.h */,
+				A95D740320FC3EFD0012A0C5 /* NavigatorModule.m */,
 			);
 			path = WeexModule;
 			sourceTree = "<group>";
@@ -247,6 +318,8 @@
 			children = (
 				A971DF6C20F884FF00240C91 /* AppConfig.h */,
 				A971DF6D20F884FF00240C91 /* AppConfig.m */,
+				A95D740620FC415E0012A0C5 /* MethodsUtil.h */,
+				A95D740720FC415E0012A0C5 /* MethodsUtil.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -254,6 +327,8 @@
 		D5ADF0861C77133B00597CA6 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				A95D740920FC50940012A0C5 /* Native */,
+				A95D73FD20FC3BAE0012A0C5 /* Api */,
 				A971DF6B20F884E200240C91 /* Tool */,
 				A971DF6420F8659300240C91 /* WeexModule */,
 				0A4A05F21E0405070046E1BE /* WeexScanner */,
@@ -538,12 +613,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A3122AF1E1F41E30041B972 /* WeexSDKManager.m in Sources */,
+				A95D740420FC3EFD0012A0C5 /* NavigatorModule.m in Sources */,
 				0A4A05FA1E0405070046E1BE /* WXDemoViewController.m in Sources */,
 				775BEE831C1E8ECC008D1629 /* AppDelegate.m in Sources */,
 				A971DF6720F866AA00240C91 /* UM_WeexModule.m in Sources */,
+				A95D741820FC54B80012A0C5 /* BaseViewController.m in Sources */,
 				0A4A05F91E0405070046E1BE /* UIViewController+WXDemoNaviBar.m in Sources */,
+				A95D741420FC521A0012A0C5 /* BaseImageView.m in Sources */,
 				A971DF6E20F884FF00240C91 /* AppConfig.m in Sources */,
+				A95D740820FC415E0012A0C5 /* MethodsUtil.m in Sources */,
+				A95D741B20FC55600012A0C5 /* SkillsViewController.m in Sources */,
+				A95D741120FC51E50012A0C5 /* BaseNavigationController.m in Sources */,
 				775BEE801C1E8ECC008D1629 /* main.m in Sources */,
+				A95D740120FC3C160012A0C5 /* UrlArgumentFilter.m in Sources */,
 				0A7758D71EA0D39C00AE9815 /* WXImgLoaderDefaultImpl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

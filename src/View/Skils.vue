@@ -13,15 +13,17 @@
                             <text class="righttext">{{obj.unlockTotal}}/{{obj.totalNum}}</text>
                         </div>
                     </div>
-                    <div v-if="obj.openFolder" class="listview" v-for="(pageList, number) in obj.pageList">
-                        <div class='list-content'>
-                            <text>12121212121</text>
+
+
+                    <transition name="fade">
+                        <div v-if="obj.openFolder" class="listview" v-for="(pageList, number) in obj.pageList">
+                            <div class='list-content'>
+                                <text>12121212121</text>
+                            </div>
                         </div>
-                    </div>
+                    </transition>
 
                 </div>
-
-
             </cell-slot>
         </recycle-list>
     </div>
@@ -29,6 +31,20 @@
 </template>
 
 <style scoped>
+
+    .fade-enter-active{
+        transition: opacity .5s;
+    }
+    .fade-leave-active {
+        transition: opacity .5s;
+    }
+    .fade-enter {
+        opacity: 0;
+    }
+    .fade-leave-to {
+        opacity: 0;
+    }
+
     .wrapper{
         background-color: #f4f4f4;
     }
@@ -83,7 +99,6 @@
     }
     .list-content{
         height: 150px;
-        flex-direction: column;
     }
 
 </style>
@@ -101,7 +116,8 @@
                 rightBtn: {
                     name: '编辑'
                 },
-                groupList:[]
+                groupList:[],
+                show: false
             }
         },
         created() {
