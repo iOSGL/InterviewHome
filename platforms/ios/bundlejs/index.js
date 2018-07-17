@@ -3075,12 +3075,13 @@ exports.default = {
             //
             // });
 
-            // const url = weex.config.bundleUrl;
-            // navigator.push({
-            //     url: util.setBundleUrl(url, 'page/webview.js?weburl='+_url),
-            //     animated: "true"
-            // });
-            NV_Navigator.pushViewController('SkillsViewController', {}, true);
+            var url = weex.config.bundleUrl;
+            navigator.push({
+                url: _util2.default.setBundleUrl(url, 'page/webview.js?weburl=' + _url),
+                animated: "true"
+            });
+
+            // NV_Navigator.pushViewController('SkillsViewController',{},true);
         }
     }
 };
@@ -3306,6 +3307,8 @@ var _Header2 = _interopRequireDefault(_Header);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var modal = weex.requireModule('modal'); //
+//
+//
 //
 //
 //

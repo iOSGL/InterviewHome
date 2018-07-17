@@ -89,12 +89,13 @@
                 //
                 // });
 
-                // const url = weex.config.bundleUrl;
-                // navigator.push({
-                //     url: util.setBundleUrl(url, 'page/webview.js?weburl='+_url),
-                //     animated: "true"
-                // });
-                NV_Navigator.pushViewController('SkillsViewController',{},true);
+                const url = weex.config.bundleUrl;
+                navigator.push({
+                    url: util.setBundleUrl(url, 'page/webview.js?weburl='+_url),
+                    animated: "true"
+                });
+                
+                // NV_Navigator.pushViewController('SkillsViewController',{},true);
             }
         }
     }
