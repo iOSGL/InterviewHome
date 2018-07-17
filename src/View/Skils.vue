@@ -29,6 +29,7 @@
 <script>
     import header from '../components/Header'
     var  modal = weex.requireModule('modal')
+    import mixins from '../mixins/index';
     export default {
         name: "Skils",
         components: {

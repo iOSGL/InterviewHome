@@ -16,7 +16,7 @@
 <style scoped>
     .wrapper{
         /*background-color: #f4f4f4;*/
-        background-color: #f2efe6;
+        background-color: #eeeeee;
     }
     .w-ipx{
         margin-top: 40px;
@@ -94,7 +94,7 @@
                     url: util.setBundleUrl(url, 'page/webview.js?weburl='+_url),
                     animated: "true"
                 });
-                
+
                 // NV_Navigator.pushViewController('SkillsViewController',{},true);
             }
         }
