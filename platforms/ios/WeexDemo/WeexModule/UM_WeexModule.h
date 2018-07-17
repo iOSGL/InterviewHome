@@ -12,4 +12,6 @@
 
 @interface UM_WeexModule : NSObject <WXModuleProtocol>
 
+- (void)shareEvent:(NSDictionary *)parames callback:(WXModuleKeepAliveCallback)callback;
+
 @end

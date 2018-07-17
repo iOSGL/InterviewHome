@@ -7,7 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SkillsTableViewCell.h"
+
+@protocol SkillTableViewDelegate <NSObject>
+
+- (void)tabeleViewDidSelectCellModel:(PageListModel *)pageModel;
+
+@end;
 
 @interface SkillTableView : UITableView
+
+@property (nonatomic, weak) id <SkillTableViewDelegate> cellDelegate;
 
 @end

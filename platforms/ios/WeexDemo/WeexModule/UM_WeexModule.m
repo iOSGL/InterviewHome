@@ -107,6 +107,7 @@ WX_EXPORT_METHOD(@selector(setalias:))
                 callback(error.userInfo[@"message"],false);
             }else{
                 [SVProgressHUD showSuccessWithStatus:@"分享成功"];
+                callback(@"1",true);
             }
         }];
     }];

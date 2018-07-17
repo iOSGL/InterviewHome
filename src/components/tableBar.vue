@@ -75,7 +75,7 @@
         bottom: 0px;
         left: 0px;
         right: 0px;
-        height: 98px;
+        height: 90px;
         flex-wrap: nowrap;
         flex-direction: row;
         justify-content: space-around;

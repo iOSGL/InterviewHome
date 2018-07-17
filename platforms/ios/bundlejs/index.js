@@ -2943,7 +2943,7 @@ module.exports = {
   },
   "list": {
     "marginTop": "113",
-    "marginBottom": "98"
+    "marginBottom": "90"
   },
   "panel": {
     "flex": 1,
@@ -3281,6 +3281,10 @@ module.exports = {
   "w-ipx": {
     "marginTop": "40",
     "marginBottom": "50"
+  },
+  "NV_Skill": {
+    "marginTop": "113",
+    "marginBottom": "90"
   }
 }
 
@@ -3321,6 +3325,12 @@ var modal = weex.requireModule('modal'); //
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 exports.default = {
     name: "Skils",
@@ -3333,7 +3343,7 @@ exports.default = {
                 name: '编辑'
             },
             groupList: [],
-            show: false
+            pageHeight: 0
         };
     },
     created: function created() {
@@ -3345,6 +3355,9 @@ exports.default = {
         }).catch(function (res) {
             console.log(res);
         });
+
+        this.pageHeight = this.getListHeight(113 + 90, true);
+        console.log(this.pageHeight);
     },
 
     methods: {
@@ -3352,6 +3365,51 @@ exports.default = {
             var obj = this.groupList[_index];
             obj.openFolder = !obj.openFolder;
             this.$set(this.groupList, _index, obj);
+        },
+
+        /**
+         *
+         * @description 设置list或者scroller的全屏高度
+         * @param {Number} [height] - 需要减掉的高度 「default: 0」
+         * @param {Boolean} [isAbsHeight] - 是否使用绝对高度
+         *                                    任意屏都显示相同的高度 「default: false」
+         * @return {Number}
+         */
+        getListHeight: function getListHeight(height, isAbsHeight) {
+
+            var deviceHeight = parseInt(weex.config.env.deviceHeight);
+            var rate = weex.config.env.deviceWidth / 750;
+            var deviceScale = weex.config.env.scale;
+
+            if (weex.config.env.platform.toLowerCase() === 'web') {
+
+                if (height && typeof height === 'number') {
+
+                    if (isAbsHeight && typeof isAbsHeight === 'boolean') {
+                        return deviceHeight / rate - height / 2 / deviceScale;
+                    } else {
+                        return deviceHeight / rate - height;
+                    }
+                } else {
+                    return deviceHeight / rate;
+                }
+            } else {
+
+                if (height && typeof height === 'number') {
+
+                    if (isAbsHeight && typeof isAbsHeight === 'boolean') {
+                        return (deviceHeight - height / 2 * deviceScale) / rate;
+                    } else {
+                        return (deviceHeight - deviceScale) / rate - height;
+                    }
+                } else {
+
+                    return (deviceHeight - deviceScale) / rate;
+                }
+            }
+        },
+        pushPageList: function pushPageList(e) {
+            console.log(e.pageID);
         }
     }
 };
@@ -3367,7 +3425,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "title": "技能"
     }
-  }), _c('NV_SkillCompent')], 1)
+  }), _c('NV_SkillCompent', {
+    staticClass: ["NV_Skill"],
+    style: {
+      height: _vm.pageHeight + 'px'
+    },
+    on: {
+      "pushPageList": _vm.pushPageList
+    }
+  })], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 
@@ -3735,7 +3801,7 @@ module.exports = {
     "bottom": "0",
     "left": "0",
     "right": "0",
-    "height": "98",
+    "height": "90",
     "flexWrap": "nowrap",
     "flexDirection": "row",
     "justifyContent": "space-around",

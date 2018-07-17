@@ -8,7 +8,7 @@
 
 #import "SkillTableView.h"
 #import "SkillsApi.h"
-#import "SkillsTableViewCell.h"
+
 
 @interface SkillTableView () <UITableViewDelegate, UITableViewDataSource>
 
@@ -23,6 +23,7 @@
     if (self) {
         self.delegate = self;
         self.dataSource = self;
+        self.separatorStyle = UITableViewCellSelectionStyleNone;
         [self loadData];
     }
     return self;
@@ -124,7 +125,9 @@
     SkillsModel *model = (SkillsModel *)self.listModel.data[indexPath.section];
     PageListModel *pageModel = (PageListModel *)model.pageList[indexPath.row];
     if (pageModel.islock) {
-        
+        if (_cellDelegate && [_cellDelegate respondsToSelector:@selector(tabeleViewDidSelectCellModel:)]) {
+            [_cellDelegate tabeleViewDidSelectCellModel:pageModel];
+        }
     } else {
         NSInteger number = [pageModel.integral integerValue] / 20;
         NSString *message = [NSString stringWithFormat:@"您当前积分不足,可邀请%zi位好友帮您解锁",number];

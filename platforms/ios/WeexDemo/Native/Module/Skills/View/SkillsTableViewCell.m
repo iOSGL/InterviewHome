@@ -7,6 +7,7 @@
 //
 
 #import "SkillsTableViewCell.h"
+#import "UM_WeexModule.h"
 
 @interface SkillsTableViewCell ()
 
@@ -113,9 +114,29 @@ static NSString *identifier = @"listCell";
 
 - (void)shareAction:(UITapGestureRecognizer *)event {
     if (self.model.islock) {
-        
+        UM_WeexModule *sharModule = [[UM_WeexModule alloc]init];
+        NSDictionary *parames = @{
+                                  @"type":@"link",
+                                  @"title":@"面试之家一款不错的应用",
+                                  @"des":@"面试之家你想要的全都有",
+                                  @"picUrl":@"https://ws4.sinaimg.cn/large/006tKfTcgy1ft89152cmuj30z20yumx8.jpg",
+                                  @"linkUrl":@"https://m.you.163.com/act/pub/DxDpYNfbBd.html"
+                                  };
+        [sharModule shareEvent:parames callback:^(id result, BOOL keepAlive) {
+            
+        }];
     } else {
-        
+        UM_WeexModule *sharModule = [[UM_WeexModule alloc]init];
+        NSDictionary *parames = @{
+                                  @"type":@"link",
+                                  @"title":@"面试之家一款不错的应用",
+                                  @"des":@"面试之家你想要的全都有",
+                                  @"picUrl":@"https://ws4.sinaimg.cn/large/006tKfTcgy1ft89152cmuj30z20yumx8.jpg",
+                                  @"linkUrl":@"https://m.you.163.com/act/pub/DxDpYNfbBd.html"
+                                  };
+        [sharModule shareEvent:parames callback:^(id result, BOOL keepAlive) {
+            
+        }];
     }
 }
 

@@ -32,7 +32,7 @@
     }
     .list {
         margin-top: 113px;
-        margin-bottom: 98px;
+        margin-bottom: 90px;
     }
 
     .panel{
