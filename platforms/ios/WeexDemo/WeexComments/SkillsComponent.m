@@ -51,7 +51,7 @@ NSString *const pushAction = @"pushPageList";
 
 - (void)tabeleViewDidSelectCellModel:(PageListModel *)pageModel {
     if (_pushPageList) {
-        [self fireEvent:pushAction params:@{@"pageID":pageModel.pageID}];
+        [self fireEvent:pushAction params:@{@"pageID":pageModel.pageID, @"title":pageModel.title}];
     }
 }
 

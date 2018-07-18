@@ -1,19 +1,33 @@
 <template>
-    <div v-bind:class="['wrapper', isIpx&&isIpx()?'w-ipx':'']">
+    <div v-bind:class="['wrapper', ipx?'w-ipx':'']">
         <div class="left">
-            <text class="leftTxt" v-if="leftBtn">{{leftBtn.name}}}</text>
+            <text class="leftTxt iconfont" v-if="leftBtn" @click="leftAction">&#xe609;</text>
         </div>
         <text class="tlt">{{title}}</text>
         <div class="right">
-            <text class="rightTxt" v-if="rightBtn">{{rightBtn.name}}</text>
+            <text class="rightTxt iconfont" v-if="rightBtn">{{rightBtn.name}}</text>
         </div>
     </div>
 </template>
 
 <script>
+    import util from '../util.js'
     export default {
         name: "Header",
-        props: ['title', 'leftBtn', 'rightBtn']
+        props: ['title', 'leftBtn', 'rightBtn'],
+        data () {
+            return {
+               ipx:''
+            }
+        },
+        created() {
+           this.ipx = util.isIpx();
+        },
+        methods: {
+            leftAction () {
+                this.$emit('leftAction')
+            }
+        }
     }
 </script>
 
@@ -51,8 +65,11 @@
         padding-top:10px;
     }
     .leftTxt,.rightTxt{
-        font-size: 30px;
+        font-size: 50px;
         text-align: center;
+    }
+    .iconfont {
+        font-family:iconfont;
     }
 
 </style>

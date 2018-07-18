@@ -29,7 +29,9 @@
 <script>
     import header from '../components/Header'
     var  modal = weex.requireModule('modal')
-    import mixins from '../mixins/index';
+    var navigator = weex.requireModule('navigator');
+    import util from '../util'
+    var storage = weex.requireModule('storage')
     export default {
         name: "Skils",
         components: {
@@ -37,9 +39,6 @@
         },
         data () {
             return {
-                rightBtn: {
-                    name: '编辑'
-                },
                 groupList:[],
                 pageHeight:0,
             }
@@ -107,7 +106,26 @@
                 }
             },
             pushPageList (e) {
-                console.log(e.pageID);
+                // 路由跳转需要隐藏tableBar
+                // this.$router&&this.$router.push({
+                //     name: 'QuestionList',
+                //     params: {
+                //         pageID: e['pageID'],
+                //         title: e['title']
+                //     }
+                // })
+
+                const url = weex.config.bundleUrl;
+                const path =  'Skills/QuestionList.js?pageID='+e.pageID;
+                storage.setItem('params', e.title);
+                navigator.push({
+                    url: util.setBundleUrl(url, path),
+                    animation: 'true'
+                }, function (callBack) {
+
+                })
+
+
             }
         }
     }
