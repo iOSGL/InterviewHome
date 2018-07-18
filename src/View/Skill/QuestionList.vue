@@ -30,7 +30,11 @@
                 storage.removeItem('params');
             })
             this.pageID = util.getUrlSearch(weex.config.bundleUrl, 'pageID');
-            console.log(this.pageID);
+            util.POST('/skill/questionList', {groupId:this.pageID}).then(res => {
+                console.log('result' + res.data.data);
+            }).catch(res => {
+                console.log('faile' +res.data.data);
+            })
         },
         methods: {
             back () {
