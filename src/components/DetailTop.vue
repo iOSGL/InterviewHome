@@ -1,7 +1,7 @@
 <template>
     <div class="wrapper">
         <text class="left-text">{{leftText}}</text>
-        <text class="image-text" v-bind:class="collection">&#xe66c;</text>
+        <text class="image-text iconfont" v-bind:class="collection">&#xe66c;</text>
         <text class="right-text">{{rightTetx}}</text>
     </div>
 </template>
@@ -21,6 +21,9 @@
         justify-content: space-between;
         flex-direction: row;
         align-items: center;
+    }
+    .iconfont {
+        font-family:iconfont;
     }
     .left-text {
         text-align: center;

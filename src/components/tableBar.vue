@@ -9,18 +9,18 @@
         <div class="bar-item" @click="tabTo('Skils')">
             <text class="bar-ic iconfont" :class="[this.pIndexKey == 'Skils'?'bar-active':'']">&#xe6b4;</text>
             <text class="bar-txt" :class="[this.pIndexKey == 'Skils'?'bar-active':'']">技能</text>
-            <text class="notice-dot"></text>
+            <!--<text class="notice-dot"></text>-->
         </div>
 
-        <div class="bar-item" @click="tabTo('Forum')">
-            <text class="bar-ic iconfont" :class="[this.isActive('Forum')]">&#xe6a2;</text>
-            <text class="bar-txt" :class="[this.isActive('Forum')]">论坛</text>
-        </div>
+        <!--<div class="bar-item" @click="tabTo('Forum')">-->
+            <!--<text class="bar-ic iconfont" :class="[this.isActive('Forum')]">&#xe6a2;</text>-->
+            <!--<text class="bar-txt" :class="[this.isActive('Forum')]">论坛</text>-->
+        <!--</div>-->
 
         <div class="bar-item" @click="tabTo('Mine')">
             <text class="bar-ic iconfont" :class="[this.isActive('Mine')]">&#xe60d;</text>
             <text class="bar-txt" :class="[this.isActive('Mine')]">我的</text>
-            <text class="i-notice">0</text>
+            <!--<text class="i-notice">0</text>-->
         </div>
 
     </div>

@@ -81,7 +81,7 @@ var utilFunc = {
         var domModule = weex.requireModule('dom');
         domModule.addRule('fontFace', {
             'fontFamily': "iconfont",
-            'src': "url('http://at.alicdn.com/t/font_747453_802enm2kadq.ttf')"
+            'src': "url('http://at.alicdn.com/t/font_747453_eyo5x52ahzp.ttf')"
         });
     },
     setBundleUrl: function setBundleUrl(url, jsFile) {
@@ -3503,7 +3503,6 @@ exports.default = {
 
             var url = weex.config.bundleUrl;
             var path = 'Skills/QuestionList.js?pageID=' + e.pageID;
-
             storage.setItem('params', e.title);
             navigator.push({
                 url: _util2.default.setBundleUrl(url, path),
@@ -3669,7 +3668,67 @@ module.exports = __vue_exports__
 /* 21 */
 /***/ (function(module, exports) {
 
-module.exports = {}
+module.exports = {
+  "wrapper": {
+    "backgroundColor": "#f4f4f4"
+  },
+  "w-ipx": {
+    "marginTop": "40",
+    "marginBottom": "50"
+  },
+  "iconfont": {
+    "fontFamily": "iconfont"
+  },
+  "top-dev": {
+    "flexDirection": "column",
+    "alignItems": "center",
+    "justifyContent": "center",
+    "alignContent": "center"
+  },
+  "header-bg": {
+    "height": "300",
+    "position": "absolute",
+    "left": 0,
+    "right": 0,
+    "top": 0,
+    "bottom": 0
+  },
+  "avater": {
+    "width": "120",
+    "height": "120",
+    "borderRadius": "60",
+    "backgroundColor": "#FFA500",
+    "marginTop": "70"
+  },
+  "nickname": {
+    "color": "#FFFFFF",
+    "textAlign": "center",
+    "fontSize": "26",
+    "marginTop": "10"
+  },
+  "space": {
+    "height": "100"
+  },
+  "cell": {
+    "height": "88",
+    "borderBottomWidth": "1",
+    "borderStyle": "solid",
+    "borderBottomColor": "#eeeeee",
+    "backgroundColor": "#FFFFFF",
+    "justifyContent": "space-between",
+    "paddingLeft": "20",
+    "paddingRight": "20",
+    "flexDirection": "row",
+    "alignItems": "center"
+  },
+  "tlt": {
+    "color": "#333333",
+    "fontSize": "30"
+  },
+  "right-arrow": {
+    "fontSize": "30"
+  }
+}
 
 /***/ }),
 /* 22 */
@@ -3681,22 +3740,82 @@ module.exports = {}
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-//
-//
-//
-//
+
+var _util = __webpack_require__(0);
+
+var _util2 = _interopRequireDefault(_util);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {
-    name: "Mine"
-};
+    name: "Mine",
+    data: function data() {
+        return {
+            list: ['我的收藏', '产品交流', '分享给好友', '关于我们', '退出登录']
+        };
+    },
+    created: function created() {
+        _util2.default.initIconFont();
+    }
+}; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /***/ }),
 /* 23 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('p', [_vm._v("这里是个人中心")])
-},staticRenderFns: []}
+  return _c('div', {
+    class: ['wrapper', _vm.isIpx && _vm.isIpx() ? 'w-ipx' : '']
+  }, [_c('scroller', {
+    staticClass: ["scroller"]
+  }, [_vm._m(0), _c('div', {
+    staticClass: ["space"]
+  }), _c('div', {
+    staticClass: ["list-class"]
+  }, [_vm._l((_vm.list), function(title, index) {
+    return [_c('div', {
+      staticClass: ["cell"]
+    }, [_c('text', {
+      staticClass: ["tlt"]
+    }, [_vm._v(_vm._s(title))]), _c('text', {
+      staticClass: ["right-arrow", "iconfont"]
+    }, [_vm._v("")])])]
+  })], 2)])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["top-dev"]
+  }, [_c('image', {
+    staticClass: ["header-bg"],
+    attrs: {
+      "resize": "cover",
+      "src": "http://cdn.zwwill.com/yanxuan/imgs/bg5.png"
+    }
+  }), _c('image', {
+    staticClass: ["avater"]
+  }), _c('text', {
+    staticClass: ["nickname"]
+  }, [_vm._v("你微笑时很美")])])
+}]}
 module.exports.render._withStripped = true
 
 /***/ }),
@@ -3762,6 +3881,42 @@ module.exports = {
     "right": 0,
     "bottom": 0,
     "top": 0
+  },
+  "w-ipx": {
+    "marginTop": "40",
+    "marginBottom": "0"
+  },
+  "list": {
+    "marginTop": "113",
+    "marginBottom": "0"
+  },
+  "box": {
+    "height": "110"
+  },
+  "contentView": {
+    "flexDirection": "column",
+    "borderBottomWidth": "1",
+    "borderBottomColor": "#eeeeee",
+    "borderBottomStyle": "solid"
+  },
+  "no-text": {
+    "fontSize": "25",
+    "marginLeft": "30",
+    "marginTop": "10",
+    "flexWrap": "nowrap",
+    "color": "#B0B0B0"
+  },
+  "tlt-text": {
+    "fontSize": "30",
+    "marginLeft": "30",
+    "marginTop": "10",
+    "marginRight": "5",
+    "flexWrap": "nowrap",
+    "color": "#696969",
+    "overflow": "hidden",
+    "textOverflow": "ellipsis",
+    "whiteSpace": "nowrap",
+    "lines": 1
   }
 }
 
@@ -3792,6 +3947,16 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 var navigator = weex.requireModule('navigator');
 var storage = weex.requireModule('storage');
@@ -3803,7 +3968,10 @@ exports.default = {
                 name: 'e609;'
             },
             title: '',
-            pageID: ''
+            pageID: '',
+            dataArray: [],
+            ipx: ''
+
         };
     },
 
@@ -3814,12 +3982,17 @@ exports.default = {
         var _this = this;
 
         _util2.default.initIconFont();
+        this.ipx = _util2.default.isIpx();
         storage.getItem('params', function (event) {
-            _this.title = event.data.title;
+            _this.title = event.data;
             storage.removeItem('params');
         });
         this.pageID = _util2.default.getUrlSearch(weex.config.bundleUrl, 'pageID');
-        console.log(this.pageID);
+        _util2.default.POST('/skill/questionList', { groupId: this.pageID }).then(function (res) {
+            _this.dataArray = res.data.data;
+        }).catch(function (res) {
+            _this.dataArray = res.data.data;
+        });
     },
 
     methods: {
@@ -3827,6 +4000,14 @@ exports.default = {
             navigator.pop({
                 animated: 'true'
             });
+        },
+        didSelectRow: function didSelectRow(obj) {
+            var path = 'QuestionDetail.js?questionID=' + obj._id;
+            var url = weex.config.bundleUrl;
+            navigator.push({
+                url: _util2.default.setBundleUrl(url, path),
+                animation: 'true'
+            }, function (callBack) {});
         }
     }
 };
@@ -3837,7 +4018,7 @@ exports.default = {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: ["wrapper"]
+    class: ['wrapper', _vm.ipx ? 'w-ipx' : '']
   }, [_c('navigation-header', {
     attrs: {
       "title": _vm.title,
@@ -3846,7 +4027,28 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "leftAction": _vm.back
     }
-  })], 1)
+  }), _c('list', {
+    staticClass: ["list"]
+  }, [_vm._l((_vm.dataArray), function(obj, index) {
+    return [_c('cell', {
+      staticClass: ["box"],
+      appendAsTree: true,
+      attrs: {
+        "append": "tree"
+      },
+      on: {
+        "click": function($event) {
+          _vm.didSelectRow(obj)
+        }
+      }
+    }, [_c('div', {
+      staticClass: ["box", "contentView"]
+    }, [_c('text', {
+      staticClass: ["no-text"]
+    }, [_vm._v(_vm._s('第' + (index + 1) + '题'))]), _c('text', {
+      staticClass: ["tlt-text"]
+    }, [_vm._v(_vm._s(obj.questionTitle))])])])]
+  })], 2)], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 
@@ -4209,22 +4411,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("")]), _c('text', {
     staticClass: ["bar-txt"],
     class: [this.pIndexKey == 'Skils' ? 'bar-active' : '']
-  }, [_vm._v("技能")]), _c('text', {
-    staticClass: ["notice-dot"]
-  })]), _c('div', {
-    staticClass: ["bar-item"],
-    on: {
-      "click": function($event) {
-        _vm.tabTo('Forum')
-      }
-    }
-  }, [_c('text', {
-    staticClass: ["bar-ic", "iconfont"],
-    class: [this.isActive('Forum')]
-  }, [_vm._v("")]), _c('text', {
-    staticClass: ["bar-txt"],
-    class: [this.isActive('Forum')]
-  }, [_vm._v("论坛")])]), _c('div', {
+  }, [_vm._v("技能")])]), _c('div', {
     staticClass: ["bar-item"],
     on: {
       "click": function($event) {
@@ -4237,9 +4424,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("")]), _c('text', {
     staticClass: ["bar-txt"],
     class: [this.isActive('Mine')]
-  }, [_vm._v("我的")]), _c('text', {
-    staticClass: ["i-notice"]
-  }, [_vm._v("0")])])])
+  }, [_vm._v("我的")])])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 
