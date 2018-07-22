@@ -4,7 +4,7 @@ let utilFunc = {
         let domModule = weex.requireModule('dom');
         domModule.addRule('fontFace', {
             'fontFamily': "iconfont",
-            'src': "url('http://at.alicdn.com/t/font_747453_802enm2kadq.ttf')"
+            'src': "url('http://at.alicdn.com/t/font_747453_eyo5x52ahzp.ttf')"
         });
     },
     setBundleUrl(url, jsFile) {
