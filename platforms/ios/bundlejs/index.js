@@ -3747,6 +3747,28 @@ var _util2 = _interopRequireDefault(_util);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var navigator = weex.requireModule('navigator'); //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 exports.default = {
     name: "Mine",
     data: function data() {
@@ -3756,28 +3778,19 @@ exports.default = {
     },
     created: function created() {
         _util2.default.initIconFont();
+    },
+
+    methods: {
+        avaterAction: function avaterAction() {
+            console.log('11111');
+
+            navigator.push({
+                url: _util2.default.setBundleUrl(weex.config.bundleUrl, 'Mine/Login.js'),
+                animated: 'true'
+            }, function (event) {});
+        }
     }
-}; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+};
 
 /***/ }),
 /* 23 */
@@ -3788,7 +3801,22 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: ['wrapper', _vm.isIpx && _vm.isIpx() ? 'w-ipx' : '']
   }, [_c('scroller', {
     staticClass: ["scroller"]
-  }, [_vm._m(0), _c('div', {
+  }, [_c('div', {
+    staticClass: ["top-dev"]
+  }, [_c('image', {
+    staticClass: ["header-bg"],
+    attrs: {
+      "resize": "cover",
+      "src": "http://cdn.zwwill.com/yanxuan/imgs/bg5.png"
+    }
+  }), _c('image', {
+    staticClass: ["avater"],
+    on: {
+      "click": _vm.avaterAction
+    }
+  }), _c('text', {
+    staticClass: ["nickname"]
+  }, [_vm._v("你微笑时很美")])]), _c('div', {
     staticClass: ["space"]
   }), _c('div', {
     staticClass: ["list-class"]
@@ -3801,21 +3829,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: ["right-arrow", "iconfont"]
     }, [_vm._v("")])])]
   })], 2)])])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["top-dev"]
-  }, [_c('image', {
-    staticClass: ["header-bg"],
-    attrs: {
-      "resize": "cover",
-      "src": "http://cdn.zwwill.com/yanxuan/imgs/bg5.png"
-    }
-  }), _c('image', {
-    staticClass: ["avater"]
-  }), _c('text', {
-    staticClass: ["nickname"]
-  }, [_vm._v("你微笑时很美")])])
-}]}
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 
 /***/ }),

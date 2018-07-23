@@ -3,7 +3,7 @@
         <scroller class="scroller">
             <div class="top-dev">
                 <image class="header-bg" resize="cover" src="http://cdn.zwwill.com/yanxuan/imgs/bg5.png"></image>
-                <image class="avater"></image>
+                <image class="avater" v-on:click="avaterAction"></image>
                 <text class="nickname">你微笑时很美</text>
             </div>
             <div class="space"></div>
@@ -21,6 +21,7 @@
 
 <script>
     import util from '../util'
+    var navigator = weex.requireModule('navigator');
     export default {
         name: "Mine",
         data () {
@@ -30,6 +31,19 @@
         },
         created () {
             util.initIconFont();
+            util.POST(':8080/mianshi/rest/login/baseLogin')
+        },
+        methods: {
+            avaterAction () {
+                console.log('11111');
+
+                navigator.push({
+                    url: util.setBundleUrl(weex.config.bundleUrl, 'Mine/Login.js'),
+                    animated: 'true'
+                }, event => {
+
+                })
+            }
         }
     }
 </script>
