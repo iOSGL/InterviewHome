@@ -35,8 +35,6 @@
         },
         methods: {
             avaterAction () {
-                console.log('11111');
-
                 navigator.push({
                     url: util.setBundleUrl(weex.config.bundleUrl, 'Mine/Login.js'),
                     animated: 'true'

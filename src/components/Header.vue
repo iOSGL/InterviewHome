@@ -5,7 +5,7 @@
         </div>
         <text class="tlt">{{title}}</text>
         <div class="right">
-            <text class="rightTxt iconfont" v-if="rightBtn">{{rightBtn.name}}</text>
+            <text class="rightTxt" v-if="rightBtn" @click="rightAction">{{rightBtn.name}}</text>
         </div>
     </div>
 </template>
@@ -26,6 +26,9 @@
         methods: {
             leftAction () {
                 this.$emit('leftAction')
+            },
+            rightAction () {
+                this.$emit('rightAction')
             }
         }
     }
@@ -59,13 +62,22 @@
         color: #333;
         text-align: center;
     }
-    .left, .right {
+    .left {
         height: 80px;
         width: 120px;
         padding-top:10px;
     }
-    .leftTxt,.rightTxt{
+    .leftTxt{
         font-size: 50px;
+        text-align: center;
+    }
+    .right {
+        height: 80px;
+        width: 120px;
+        padding-top:10px;
+    }
+    .rightTxt {
+        font-size: 30px;
         text-align: center;
     }
     .iconfont {
