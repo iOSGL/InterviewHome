@@ -1,8 +1,10 @@
 <template>
-    <div v-bind:class="['wrapper', ipx?'ipx':'']">
+    <div v-bind:class="['wrapper', ipx?'w-ipx':'']">
         <navigation-header title="详情" :leftBtn="leftBtn" @leftAction="back"></navigation-header>
-        <top :leftText="className" :collection="collection" :rightTetx="numText"></top>
-        <ques-detail :title="title" :content="content"></ques-detail>
+        <scroller class="scroller" :style="{height: pageHeight + 'px'}">
+            <top :leftText="className" :collection="collection" :rightTetx="numText"></top>
+            <ques-detail :title="title" :content="content"></ques-detail>
+        </scroller>
         <bottom @up="upAction" @down="nextAction"></bottom>
 
     </div>
@@ -28,11 +30,12 @@
                 dataGroup: {
 
                 },
-                className: 'javaScript',
-                collection: '',
+                className: '',
+                collection: false,
                 numText: '',
                 title: '',
                 content: '',
+                pageHeight: 1334
 
             }
         },
@@ -51,6 +54,7 @@
                 groupId: this.questionID,
             }
             this.requestData('/skill/questionDetail',param, '');
+            this.pageHeight = util.getListHeight(113 + 120, true);
 
         },
         methods: {
@@ -90,8 +94,8 @@
                           return;
                       }
 
-                    // this.className = this.dataGroup.className;
-                    // this.collection = this.dataGroup.isCollection;
+                    this.className = this.dataGroup.className;
+                    this.collection = this.dataGroup.isCollection;
                     this.numText = '1/200';
                     this.title = this.dataGroup.questionTitle;
                     this.content = '        ' + this.dataGroup.answer;
@@ -117,5 +121,8 @@
     .w-ipx {
         margin-top: 40px;
         margin-bottom:0px;
+    }
+    .scroller {
+        margin-top: 113px;
     }
 </style>

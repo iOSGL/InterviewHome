@@ -109,6 +109,50 @@ let utilFunc = {
         }else{
             return false;
         }
+    },
+    /**
+     *
+     * @description 设置list或者scroller的全屏高度
+     * @param {Number} [height] - 需要减掉的高度 「default: 0」
+     * @param {Boolean} [isAbsHeight] - 是否使用绝对高度
+     *                                    任意屏都显示相同的高度 「default: false」
+     * @return {Number}
+     */
+    getListHeight: function (height, isAbsHeight) {
+
+        let deviceHeight = parseInt(weex.config.env.deviceHeight);
+        let rate = weex.config.env.deviceWidth / 750;
+        let deviceScale = weex.config.env.scale;
+
+        if (weex.config.env.platform.toLowerCase() === 'web') {
+
+            if (height && typeof height === 'number') {
+
+                if (isAbsHeight && typeof isAbsHeight === 'boolean') {
+                    return (deviceHeight / rate) - ((height / 2) / deviceScale);
+                } else {
+                    return (deviceHeight / rate) - height;
+                }
+
+            } else {
+                return (deviceHeight / rate);
+            }
+
+        } else {
+
+            if (height && typeof height === 'number') {
+
+                if (isAbsHeight && typeof isAbsHeight === 'boolean') {
+                    return (deviceHeight - (((height / 2)) * deviceScale)) / rate;
+                } else {
+                    return (deviceHeight - (deviceScale)) / rate - height;
+                }
+
+            } else {
+
+                return (deviceHeight - (deviceScale)) / rate;
+            }
+        }
     }
 };
 

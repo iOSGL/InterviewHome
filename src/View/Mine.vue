@@ -9,7 +9,7 @@
             <div class="space"></div>
             <div class="list-class">
                 <template v-for="(title, index) in list">
-                    <div class="cell">
+                    <div class="cell" @click="rowAction(index)">
                         <text class="tlt">{{title}}</text>
                         <text class="right-arrow iconfont">&#xe62d;</text>
                     </div>
@@ -22,6 +22,7 @@
 <script>
     import util from '../util'
     var navigator = weex.requireModule('navigator');
+    var um_share = weex.requireModule('UM_Event');
     export default {
         name: "Mine",
         data () {
@@ -41,6 +42,40 @@
                 }, event => {
 
                 })
+            },
+            rowAction (i) {
+                const bundlePath = weex.config.bundleUrl;
+                switch (i) {
+                    case 0:
+                        break;
+                    case 1:
+                        var url = 'http://baidu.com/?id=123';
+                        navigator.push({
+                            url: util.setBundleUrl(bundlePath,'page/webview.js?weburl=' + url),
+                            animated: "true"
+                        })
+                        break;
+                    case 2:
+                        um_share.shareEvent({
+                            type:'link',
+                            title:'title',
+                            des:'',
+                            picUrl:'',
+                            linkUrl:''
+                        }, callback => {
+
+                        });
+                        break;
+                    case 3:
+                        var url = 'http://baidu.com/';
+                        navigator.push({
+                            url: util.setBundleUrl(bundlePath,'page/webview.js?weburl=' + url),
+                            animated: "true"
+                        })
+                        break;
+                    case 4:
+                        break;
+                }
             }
         }
     }
@@ -49,10 +84,6 @@
 <style scoped>
     .wrapper{
         background-color: #f4f4f4;
-    }
-    .w-ipx{
-        margin-top: 40px;
-        margin-bottom: 50px;
     }
     .iconfont {
         font-family:iconfont;

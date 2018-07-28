@@ -124,7 +124,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     SkillsModel *model = (SkillsModel *)self.listModel.data[indexPath.section];
     PageListModel *pageModel = (PageListModel *)model.pageList[indexPath.row];
-    if (pageModel.islock) {
+    if (!pageModel.islock) {
         if (_cellDelegate && [_cellDelegate respondsToSelector:@selector(tabeleViewDidSelectCellModel:)]) {
             [_cellDelegate tabeleViewDidSelectCellModel:pageModel];
         }

@@ -62,7 +62,7 @@ static NSString *identifier = @"listCell";
     self.nameLabel.text = model.title;
     self.totalLabel.text = [NSString stringWithFormat:@"%@道题",model.questcount];
     self.showMessageLabel.text = model.showContent;
-    if (model.islock) {
+    if (!model.islock) {
         self.shareLabel.text = @"分享试题";
         self.shareLabel.backgroundColor = UIColorHex(0x2FA833);
         self.lockImageView.hidden = YES;

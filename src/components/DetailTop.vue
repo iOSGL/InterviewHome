@@ -15,7 +15,7 @@
 
 <style scoped>
     .wrapper {
-        margin-top: 113px;
+        margin-top: 0px;
         height: 100px;
         background-color: #eee;
         justify-content: space-between;
@@ -39,11 +39,13 @@
     }
     .image-text {
         color: #CCCCCC;
+        font-size: 40px;
+        position: absolute;
+        left: 355px;
+        top: 30px;
     }
     .collection {
         color: red;
     }
-
-
 
 </style>

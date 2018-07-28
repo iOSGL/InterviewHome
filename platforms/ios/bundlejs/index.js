@@ -181,6 +181,55 @@ var utilFunc = {
                 rejected(err);
             }
         });
+    },
+    isEmpty: function isEmpty(obj) {
+        if (typeof obj == "undefined" || obj == null || obj == "") {
+            return true;
+        } else {
+            return false;
+        }
+    },
+
+    /**
+     *
+     * @description 设置list或者scroller的全屏高度
+     * @param {Number} [height] - 需要减掉的高度 「default: 0」
+     * @param {Boolean} [isAbsHeight] - 是否使用绝对高度
+     *                                    任意屏都显示相同的高度 「default: false」
+     * @return {Number}
+     */
+    getListHeight: function getListHeight(height, isAbsHeight) {
+
+        var deviceHeight = parseInt(weex.config.env.deviceHeight);
+        var rate = weex.config.env.deviceWidth / 750;
+        var deviceScale = weex.config.env.scale;
+
+        if (weex.config.env.platform.toLowerCase() === 'web') {
+
+            if (height && typeof height === 'number') {
+
+                if (isAbsHeight && typeof isAbsHeight === 'boolean') {
+                    return deviceHeight / rate - height / 2 / deviceScale;
+                } else {
+                    return deviceHeight / rate - height;
+                }
+            } else {
+                return deviceHeight / rate;
+            }
+        } else {
+
+            if (height && typeof height === 'number') {
+
+                if (isAbsHeight && typeof isAbsHeight === 'boolean') {
+                    return (deviceHeight - height / 2 * deviceScale) / rate;
+                } else {
+                    return (deviceHeight - deviceScale) / rate - height;
+                }
+            } else {
+
+                return (deviceHeight - deviceScale) / rate;
+            }
+        }
     }
 };
 
@@ -3174,17 +3223,17 @@ module.exports = {
     "width": "120",
     "paddingTop": "10"
   },
+  "leftTxt": {
+    "fontSize": "50",
+    "textAlign": "center"
+  },
   "right": {
     "height": "80",
     "width": "120",
     "paddingTop": "10"
   },
-  "leftTxt": {
-    "fontSize": "50",
-    "textAlign": "center"
-  },
   "rightTxt": {
-    "fontSize": "50",
+    "fontSize": "30",
     "textAlign": "center"
   },
   "iconfont": {
@@ -3224,6 +3273,9 @@ exports.default = {
     methods: {
         leftAction: function leftAction() {
             this.$emit('leftAction');
+        },
+        rightAction: function rightAction() {
+            this.$emit('rightAction');
         }
     }
 }; //
@@ -3258,7 +3310,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v(_vm._s(_vm.title))]), _c('div', {
     staticClass: ["right"]
   }, [(_vm.rightBtn) ? _c('text', {
-    staticClass: ["rightTxt", "iconfont"]
+    staticClass: ["rightTxt"],
+    on: {
+      "click": _vm.rightAction
+    }
   }, [_vm._v(_vm._s(_vm.rightBtn.name))]) : _vm._e()])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
@@ -3425,82 +3480,15 @@ exports.default = {
     },
     data: function data() {
         return {
-            groupList: [],
             pageHeight: 0
         };
     },
     created: function created() {
-        var _this = this;
-
-        this.POST('/skill/homeList').then(function (res) {
-            _this.groupList = res.data.data;
-            console.log(_this.groupList);
-        }).catch(function (res) {
-            console.log(res);
-        });
-
-        this.pageHeight = this.getListHeight(113 + 90, true);
-        console.log(this.pageHeight);
+        this.pageHeight = _util2.default.getListHeight(113 + 90, true);
     },
 
     methods: {
-        clickFolder: function clickFolder(_index) {
-            var obj = this.groupList[_index];
-            obj.openFolder = !obj.openFolder;
-            this.$set(this.groupList, _index, obj);
-        },
-
-        /**
-         *
-         * @description 设置list或者scroller的全屏高度
-         * @param {Number} [height] - 需要减掉的高度 「default: 0」
-         * @param {Boolean} [isAbsHeight] - 是否使用绝对高度
-         *                                    任意屏都显示相同的高度 「default: false」
-         * @return {Number}
-         */
-        getListHeight: function getListHeight(height, isAbsHeight) {
-
-            var deviceHeight = parseInt(weex.config.env.deviceHeight);
-            var rate = weex.config.env.deviceWidth / 750;
-            var deviceScale = weex.config.env.scale;
-
-            if (weex.config.env.platform.toLowerCase() === 'web') {
-
-                if (height && typeof height === 'number') {
-
-                    if (isAbsHeight && typeof isAbsHeight === 'boolean') {
-                        return deviceHeight / rate - height / 2 / deviceScale;
-                    } else {
-                        return deviceHeight / rate - height;
-                    }
-                } else {
-                    return deviceHeight / rate;
-                }
-            } else {
-
-                if (height && typeof height === 'number') {
-
-                    if (isAbsHeight && typeof isAbsHeight === 'boolean') {
-                        return (deviceHeight - height / 2 * deviceScale) / rate;
-                    } else {
-                        return (deviceHeight - deviceScale) / rate - height;
-                    }
-                } else {
-
-                    return (deviceHeight - deviceScale) / rate;
-                }
-            }
-        },
         pushPageList: function pushPageList(e) {
-            // 路由跳转需要隐藏tableBar
-            // this.$router&&this.$router.push({
-            //     name: 'QuestionList',
-            //     params: {
-            //         pageID: e['pageID'],
-            //         title: e['title']
-            //     }
-            // })
-
             var url = weex.config.bundleUrl;
             var path = 'Skills/QuestionList.js?pageID=' + e.pageID;
             storage.setItem('params', e.title);
@@ -3672,10 +3660,6 @@ module.exports = {
   "wrapper": {
     "backgroundColor": "#f4f4f4"
   },
-  "w-ipx": {
-    "marginTop": "40",
-    "marginBottom": "50"
-  },
   "iconfont": {
     "fontFamily": "iconfont"
   },
@@ -3769,6 +3753,7 @@ var navigator = weex.requireModule('navigator'); //
 //
 //
 
+var um_share = weex.requireModule('UM_Event');
 exports.default = {
     name: "Mine",
     data: function data() {
@@ -3778,16 +3763,47 @@ exports.default = {
     },
     created: function created() {
         _util2.default.initIconFont();
+        _util2.default.POST(':8080/mianshi/rest/login/baseLogin');
     },
 
     methods: {
         avaterAction: function avaterAction() {
-            console.log('11111');
-
             navigator.push({
                 url: _util2.default.setBundleUrl(weex.config.bundleUrl, 'Mine/Login.js'),
                 animated: 'true'
             }, function (event) {});
+        },
+        rowAction: function rowAction(i) {
+            var bundlePath = weex.config.bundleUrl;
+            switch (i) {
+                case 0:
+                    break;
+                case 1:
+                    var url = 'http://baidu.com/?id=123';
+                    navigator.push({
+                        url: _util2.default.setBundleUrl(bundlePath, 'page/webview.js?weburl=' + url),
+                        animated: "true"
+                    });
+                    break;
+                case 2:
+                    um_share.shareEvent({
+                        type: 'link',
+                        title: 'title',
+                        des: '',
+                        picUrl: '',
+                        linkUrl: ''
+                    }, function (callback) {});
+                    break;
+                case 3:
+                    var url = 'http://baidu.com/';
+                    navigator.push({
+                        url: _util2.default.setBundleUrl(bundlePath, 'page/webview.js?weburl=' + url),
+                        animated: "true"
+                    });
+                    break;
+                case 4:
+                    break;
+            }
         }
     }
 };
@@ -3822,7 +3838,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: ["list-class"]
   }, [_vm._l((_vm.list), function(title, index) {
     return [_c('div', {
-      staticClass: ["cell"]
+      staticClass: ["cell"],
+      on: {
+        "click": function($event) {
+          _vm.rowAction(index)
+        }
+      }
     }, [_c('text', {
       staticClass: ["tlt"]
     }, [_vm._v(_vm._s(title))]), _c('text', {

@@ -21,7 +21,7 @@
 
 <style scoped>
     .wrapper {
-        margin-bottom: 88px;
+        margin-bottom: 120px;
     }
     .quest-title {
         align-items: center;
