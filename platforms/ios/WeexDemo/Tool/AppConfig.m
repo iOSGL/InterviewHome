@@ -46,6 +46,9 @@
 + (void)clearRequestFilters {
     YTKNetworkConfig *config = [YTKNetworkConfig sharedConfig];
     [config clearUrlFilter];
+     NSString * entryURL = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"WXEntryBundleURL"];
+     NSString *path = [NSString stringWithFormat:@"%@%@",[[NSBundle bundleForClass:self] resourceURL].absoluteString, entryURL];
+    NSLog(@"%@",path);
 }
 
 @end

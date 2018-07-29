@@ -14,6 +14,7 @@
 #import "NSString+Code.h"
 #import "DataAnalytical.h"
 #import "BaseImageView.h"
+#import "Single.h"
 
 // ==============> Pods Header <==============
 
@@ -37,3 +38,12 @@
 #define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
 
 #define ONE_PX_LINE 1.0f / [UIScreen mainScreen].scale
+
+// 为空时的占位
+#define PARAM_IS_NIL_ERROR(param) ((param == nil || [param isKindOfClass:[NSNull class]]) ? @"" : param)
+
+// Library路径
+#define LIBRARY_PATH [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) lastObject]
+
+// Document路径
+#define DOCUMENT_PATH [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject]

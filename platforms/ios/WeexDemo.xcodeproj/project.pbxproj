@@ -23,6 +23,8 @@
 		84361D3B1CA10F8E00F43825 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 775BEE7F1C1E8ECC008D1629 /* main.m */; };
 		84361D5B1CA10F8E00F43825 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 775BEE8A1C1E8ECC008D1629 /* Assets.xcassets */; };
 		84D7CAC71CE3266C00D48D46 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7475ACA01CD8444A0044E96C /* libsqlite3.0.tbd */; };
+		A957D137210D71BF004CA715 /* UpdateApi.m in Sources */ = {isa = PBXBuildFile; fileRef = A957D136210D71BF004CA715 /* UpdateApi.m */; };
+		A957D13B210DAA2F004CA715 /* BaseProcessHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = A957D13A210DAA2F004CA715 /* BaseProcessHandler.m */; };
 		A95D740120FC3C160012A0C5 /* UrlArgumentFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = A95D740020FC3C160012A0C5 /* UrlArgumentFilter.m */; };
 		A95D740420FC3EFD0012A0C5 /* NavigatorModule.m in Sources */ = {isa = PBXBuildFile; fileRef = A95D740320FC3EFD0012A0C5 /* NavigatorModule.m */; };
 		A95D740820FC415E0012A0C5 /* MethodsUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = A95D740720FC415E0012A0C5 /* MethodsUtil.m */; };
@@ -92,6 +94,11 @@
 		983B223F3951480F8D2048E3 /* CoreLocation.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		A79EA8D70DAC9F1341C9E5F7 /* Pods-WeexUITestDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeexUITestDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeexUITestDemo/Pods-WeexUITestDemo.release.xcconfig"; sourceTree = "<group>"; };
 		A9127C6420EE56F70015EF73 /* WeexDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WeexDemo.entitlements; sourceTree = "<group>"; };
+		A957D135210D71BF004CA715 /* UpdateApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UpdateApi.h; sourceTree = "<group>"; };
+		A957D136210D71BF004CA715 /* UpdateApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UpdateApi.m; sourceTree = "<group>"; };
+		A957D138210DA9EB004CA715 /* Single.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Single.h; sourceTree = "<group>"; };
+		A957D139210DAA2F004CA715 /* BaseProcessHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseProcessHandler.h; sourceTree = "<group>"; };
+		A957D13A210DAA2F004CA715 /* BaseProcessHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseProcessHandler.m; sourceTree = "<group>"; };
 		A95D73FF20FC3C160012A0C5 /* UrlArgumentFilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UrlArgumentFilter.h; sourceTree = "<group>"; };
 		A95D740020FC3C160012A0C5 /* UrlArgumentFilter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UrlArgumentFilter.m; sourceTree = "<group>"; };
 		A95D740220FC3EFD0012A0C5 /* NavigatorModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NavigatorModule.h; sourceTree = "<group>"; };
@@ -281,9 +288,19 @@
 			path = WeexDemoTests;
 			sourceTree = "<group>";
 		};
+		A957D134210D719C004CA715 /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				A957D135210D71BF004CA715 /* UpdateApi.h */,
+				A957D136210D71BF004CA715 /* UpdateApi.m */,
+			);
+			path = Others;
+			sourceTree = "<group>";
+		};
 		A95D73FD20FC3BAE0012A0C5 /* Api */ = {
 			isa = PBXGroup;
 			children = (
+				A957D134210D719C004CA715 /* Others */,
 				A95D743620FC88990012A0C5 /* Skills */,
 				A95D73FE20FC3C030012A0C5 /* Base */,
 			);
@@ -325,6 +342,8 @@
 				A95D741720FC54B80012A0C5 /* BaseViewController.m */,
 				A95D742D20FC83060012A0C5 /* BaseModel.h */,
 				A95D742E20FC83060012A0C5 /* BaseModel.m */,
+				A957D139210DAA2F004CA715 /* BaseProcessHandler.h */,
+				A957D13A210DAA2F004CA715 /* BaseProcessHandler.m */,
 			);
 			path = BaseClass;
 			sourceTree = "<group>";
@@ -429,6 +448,7 @@
 				775BEE811C1E8ECC008D1629 /* AppDelegate.h */,
 				775BEE821C1E8ECC008D1629 /* AppDelegate.m */,
 				7453E3641C9FA971001EB427 /* DemoDefine.h */,
+				A957D138210DA9EB004CA715 /* Single.h */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -712,6 +732,7 @@
 				A95D744220FC8E8F0012A0C5 /* SkillsModel.m in Sources */,
 				A95D743C20FC8B9F0012A0C5 /* NSString+Code.m in Sources */,
 				A95D743F20FC8D750012A0C5 /* DataAnalytical.m in Sources */,
+				A957D137210D71BF004CA715 /* UpdateApi.m in Sources */,
 				A95D740420FC3EFD0012A0C5 /* NavigatorModule.m in Sources */,
 				0A4A05FA1E0405070046E1BE /* WXDemoViewController.m in Sources */,
 				775BEE831C1E8ECC008D1629 /* AppDelegate.m in Sources */,
@@ -723,6 +744,7 @@
 				A95D741420FC521A0012A0C5 /* BaseImageView.m in Sources */,
 				A971DF6E20F884FF00240C91 /* AppConfig.m in Sources */,
 				A95D743520FC87340012A0C5 /* BaseRequest.m in Sources */,
+				A957D13B210DAA2F004CA715 /* BaseProcessHandler.m in Sources */,
 				A95D743920FC88B30012A0C5 /* SkillsApi.m in Sources */,
 				A95D740820FC415E0012A0C5 /* MethodsUtil.m in Sources */,
 				A95D741120FC51E50012A0C5 /* BaseNavigationController.m in Sources */,

@@ -95,12 +95,44 @@
                     return;
                 }
 
+                if (util.isEmpty(this.nickName)) {
+                    modal.toast({
+                        message: '签名不能为空',
+                        duration: 0.3
+                    })
+                    return;
+                }
+
                 if (this.pwd.length < 6)  {
                     modal.toast({
                         message: '请输入6-12位长度字符密码',
                         duration: 0.3
                     })
+
+                    return;
                 }
+
+                var param = {
+                    password: this.pwd,
+                    telephone: this.tel,
+                    nickname: this.nickName
+                }
+
+                util.POST(':8080/mianshi/rest/userbase/insertuser',param).then(res => {
+                    modal.alert({
+                        message: res.data.data.toString(),
+                        duration: 0.3
+                    }, function (value) {
+                        console.log('alert callback', value)
+                    })
+                }).catch(res => {
+                    modal.alert({
+                        message: res.data.data.toString(),
+                        duration: 0.3
+                    }, function (value) {
+                        console.log('alert callback', value)
+                    })
+                })
 
             },
             isPhoneAvailable (pone) {
