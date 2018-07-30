@@ -16,7 +16,9 @@
     import header from '../../components/Header.vue'
     import util from '../../util';
     var navigator = weex.requireModule('navigator');
-    var modal = weex.requireModule('modal')
+    var modal = weex.requireModule('modal');
+    var storage = weex.requireModule('storage');
+    var umevent = weex.requireModule('UM_Event');
     export default {
         name: "Login",
         data () {
@@ -87,6 +89,35 @@
                         duration: 0.3
                     })
                 }
+
+                util.POST(':8080/mianshi/rest/login/baseLogin',{"telephone": this.tel, "password": this.pwd}).then(res =>{
+                    if (res.data.code == '200') {
+                        umevent.setalias({userID:res.data.data.userID, type:'iOS'}, callBack=>{});
+                        storage.setItem('token', res.data.data.token, event=> {
+
+                        })
+                        storage.setItem('userID', res.data.data.userID, event=> {
+
+                        })
+                        modal.toast({
+                            message: '登陆成功' ,
+                            duration: 0.3
+                        });
+                        this.back();
+                    } else  {
+                        modal.toast({
+                            message: res.data.msg ,
+                            duration: 0.3
+                        });
+                    }
+
+                }).catch(res => {
+                    modal.toast({
+                        message: res.data.msg ,
+                        duration: 0.3
+                    });
+                })
+
             },
             isPhoneAvailable (pone) {
                 var myreg = /^[1][3,4,5,7,8][0-9]{9}$/;
@@ -96,7 +127,6 @@
                     return true;
                 }
             }
-
         }
     }
 </script>

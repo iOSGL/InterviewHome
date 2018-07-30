@@ -20,19 +20,24 @@
 </template>
 
 <script>
-    import util from '../util'
+    import util from '../util.js'
     var navigator = weex.requireModule('navigator');
     var um_share = weex.requireModule('UM_Event');
+    var storage = weex.requireModule('storage');
+    var modal = weex.requireModule('modal');
     export default {
         name: "Mine",
         data () {
             return {
-                list: ['我的收藏', '产品交流', '分享给好友', '关于我们', '退出登录']
+                list: ['我的收藏', '产品交流', '分享给好友', '关于我们', '退出登录'],
+                token: ''
             }
         },
         created () {
             util.initIconFont();
-            util.POST(':8080/mianshi/rest/login/baseLogin')
+            util.getUserInfo().then(res=>{
+                this.token = res.data;
+            });
         },
         methods: {
             avaterAction () {
@@ -74,6 +79,35 @@
                         })
                         break;
                     case 4:
+                        var that = this;
+                        if (util.isEmpty(this.token)) {
+                            modal.toast({
+                                message: '您暂时未登录',
+                                duration: 0.3
+                            });
+                            return;
+                        }
+                        modal.confirm({
+                            message: '确定退出登录吗?',
+                            okTitle: '退出',
+                            cancelTitle: '取消'
+                        }, function (value) {
+                            if (value == '退出') {
+                                storage.getAllKeys(event=>{
+                                    event.data.forEach(function (key) {
+                                        storage.removeItem(key, event=>{
+
+                                        })
+                                    })
+                                });
+                                modal.toast({
+                                    message: '退出登录成功',
+                                    duration: 0.3
+                                });
+                                
+                                that.token = '';
+                            }
+                        })
                         break;
                 }
             }

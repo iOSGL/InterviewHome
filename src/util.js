@@ -1,4 +1,5 @@
 var stream = weex.requireModule('stream');
+var storage = weex.requireModule('storage')
 let utilFunc = {
     initIconFont () {
         let domModule = weex.requireModule('dom');
@@ -104,11 +105,7 @@ let utilFunc = {
     },
 
     isEmpty(obj){
-        if(typeof obj == "undefined" || obj == null || obj == ""){
-            return true;
-        }else{
-            return false;
-        }
+        return obj === "undefined" || !obj
     },
     /**
      *
@@ -153,6 +150,13 @@ let utilFunc = {
                 return (deviceHeight - (deviceScale)) / rate;
             }
         }
+    },
+
+    getUserInfo: function () {
+        return new Promise((resolved, rejected)=>{
+            storage.getItem('token', resolved)
+        });
+
     }
 };
 

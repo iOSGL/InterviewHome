@@ -76,6 +76,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 var stream = weex.requireModule('stream');
+var storage = weex.requireModule('storage');
 var utilFunc = {
     initIconFont: function initIconFont() {
         var domModule = weex.requireModule('dom');
@@ -183,11 +184,7 @@ var utilFunc = {
         });
     },
     isEmpty: function isEmpty(obj) {
-        if (typeof obj == "undefined" || obj == null || obj == "") {
-            return true;
-        } else {
-            return false;
-        }
+        return obj === "undefined" || !obj;
     },
 
     /**
@@ -230,6 +227,12 @@ var utilFunc = {
                 return (deviceHeight - deviceScale) / rate;
             }
         }
+    },
+
+    getUserInfo: function getUserInfo() {
+        return new Promise(function (resolved, rejected) {
+            storage.getItem('token', resolved);
+        });
     }
 };
 
@@ -3754,16 +3757,23 @@ var navigator = weex.requireModule('navigator'); //
 //
 
 var um_share = weex.requireModule('UM_Event');
+var storage = weex.requireModule('storage');
+var modal = weex.requireModule('modal');
 exports.default = {
     name: "Mine",
     data: function data() {
         return {
-            list: ['我的收藏', '产品交流', '分享给好友', '关于我们', '退出登录']
+            list: ['我的收藏', '产品交流', '分享给好友', '关于我们', '退出登录'],
+            token: ''
         };
     },
     created: function created() {
+        var _this = this;
+
         _util2.default.initIconFont();
-        _util2.default.POST(':8080/mianshi/rest/login/baseLogin');
+        _util2.default.getUserInfo().then(function (res) {
+            _this.token = res.data;
+        });
     },
 
     methods: {
@@ -3802,6 +3812,34 @@ exports.default = {
                     });
                     break;
                 case 4:
+                    console.log('token' + this.token);
+                    var that = this;
+                    if (_util2.default.isEmpty(this.token)) {
+                        modal.toast({
+                            message: '您暂时未登录',
+                            duration: 0.3
+                        });
+                        return;
+                    }
+                    modal.confirm({
+                        message: '确定退出登录吗?',
+                        okTitle: '退出',
+                        cancelTitle: '取消'
+                    }, function (value) {
+                        if (value == '退出') {
+                            storage.getAllKeys(function (event) {
+                                event.data.forEach(function (key) {
+                                    storage.removeItem(key, function (event) {});
+                                });
+                            });
+                            modal.toast({
+                                message: '退出登录成功',
+                                duration: 0.3
+                            });
+
+                            that.token = '';
+                        }
+                    });
                     break;
             }
         }

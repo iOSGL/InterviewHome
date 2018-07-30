@@ -87,7 +87,7 @@
                     return;
                 }
 
-                if (this.pwd !== this.againPwd) {
+                if (this.pwd != this.againPwd) {
                     modal.toast({
                         message: '两次密码不一致',
                         duration: 0.3
@@ -119,21 +119,24 @@
                 }
 
                 util.POST(':8080/mianshi/rest/userbase/insertuser',param).then(res => {
-                    modal.alert({
-                        message: res.data.data.toString(),
-                        duration: 0.3
-                    }, function (value) {
-                        console.log('alert callback', value)
-                    })
+                    if (res.data.code == '200') {
+                        modal.toast({
+                            message: '注册成功',
+                            duration: 0.3
+                        })
+                        this.back();
+                    } else {
+                        modal.toast({
+                            message: res.data.msg,
+                            duration: 0.3
+                        })
+                    }
                 }).catch(res => {
-                    modal.alert({
-                        message: res.data.data.toString(),
-                        duration: 0.3
-                    }, function (value) {
-                        console.log('alert callback', value)
-                    })
+                    modal.toast({
+                       message: res.data.msg,
+                       duration: 0.3
+                   })
                 })
-
             },
             isPhoneAvailable (pone) {
                 var myreg = /^[1][3,4,5,7,8][0-9]{9}$/;
