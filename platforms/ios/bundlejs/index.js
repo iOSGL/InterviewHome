@@ -3058,8 +3058,11 @@ module.exports = {
     "marginRight": "75",
     "marginTop": "35",
     "marginBottom": "35",
-    "backgroundColor": "#f17c67",
-    "borderRadius": "15"
+    "backgroundColor": "#FFA500",
+    "borderRadius": "15",
+    "borderStyle": "solid",
+    "borderWidth": "1",
+    "borderColor": "#eeeeee"
   },
   "content-title": {
     "fontSize": "36",
@@ -3088,6 +3091,9 @@ var _util2 = _interopRequireDefault(_util);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+//
+//
+//
 //
 //
 //
@@ -3678,20 +3684,21 @@ module.exports = {
     "left": 0,
     "right": 0,
     "top": 0,
-    "bottom": 0
+    "bottom": 0,
+    "backgroundColor": "#FFA500"
   },
   "avater": {
     "width": "120",
     "height": "120",
     "borderRadius": "60",
-    "backgroundColor": "#FFA500",
+    "backgroundColor": "#eeeeee",
     "marginTop": "70"
   },
   "nickname": {
     "color": "#FFFFFF",
     "textAlign": "center",
     "fontSize": "26",
-    "marginTop": "10"
+    "marginTop": "15"
   },
   "space": {
     "height": "100"
@@ -3759,24 +3766,51 @@ var navigator = weex.requireModule('navigator'); //
 var um_share = weex.requireModule('UM_Event');
 var storage = weex.requireModule('storage');
 var modal = weex.requireModule('modal');
+var globalEvent = weex.requireModule('globalEvent');
 exports.default = {
     name: "Mine",
     data: function data() {
         return {
             list: ['我的收藏', '产品交流', '分享给好友', '关于我们', '退出登录'],
-            token: ''
+            token: '',
+            user: {}
         };
     },
     created: function created() {
-        var _this = this;
-
         _util2.default.initIconFont();
-        _util2.default.getUserInfo().then(function (res) {
-            _this.token = res.data;
+        this.getUserInfo();
+        globalEvent.removeEventListener("NotificationTypeLogin");
+        var self = this;
+        globalEvent.addEventListener("NotificationTypeLogin", function (e) {
+            self.getUserInfo();
         });
     },
 
     methods: {
+        getUserInfo: function getUserInfo() {
+            var _this = this;
+
+            _util2.default.getUserInfo().then(function (res) {
+                _this.token = res.data;
+                if (!_util2.default.isEmpty(_this.token)) {
+                    _util2.default.POST(':8080/mianshi/rest/login/chickToken', { "token": _this.token }).then(function (res) {
+                        if (res.data.code == '200') {
+                            _this.user = res.data.data.user;
+                        } else {
+                            modal.toast({
+                                message: res.data.msg,
+                                duration: 0.3
+                            });
+                        }
+                    }).catch(function (res) {
+                        modal.toast({
+                            message: res.data.msg,
+                            duration: 0.3
+                        });
+                    });
+                };
+            });
+        },
         avaterAction: function avaterAction() {
             navigator.push({
                 url: _util2.default.setBundleUrl(weex.config.bundleUrl, 'Mine/Login.js'),
@@ -3787,6 +3821,15 @@ exports.default = {
             var bundlePath = weex.config.bundleUrl;
             switch (i) {
                 case 0:
+                    if (_util2.default.isEmpty(this.token)) {
+                        this.avaterAction();
+                        return;
+                    }
+                    modal.toast({
+                        message: '功能还未实现',
+                        duration: 0.3
+                    });
+
                     break;
                 case 1:
                     var url = 'http://baidu.com/?id=123';
@@ -3812,7 +3855,6 @@ exports.default = {
                     });
                     break;
                 case 4:
-                    console.log('token' + this.token);
                     var that = this;
                     if (_util2.default.isEmpty(this.token)) {
                         modal.toast({
@@ -3838,6 +3880,7 @@ exports.default = {
                             });
 
                             that.token = '';
+                            that.user = {};
                         }
                     });
                     break;
@@ -3861,16 +3904,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: ["header-bg"],
     attrs: {
       "resize": "cover",
-      "src": "http://cdn.zwwill.com/yanxuan/imgs/bg5.png"
+      "src": ""
     }
   }), _c('image', {
     staticClass: ["avater"],
+    attrs: {
+      "src": _vm.user.pic
+    },
     on: {
       "click": _vm.avaterAction
     }
   }), _c('text', {
     staticClass: ["nickname"]
-  }, [_vm._v("你微笑时很美")])]), _c('div', {
+  }, [_vm._v(_vm._s(_vm.user.nickname ? _vm.user.nickname : '点击头像登陆'))])]), _c('div', {
     staticClass: ["space"]
   }), _c('div', {
     staticClass: ["list-class"]
@@ -4247,6 +4293,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 
 
+var NV_Notice = weex.requireModule('NV_Notice');
+
 exports.default = {
     name: 'App',
     data: function data() {
@@ -4265,6 +4313,9 @@ exports.default = {
         onTabTo: function onTabTo(_result) {
             var key = _result.data.key || '';
             this.$router && this.$router.push('/' + key);
+        },
+        viewappear: function viewappear(e) {
+            NV_Notice.postNotificationName('NotificationTypeLogin', { "status": "sucess" });
         }
     }
 };
@@ -4507,7 +4558,10 @@ module.exports.render._withStripped = true
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: ["app-wrapper"]
+    staticClass: ["app-wrapper"],
+    on: {
+      "viewappear": _vm.viewappear
+    }
   }, [_c('router-view', {
     staticClass: ["r-box"]
   }), _c('tab-bar', {

@@ -15,10 +15,12 @@
 <script>
     import header from '../../components/Header.vue'
     import util from '../../util';
+
     var navigator = weex.requireModule('navigator');
     var modal = weex.requireModule('modal');
     var storage = weex.requireModule('storage');
     var umevent = weex.requireModule('UM_Event');
+
     export default {
         name: "Login",
         data () {
@@ -92,7 +94,7 @@
 
                 util.POST(':8080/mianshi/rest/login/baseLogin',{"telephone": this.tel, "password": this.pwd}).then(res =>{
                     if (res.data.code == '200') {
-                        umevent.setalias({userID:res.data.data.userID, type:'iOS'}, callBack=>{});
+                        umevent.setalias({userID:res.data.data.userID, type:'iOS'});
                         storage.setItem('token', res.data.data.token, event=> {
 
                         })
@@ -164,12 +166,13 @@
         border-style: solid;
         border-width: 2px;
         border-radius: 5px;
-        border-color: #eee;
+        border-color: orange;
         align-items: center;
         justify-content: center;
+        background-color: orange;
     }
     .btnTetx {
-        color: #333;
+        color: white;
         font-size: 30px;
         text-align: center;
     }

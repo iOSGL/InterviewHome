@@ -1,5 +1,5 @@
 <template>
-  <div class="app-wrapper">
+  <div class="app-wrapper" @viewappear="viewappear">
     <router-view class="r-box"></router-view>
     <tab-bar @tabTo="onTabTo"></tab-bar>
   </div>
@@ -32,6 +32,7 @@
 
   import tableBar from './components/tableBar'
   import utils from './util'
+  var NV_Notice = weex.requireModule('NV_Notice');
 
   export default {
     name: 'App',
@@ -51,7 +52,11 @@
         onTabTo(_result) {
             let key = _result.data.key || '';
             this.$router && this.$router.push('/'+ key)
+        },
+        viewappear (e) {
+            NV_Notice.postNotificationName('NotificationTypeLogin',{"status":"sucess"});
         }
+
     }
 }
 </script>

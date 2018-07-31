@@ -43,6 +43,7 @@
 		A95D744520FC946D0012A0C5 /* SkillsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A95D744420FC946D0012A0C5 /* SkillsTableViewCell.m */; };
 		A971DF6720F866AA00240C91 /* UM_WeexModule.m in Sources */ = {isa = PBXBuildFile; fileRef = A971DF6620F866AA00240C91 /* UM_WeexModule.m */; };
 		A971DF6E20F884FF00240C91 /* AppConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = A971DF6D20F884FF00240C91 /* AppConfig.m */; };
+		A98801C721103E0600479775 /* NoticeModule.m in Sources */ = {isa = PBXBuildFile; fileRef = A98801C621103E0600479775 /* NoticeModule.m */; };
 		D3DB97659EA84DC3ADEFA660 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B116DBF2254E48A0816816AE /* ImageIO.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		D5FFB0F3F6F246E9A93F5369 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 983B223F3951480F8D2048E3 /* CoreLocation.framework */; };
 		DC5E503E1D0D97130059F0EB /* weex.png in Resources */ = {isa = PBXBuildFile; fileRef = DC5E503C1D0D97130059F0EB /* weex.png */; };
@@ -136,6 +137,8 @@
 		A971DF6920F871C700240C91 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		A971DF6C20F884FF00240C91 /* AppConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppConfig.h; sourceTree = "<group>"; };
 		A971DF6D20F884FF00240C91 /* AppConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppConfig.m; sourceTree = "<group>"; };
+		A98801C521103E0600479775 /* NoticeModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoticeModule.h; sourceTree = "<group>"; };
+		A98801C621103E0600479775 /* NoticeModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoticeModule.m; sourceTree = "<group>"; };
 		B116DBF2254E48A0816816AE /* ImageIO.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		B16099883D828D1227C710E2 /* libPods-WeexDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeexDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BECB15C78BC5454C86CFBC04 /* AVFoundation.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -420,6 +423,8 @@
 				A971DF6620F866AA00240C91 /* UM_WeexModule.m */,
 				A95D740220FC3EFD0012A0C5 /* NavigatorModule.h */,
 				A95D740320FC3EFD0012A0C5 /* NavigatorModule.m */,
+				A98801C521103E0600479775 /* NoticeModule.h */,
+				A98801C621103E0600479775 /* NoticeModule.m */,
 			);
 			path = WeexModule;
 			sourceTree = "<group>";
@@ -736,6 +741,7 @@
 				A95D740420FC3EFD0012A0C5 /* NavigatorModule.m in Sources */,
 				0A4A05FA1E0405070046E1BE /* WXDemoViewController.m in Sources */,
 				775BEE831C1E8ECC008D1629 /* AppDelegate.m in Sources */,
+				A98801C721103E0600479775 /* NoticeModule.m in Sources */,
 				A95D743220FC84500012A0C5 /* SkillTableView.m in Sources */,
 				A971DF6720F866AA00240C91 /* UM_WeexModule.m in Sources */,
 				A95D741820FC54B80012A0C5 /* BaseViewController.m in Sources */,

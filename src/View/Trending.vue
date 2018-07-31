@@ -45,8 +45,11 @@
         margin-right: 75px;
         margin-top: 35px;
         margin-bottom: 35px;
-        background-color: #f17c67;
+        background-color: orange;
         border-radius: 15px;
+        border-style: solid;
+        border-width: 1px;
+        border-color: #eee;
     }
     .content-title {
         font-size: 36px;

@@ -2,9 +2,9 @@
     <div :class="['wrapper', isIpx&&isIpx()?'w-ipx':'']">
         <scroller class="scroller">
             <div class="top-dev">
-                <image class="header-bg" resize="cover" src="http://cdn.zwwill.com/yanxuan/imgs/bg5.png"></image>
-                <image class="avater" v-on:click="avaterAction"></image>
-                <text class="nickname">你微笑时很美</text>
+                <image class="header-bg" resize="cover" src=""></image>
+                <image class="avater" v-on:click="avaterAction" :src="user.pic"></image>
+                <text class="nickname">{{user.nickname? user.nickname:'点击头像登陆'}}</text>
             </div>
             <div class="space"></div>
             <div class="list-class">
@@ -25,21 +25,50 @@
     var um_share = weex.requireModule('UM_Event');
     var storage = weex.requireModule('storage');
     var modal = weex.requireModule('modal');
+    var globalEvent = weex.requireModule('globalEvent');
     export default {
         name: "Mine",
         data () {
             return {
                 list: ['我的收藏', '产品交流', '分享给好友', '关于我们', '退出登录'],
-                token: ''
+                token: '',
+                user: {},
             }
         },
         created () {
             util.initIconFont();
-            util.getUserInfo().then(res=>{
-                this.token = res.data;
+            this.getUserInfo();
+            globalEvent.removeEventListener("NotificationTypeLogin");
+            var self = this;
+            globalEvent.addEventListener("NotificationTypeLogin", function (e) {
+                self.getUserInfo();
             });
         },
         methods: {
+            getUserInfo () {
+                util.getUserInfo().then(res=>{
+                    this.token = res.data;
+                    if (!util.isEmpty(this.token)) {
+                        util.POST(':8080/mianshi/rest/login/chickToken', {"token":this.token}).then(res=> {
+                            if (res.data.code == '200') {
+                                this.user = res.data.data.user;
+                            } else  {
+                                modal.toast({
+                                    message: res.data.msg,
+                                    duration: 0.3
+                                })
+                            }
+
+                        }).catch(res=>{
+                            modal.toast({
+                                message: res.data.msg,
+                                duration: 0.3
+                            })
+                        });
+                    };
+                });
+
+            },
             avaterAction () {
                 navigator.push({
                     url: util.setBundleUrl(weex.config.bundleUrl, 'Mine/Login.js'),
@@ -52,6 +81,15 @@
                 const bundlePath = weex.config.bundleUrl;
                 switch (i) {
                     case 0:
+                        if (util.isEmpty(this.token)) {
+                            this.avaterAction()
+                            return;
+                        }
+                        modal.toast({
+                            message: '功能还未实现',
+                            duration: 0.3
+                        })
+
                         break;
                     case 1:
                         var url = 'http://baidu.com/?id=123';
@@ -104,8 +142,9 @@
                                     message: '退出登录成功',
                                     duration: 0.3
                                 });
-                                
+
                                 that.token = '';
+                                that.user = {};
                             }
                         })
                         break;
@@ -139,19 +178,20 @@
         right: 0;
         top: 0;
         bottom: 0;
+        background-color: orange;
     }
     .avater {
         width: 120px;
         height: 120px;
         border-radius: 60px;
-        background-color: orange;
+        background-color: #eee;
         margin-top: 70px;
     }
     .nickname {
         color: white;
         text-align: center;
         font-size: 26px;
-        margin-top: 10px;
+        margin-top: 15px;
     }
     .space {
         height: 100px;

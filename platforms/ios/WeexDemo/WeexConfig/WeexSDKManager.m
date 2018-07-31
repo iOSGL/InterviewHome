@@ -53,6 +53,7 @@
     [WXSDKEngine registerHandler:[WXImgLoaderDefaultImpl new] withProtocol:@protocol(WXImgLoaderProtocol)];
     [WXSDKEngine registerModule:@"UM_Event" withClass:NSClassFromString(@"UM_WeexModule")];
     [WXSDKEngine registerModule:@"NV_Navigator" withClass:NSClassFromString(@"NavigatorModule")];
+    [WXSDKEngine registerModule:@"NV_Notice" withClass:NSClassFromString(@"NoticeModule")];
     [WXSDKEngine registerComponent:@"NV_SkillCompent" withClass:NSClassFromString(@"SkillsComponent")];
     
 #ifdef DEBUG

@@ -187,12 +187,13 @@
         border-style: solid;
         border-width: 2px;
         border-radius: 5px;
-        border-color: #eee;
+        border-color: orange;
         align-items: center;
         justify-content: center;
+        background-color: orange;
     }
     .btnTetx {
-        color: #333;
+        color: white;
         font-size: 30px;
         text-align: center;
     }
