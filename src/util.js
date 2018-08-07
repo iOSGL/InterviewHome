@@ -15,13 +15,20 @@ let utilFunc = {
         });
     },
     setBundleUrl(url, jsFile) {
-        var bundleUrl = url;
+        //var bundleUrl = url;
         if (this.isEmpty(url)) {
             config.getSandBoxDocumentUrl(res=> {
-                bundleUrl = res;
+                //bundleUrl = res;
+                this.getNewUrl(res)
             });
+        }else{
+            this.getNewUrl(url)
         }
 
+        
+    },
+
+    getNewUrl(bundleUrl){
         let host = '';
         let path = '';
         let nativeBase;
