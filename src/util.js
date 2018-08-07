@@ -9,20 +9,26 @@ let utilFunc = {
             'src': "url('http://at.alicdn.com/t/font_747453_eyo5x52ahzp.ttf')"
         });
     },
-    getSandBoxDocumentUrl () {
-        return new Promise((resolved)=>{
-            config.getSandBoxDocumentUrl(resolved);
-        });
-    },
+    // getSandBoxDocumentUrl () {
+    //     return new Promise((resolved)=>{
+    //         config.getSandBoxDocumentUrl(resolved);
+    //     });
+    // },
     setBundleUrl(url, jsFile) {
-        //var bundleUrl = url;
+        // var bundleUrl = url;
         if (this.isEmpty(url)) {
+            let newUrl = null;
             config.getSandBoxDocumentUrl(res=> {
                 //bundleUrl = res;
-                this.getNewUrl(res)
+                newUrl = this.getNewUrl(res) || true;
             });
+            while(!newUrl){
+                if(!newUrl){
+                    return newUrl;
+                }
+            }
         }else{
-            this.getNewUrl(url)
+           return this.getNewUrl(url)
         }
 
         
