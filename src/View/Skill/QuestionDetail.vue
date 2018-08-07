@@ -2,7 +2,7 @@
     <div v-bind:class="['wrapper', ipx?'w-ipx':'']">
         <navigation-header title="详情" :leftBtn="leftBtn" @leftAction="back"></navigation-header>
         <scroller class="scroller" :style="{height: pageHeight + 'px'}">
-            <top :leftText="className" :collection="collection" :rightTetx="numText"></top>
+            <top :leftText="className" :collection="collection" :rightTetx="numText" :ID="questionID" :title="title"></top>
             <ques-detail :title="title" :content="content"></ques-detail>
         </scroller>
         <bottom @up="upAction" @down="nextAction"></bottom>

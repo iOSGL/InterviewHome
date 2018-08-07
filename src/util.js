@@ -156,7 +156,12 @@ let utilFunc = {
         return new Promise((resolved, rejected)=>{
             storage.getItem('token', resolved)
         });
+    },
 
+    getUserID: function () {
+        return new Promise((resolved, rejected)=>{
+            storage.getItem('userID', resolved)
+        });
     }
 };
 
