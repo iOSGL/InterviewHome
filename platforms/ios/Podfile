@@ -26,6 +26,7 @@ def common
     pod 'YYWebImage'
     pod 'YYCategories'
     pod 'YYText'
+    pod 'SSZipArchive' # 解压缩
 end
 
 target 'WeexDemo' do

@@ -17,6 +17,8 @@
 #import <UMShare/UMShare.h>
 #import "AppConfig.h"
 #import "BaseProcessHandler.h"
+#import "DownloadApi.h"
+#import <SSZipArchive/SSZipArchive.h>
 
 
 @interface AppDelegate () <UNUserNotificationCenterDelegate>
@@ -45,12 +47,11 @@
     [self configUMSharePlatforms]; // 配置分享平台
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
-    [WeexSDKManager setup];
     [AppConfig setUp];
+    [WeexSDKManager setup];
     [self.window makeKeyAndVisible];
 //    [self startSplashScreen];
     [self checkUpdate];
-    
     
     [UMessage addAlias:@"8" type:@"pushTest" response:^(id  _Nonnull responseObject, NSError * _Nonnull error) {
 
@@ -254,8 +255,29 @@
 #pragma mark -
 
 - (void)checkUpdate {
-    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"发现新版本" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"暂不更新" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"立即更新" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        DownloadApi *download = [[DownloadApi alloc]init];
+        [download startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+            if ([SSZipArchive unzipFileAtPath:ZIP_PATH toDestination:DOCUMENT_PATH]) {
+                
+            } else {
+                [SVProgressHUD showErrorWithStatus:@"解压失败"];
+            }
+            NSFileManager *manger = [NSFileManager defaultManager];
+            if ([manger fileExistsAtPath:ZIP_PATH]) {
+                [manger removeItemAtPath:ZIP_PATH error:nil];
+            }
+        } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+            [SVProgressHUD showErrorWithStatus:@"更新失败"];
+        }];
+    }];
+    [alert addAction:cancelAction];
+    [alert addAction:okAction];
+    [[MethodsUtil getCurrentVC] presentViewController:alert animated:YES completion:nil];
 }
-
 
 @end

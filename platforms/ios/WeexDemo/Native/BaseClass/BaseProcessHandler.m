@@ -21,7 +21,7 @@ IMP_SINGLETON
     if ([serviceCategory isEqualToString:serviceTypeWeb]) {
         NSString *path = nil;
         if ([self isFileExist:@"bundlejs"]) {
-            
+            path = [NSString stringWithFormat:@"%@/page/webview.js",DOCUMENT_URL];
         } else {
           path = [NSString stringWithFormat:@"file://%@/bundlejs/page/webview.js",[NSBundle mainBundle].bundlePath];
         }
@@ -37,8 +37,7 @@ IMP_SINGLETON
 -(BOOL)isFileExist:(NSString *)fileName {
     NSString *filePath = [DOCUMENT_PATH stringByAppendingPathComponent:fileName];
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    BOOL result = [fileManager fileExistsAtPath:filePath];
-    return result;
+    return [fileManager fileExistsAtPath:filePath];
 }
 
 @end

@@ -23,6 +23,8 @@
 		84361D3B1CA10F8E00F43825 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 775BEE7F1C1E8ECC008D1629 /* main.m */; };
 		84361D5B1CA10F8E00F43825 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 775BEE8A1C1E8ECC008D1629 /* Assets.xcassets */; };
 		84D7CAC71CE3266C00D48D46 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7475ACA01CD8444A0044E96C /* libsqlite3.0.tbd */; };
+		A94C7CDF211945D500944734 /* DownloadApi.m in Sources */ = {isa = PBXBuildFile; fileRef = A94C7CDE211945D500944734 /* DownloadApi.m */; };
+		A94C7CE32119828E00944734 /* ConfigModule.m in Sources */ = {isa = PBXBuildFile; fileRef = A94C7CE22119828E00944734 /* ConfigModule.m */; };
 		A957D137210D71BF004CA715 /* UpdateApi.m in Sources */ = {isa = PBXBuildFile; fileRef = A957D136210D71BF004CA715 /* UpdateApi.m */; };
 		A957D13B210DAA2F004CA715 /* BaseProcessHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = A957D13A210DAA2F004CA715 /* BaseProcessHandler.m */; };
 		A95D740120FC3C160012A0C5 /* UrlArgumentFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = A95D740020FC3C160012A0C5 /* UrlArgumentFilter.m */; };
@@ -95,6 +97,10 @@
 		983B223F3951480F8D2048E3 /* CoreLocation.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		A79EA8D70DAC9F1341C9E5F7 /* Pods-WeexUITestDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeexUITestDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeexUITestDemo/Pods-WeexUITestDemo.release.xcconfig"; sourceTree = "<group>"; };
 		A9127C6420EE56F70015EF73 /* WeexDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WeexDemo.entitlements; sourceTree = "<group>"; };
+		A94C7CDD211945D500944734 /* DownloadApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DownloadApi.h; sourceTree = "<group>"; };
+		A94C7CDE211945D500944734 /* DownloadApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DownloadApi.m; sourceTree = "<group>"; };
+		A94C7CE12119828E00944734 /* ConfigModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConfigModule.h; sourceTree = "<group>"; };
+		A94C7CE22119828E00944734 /* ConfigModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConfigModule.m; sourceTree = "<group>"; };
 		A957D135210D71BF004CA715 /* UpdateApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UpdateApi.h; sourceTree = "<group>"; };
 		A957D136210D71BF004CA715 /* UpdateApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UpdateApi.m; sourceTree = "<group>"; };
 		A957D138210DA9EB004CA715 /* Single.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Single.h; sourceTree = "<group>"; };
@@ -296,6 +302,8 @@
 			children = (
 				A957D135210D71BF004CA715 /* UpdateApi.h */,
 				A957D136210D71BF004CA715 /* UpdateApi.m */,
+				A94C7CDD211945D500944734 /* DownloadApi.h */,
+				A94C7CDE211945D500944734 /* DownloadApi.m */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -425,6 +433,8 @@
 				A95D740320FC3EFD0012A0C5 /* NavigatorModule.m */,
 				A98801C521103E0600479775 /* NoticeModule.h */,
 				A98801C621103E0600479775 /* NoticeModule.m */,
+				A94C7CE12119828E00944734 /* ConfigModule.h */,
+				A94C7CE22119828E00944734 /* ConfigModule.m */,
 			);
 			path = WeexModule;
 			sourceTree = "<group>";
@@ -736,6 +746,7 @@
 				A95D742C20FC82ED0012A0C5 /* SkillsViewController.m in Sources */,
 				A95D744220FC8E8F0012A0C5 /* SkillsModel.m in Sources */,
 				A95D743C20FC8B9F0012A0C5 /* NSString+Code.m in Sources */,
+				A94C7CDF211945D500944734 /* DownloadApi.m in Sources */,
 				A95D743F20FC8D750012A0C5 /* DataAnalytical.m in Sources */,
 				A957D137210D71BF004CA715 /* UpdateApi.m in Sources */,
 				A95D740420FC3EFD0012A0C5 /* NavigatorModule.m in Sources */,
@@ -754,6 +765,7 @@
 				A95D743920FC88B30012A0C5 /* SkillsApi.m in Sources */,
 				A95D740820FC415E0012A0C5 /* MethodsUtil.m in Sources */,
 				A95D741120FC51E50012A0C5 /* BaseNavigationController.m in Sources */,
+				A94C7CE32119828E00944734 /* ConfigModule.m in Sources */,
 				775BEE801C1E8ECC008D1629 /* main.m in Sources */,
 				A95D740120FC3C160012A0C5 /* UrlArgumentFilter.m in Sources */,
 				0A7758D71EA0D39C00AE9815 /* WXImgLoaderDefaultImpl.m in Sources */,

@@ -77,6 +77,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 var stream = weex.requireModule('stream');
 var storage = weex.requireModule('storage');
+var config = weex.requireModule('NV_ConfigModule');
 var utilFunc = {
     initIconFont: function initIconFont() {
         var domModule = weex.requireModule('dom');
@@ -85,13 +86,27 @@ var utilFunc = {
             'src': "url('http://at.alicdn.com/t/font_747453_eyo5x52ahzp.ttf')"
         });
     },
+    getSandBoxDocumentUrl: function getSandBoxDocumentUrl() {
+        return new Promise(function (resolved) {
+            config.getSandBoxDocumentUrl(resolved);
+        });
+    },
     setBundleUrl: function setBundleUrl(url, jsFile) {
         var bundleUrl = url;
+        if (this.isEmpty(url)) {
+            config.getSandBoxDocumentUrl(function (res) {
+                bundleUrl = res;
+                console.log(bundleUrl + '1111111');
+            });
+        }
+
+        console.log(bundleUrl + '22222');
+
         var host = '';
         var path = '';
         var nativeBase = void 0;
         var isAndroidAssets = bundleUrl.indexOf('your_current_IP') >= 0 || bundleUrl.indexOf('file://assets/') >= 0;
-        var isiOSAssets = bundleUrl.indexOf('file:///') >= 0 && bundleUrl.indexOf('WeexDemo.app') > 0;
+        var isiOSAssets = bundleUrl.indexOf('file:///') >= 0;
         if (isAndroidAssets) {
             nativeBase = 'file://assets/dist';
         } else if (isiOSAssets) {
@@ -232,6 +247,12 @@ var utilFunc = {
     getUserInfo: function getUserInfo() {
         return new Promise(function (resolved, rejected) {
             storage.getItem('token', resolved);
+        });
+    },
+
+    getUserID: function getUserID() {
+        return new Promise(function (resolved, rejected) {
+            storage.getItem('userID', resolved);
         });
     }
 };
@@ -3834,7 +3855,7 @@ exports.default = {
                 case 1:
                     var url = 'http://baidu.com/?id=123';
                     navigator.push({
-                        url: _util2.default.setBundleUrl(bundlePath, 'page/webview.js?weburl=' + url),
+                        url: _util2.default.setBundleUrl('', 'page/webview.js?weburl=' + url),
                         animated: "true"
                     });
                     break;

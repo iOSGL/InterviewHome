@@ -94,7 +94,7 @@
                     case 1:
                         var url = 'http://baidu.com/?id=123';
                         navigator.push({
-                            url: util.setBundleUrl(bundlePath,'page/webview.js?weburl=' + url),
+                            url: util.setBundleUrl('','page/webview.js?weburl=' + url),
                             animated: "true"
                         })
                         break;

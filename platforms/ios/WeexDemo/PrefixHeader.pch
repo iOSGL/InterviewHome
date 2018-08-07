@@ -15,6 +15,7 @@
 #import "DataAnalytical.h"
 #import "BaseImageView.h"
 #import "Single.h"
+#import "AppConfig.h"
 
 // ==============> Pods Header <==============
 
@@ -47,3 +48,12 @@
 
 // Document路径
 #define DOCUMENT_PATH [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject]
+
+#define ZIP_PATH [NSString stringWithFormat:@"%@/mianshi.zip",DOCUMENT_PATH]
+
+#define DOCUMENT_BUNDLEJS_PATH [NSString stringWithFormat:@"%@/bundlejs",DOCUMENT_PATH]
+
+#define DOCUMENT_URL [NSString stringWithFormat:@"file://%@/bundlejs",DOCUMENT_PATH]
+
+#define WeakSelf(type) __weak typeof(type) weak##type = type;
+#define StrongSelf(type) __strong typeof(weak##type) strong##type = weak##type;

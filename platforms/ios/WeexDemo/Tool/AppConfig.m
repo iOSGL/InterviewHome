@@ -9,12 +9,24 @@
 #import "AppConfig.h"
 #import "UrlArgumentFilter.h"
 
+NSString *const JSBundleVersion = @"jsbundle_version";
+
+@interface AppConfig ()
+
+@property (nonatomic, assign) BOOL isServerJS;
+
+@property (nonatomic , copy) NSString *jsBundleVersion;
+
+@end
+
 @implementation AppConfig
+IMP_SINGLETON
 
 + (void)setUp {
     [self svPreferrenceConf];
     [self setupRequestFilters];
-    
+    [self setIsServerJsBundle:[self checkLocalResource]]; // load sandbox js
+    [self setJsBundleVersion:[[NSUserDefaults standardUserDefaults]stringForKey:JSBundleVersion]]; // set current jsbundle version
 }
 
 #pragma mark --- SVProgressHUD 偏好设置
@@ -37,7 +49,7 @@
     [config clearUrlFilter];
     config.debugLogEnabled = YES;
     config.baseUrl = @"https://www.mianshihome.com";
-    config.cdnUrl = @"https://www.mianshihome.com";
+    config.cdnUrl = @"https://mianshizhijia.oss-cn-hangzhou.aliyuncs.com";
     NSDictionary *dic = nil;
     UrlArgumentFilter *urlFilter = [UrlArgumentFilter filterWithArguments:dic];
     [config addUrlFilter:urlFilter];
@@ -46,9 +58,29 @@
 + (void)clearRequestFilters {
     YTKNetworkConfig *config = [YTKNetworkConfig sharedConfig];
     [config clearUrlFilter];
-     NSString * entryURL = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"WXEntryBundleURL"];
-     NSString *path = [NSString stringWithFormat:@"%@%@",[[NSBundle bundleForClass:self] resourceURL].absoluteString, entryURL];
-    NSLog(@"%@",path);
+}
+
++ (BOOL)checkLocalResource {
+    NSFileManager *manger = [NSFileManager defaultManager];
+    return [manger fileExistsAtPath:DOCUMENT_BUNDLEJS_PATH];
+}
+
+#pragma mark - Global property
+
++ (BOOL)isServerJS {
+    return [AppConfig sharedInstance].isServerJS;
+}
+
++ (void)setIsServerJsBundle:(BOOL)isServer {
+    [AppConfig sharedInstance].isServerJS = isServer;
+}
+
++ (NSString *)jsBundleVersion {
+    return [AppConfig sharedInstance].jsBundleVersion;
+}
+
++ (void)setJsBundleVersion:(NSString *)version {
+    [AppConfig sharedInstance].jsBundleVersion = version;
 }
 
 @end

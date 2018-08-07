@@ -37,6 +37,12 @@
     url = [NSURL URLWithString:UITEST_HOME_URL];
 #endif
     
+    
+//    if ([AppConfig isServerJS]) {
+//        NSString *path = [NSString stringWithFormat:@"%@/index.js",DOCUMENT_URL];
+//        url = [NSURL URLWithString:path];
+//    }
+    
     [self initWeexSDK];
     [self loadCustomContainWithScannerWithUrl:url];
 }
@@ -54,6 +60,7 @@
     [WXSDKEngine registerModule:@"UM_Event" withClass:NSClassFromString(@"UM_WeexModule")];
     [WXSDKEngine registerModule:@"NV_Navigator" withClass:NSClassFromString(@"NavigatorModule")];
     [WXSDKEngine registerModule:@"NV_Notice" withClass:NSClassFromString(@"NoticeModule")];
+    [WXSDKEngine registerModule:@"NV_ConfigModule" withClass:NSClassFromString(@"ConfigModule")];
     [WXSDKEngine registerComponent:@"NV_SkillCompent" withClass:NSClassFromString(@"SkillsComponent")];
     
 #ifdef DEBUG

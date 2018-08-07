@@ -8,8 +8,25 @@
 
 #import <Foundation/Foundation.h>
 
+UIKIT_EXTERN NSString *const JSBundleVersion;
+
 @interface AppConfig : NSObject
+DEF_SINGLETON(AppConfig)
 
 + (void)setUp;
+
+/**
+Check if local resources are available
+ */
++ (BOOL)isServerJS;
++ (void)setIsServerJsBundle:(BOOL)isServer;
+
+
+/**
+ Record jsbunlde version deafult is nil
+ */
++ (NSString *)jsBundleVersion;
++ (void)setJsBundleVersion:(NSString *)version;
+
 
 @end

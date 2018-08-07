@@ -1,5 +1,6 @@
 var stream = weex.requireModule('stream');
-var storage = weex.requireModule('storage')
+var storage = weex.requireModule('storage');
+var config = weex.requireModule('NV_ConfigModule');
 let utilFunc = {
     initIconFont () {
         let domModule = weex.requireModule('dom');
@@ -8,13 +9,24 @@ let utilFunc = {
             'src': "url('http://at.alicdn.com/t/font_747453_eyo5x52ahzp.ttf')"
         });
     },
+    getSandBoxDocumentUrl () {
+        return new Promise((resolved)=>{
+            config.getSandBoxDocumentUrl(resolved);
+        });
+    },
     setBundleUrl(url, jsFile) {
-        const bundleUrl = url;
+        var bundleUrl = url;
+        if (this.isEmpty(url)) {
+            config.getSandBoxDocumentUrl(res=> {
+                bundleUrl = res;
+            });
+        }
+
         let host = '';
         let path = '';
         let nativeBase;
         const isAndroidAssets = bundleUrl.indexOf('your_current_IP') >= 0 || bundleUrl.indexOf('file://assets/') >= 0;
-        const isiOSAssets = bundleUrl.indexOf('file:///') >= 0 && bundleUrl.indexOf('WeexDemo.app') > 0;
+        const isiOSAssets = bundleUrl.indexOf('file:///') >= 0;
         if (isAndroidAssets) {
             nativeBase = 'file://assets/dist';
         } else if (isiOSAssets) {

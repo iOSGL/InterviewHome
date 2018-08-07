@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0333DBB7F82C126D0F9A5C0F586B6F05"
+               BlueprintIdentifier = "6EECFA08DD86490C2F8CD772B64961B6"
                BlueprintName = "SocketRocket"
                ReferencedContainer = "container:Pods.xcodeproj"
                BuildableName = "libSocketRocket.a">
