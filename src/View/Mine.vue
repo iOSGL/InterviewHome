@@ -26,6 +26,7 @@
     var storage = weex.requireModule('storage');
     var modal = weex.requireModule('modal');
     var globalEvent = weex.requireModule('globalEvent');
+    var config = weex.requireModule('NV_ConfigModule'); //获取本地资源路径
     export default {
         name: "Mine",
         data () {
@@ -94,9 +95,19 @@
                     case 1:
                         var url = 'http://baidu.com/?id=123';
                         navigator.push({
-                            url: util.setBundleUrl('','page/webview.js?weburl=' + url),
+                            url: util.setBundleUrl(bundlePath,'page/webview.js?weburl=' + url),
                             animated: "true"
                         })
+
+                        /*
+                        config.getSandBoxDocumentUrl(res=> {
+                            navigator.push({
+                                url: util.setBundleUrl(res,'page/webview.js?weburl=' + url),
+                                animated: "true"
+                            })
+                        })
+                        */
+
                         break;
                     case 2:
                         um_share.shareEvent({

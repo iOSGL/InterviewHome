@@ -1,6 +1,5 @@
 var stream = weex.requireModule('stream');
 var storage = weex.requireModule('storage');
-var config = weex.requireModule('NV_ConfigModule');
 let utilFunc = {
     initIconFont () {
         let domModule = weex.requireModule('dom');
@@ -9,32 +8,8 @@ let utilFunc = {
             'src': "url('http://at.alicdn.com/t/font_747453_eyo5x52ahzp.ttf')"
         });
     },
-    // getSandBoxDocumentUrl () {
-    //     return new Promise((resolved)=>{
-    //         config.getSandBoxDocumentUrl(resolved);
-    //     });
-    // },
     setBundleUrl(url, jsFile) {
-        // var bundleUrl = url;
-        if (this.isEmpty(url)) {
-            let newUrl = null;
-            config.getSandBoxDocumentUrl(res=> {
-                //bundleUrl = res;
-                newUrl = this.getNewUrl(res) || true;
-            });
-            while(!newUrl){
-                if(!newUrl){
-                    return newUrl;
-                }
-            }
-        }else{
-           return this.getNewUrl(url)
-        }
-
-        
-    },
-
-    getNewUrl(bundleUrl){
+        const bundleUrl = url;
         let host = '';
         let path = '';
         let nativeBase;

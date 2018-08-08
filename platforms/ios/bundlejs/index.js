@@ -77,7 +77,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 var stream = weex.requireModule('stream');
 var storage = weex.requireModule('storage');
-var config = weex.requireModule('NV_ConfigModule');
 var utilFunc = {
     initIconFont: function initIconFont() {
         var domModule = weex.requireModule('dom');
@@ -86,22 +85,8 @@ var utilFunc = {
             'src': "url('http://at.alicdn.com/t/font_747453_eyo5x52ahzp.ttf')"
         });
     },
-    getSandBoxDocumentUrl: function getSandBoxDocumentUrl() {
-        return new Promise(function (resolved) {
-            config.getSandBoxDocumentUrl(resolved);
-        });
-    },
     setBundleUrl: function setBundleUrl(url, jsFile) {
         var bundleUrl = url;
-        if (this.isEmpty(url)) {
-            config.getSandBoxDocumentUrl(function (res) {
-                bundleUrl = res;
-                console.log(bundleUrl + '1111111');
-            });
-        }
-
-        console.log(bundleUrl + '22222');
-
         var host = '';
         var path = '';
         var nativeBase = void 0;
@@ -3788,6 +3773,7 @@ var um_share = weex.requireModule('UM_Event');
 var storage = weex.requireModule('storage');
 var modal = weex.requireModule('modal');
 var globalEvent = weex.requireModule('globalEvent');
+var config = weex.requireModule('NV_ConfigModule'); //获取本地资源路径
 exports.default = {
     name: "Mine",
     data: function data() {
@@ -3854,10 +3840,19 @@ exports.default = {
                     break;
                 case 1:
                     var url = 'http://baidu.com/?id=123';
+                    /*
                     navigator.push({
-                        url: _util2.default.setBundleUrl('', 'page/webview.js?weburl=' + url),
+                        url: util.setBundleUrl(bundlePath,'page/webview.js?weburl=' + url),
                         animated: "true"
+                    })
+                    */
+                    config.getSandBoxDocumentUrl(function (res) {
+                        navigator.push({
+                            url: _util2.default.setBundleUrl(res, 'page/webview.js?weburl=' + url),
+                            animated: "true"
+                        });
                     });
+
                     break;
                 case 2:
                     um_share.shareEvent({
