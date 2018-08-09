@@ -3185,18 +3185,11 @@ exports.default = {
 
     methods: {
         jumpWeb: function jumpWeb(_url) {
-
-            // um_module.shareEvent({'type':'link', 'title':'面试之家一款不错的应用', 'des':'面试之家你想要的全都有', 'picUrl':'https://ws4.sinaimg.cn/large/006tKfTcgy1ft89152cmuj30z20yumx8.jpg', 'linkUrl':'https://m.you.163.com/act/pub/DxDpYNfbBd.html'}, callback => {
-            //
-            // });
-
-            var url = weex.config.bundleUrl;
             navigator.push({
-                url: _util2.default.setBundleUrl(url, 'page/webview.js?weburl=' + _url),
-                animated: "true"
+                url: _url,
+                animated: 'true',
+                type: 'web'
             });
-
-            // NV_Navigator.pushViewController('SkillsViewController',{},true);
         }
     }
 };
@@ -3505,11 +3498,12 @@ exports.default = {
     methods: {
         pushPageList: function pushPageList(e) {
             var url = weex.config.bundleUrl;
-            var path = 'Skills/QuestionList.js?pageID=' + e.pageID;
+            var path = '/Skills/QuestionList.js?pageID=' + e.pageID;
             storage.setItem('params', e.title);
             navigator.push({
-                url: _util2.default.setBundleUrl(url, path),
-                animation: 'true'
+                url: path,
+                animation: 'true',
+                type: 'weex'
             }, function (callBack) {});
         }
     }
@@ -3820,8 +3814,9 @@ exports.default = {
         },
         avaterAction: function avaterAction() {
             navigator.push({
-                url: _util2.default.setBundleUrl(weex.config.bundleUrl, 'Mine/Login.js'),
-                animated: 'true'
+                url: '/Mine/Login.js',
+                animated: 'true',
+                type: 'weex'
             }, function (event) {});
         },
         rowAction: function rowAction(i) {
@@ -3839,20 +3834,12 @@ exports.default = {
 
                     break;
                 case 1:
-                    var url = 'http://baidu.com/?id=123';
-                    /*
                     navigator.push({
-                        url: util.setBundleUrl(bundlePath,'page/webview.js?weburl=' + url),
-                        animated: "true"
-                    })
-                    */
-                    config.getSandBoxDocumentUrl(function (res) {
-                        navigator.push({
-                            url: _util2.default.setBundleUrl(res, 'page/webview.js?weburl=' + url),
-                            animated: "true"
-                        });
+                        url: 'http://baidu.com/?id=123',
+                        animated: "true",
+                        type: 'web',
+                        param: {}
                     });
-
                     break;
                 case 2:
                     um_share.shareEvent({
@@ -3864,10 +3851,11 @@ exports.default = {
                     }, function (callback) {});
                     break;
                 case 3:
-                    var url = 'http://baidu.com/';
                     navigator.push({
-                        url: _util2.default.setBundleUrl(bundlePath, 'page/webview.js?weburl=' + url),
-                        animated: "true"
+                        url: 'http://baidu.com/?id=123',
+                        animated: "true",
+                        type: 'web',
+                        param: {}
                     });
                     break;
                 case 4:
@@ -4137,11 +4125,12 @@ exports.default = {
             });
         },
         didSelectRow: function didSelectRow(obj) {
-            var path = 'QuestionDetail.js?questionID=' + obj._id;
+            var path = '/QuestionDetail.js?questionID=' + obj._id;
             var url = weex.config.bundleUrl;
             navigator.push({
-                url: _util2.default.setBundleUrl(url, path),
-                animation: 'true'
+                url: path,
+                animation: 'true',
+                type: 'weex'
             }, function (callBack) {});
         }
     }

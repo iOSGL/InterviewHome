@@ -52,8 +52,9 @@
             },
             register () {
                 navigator.push({
-                    url: util.setBundleUrl(weex.config.bundleUrl, 'Registered.js'),
-                    animated: 'true'
+                    url: '/Mine/Registered.js',
+                    animated: 'true',
+                    type: 'weex'
                 })
             },
             telInput (event) {

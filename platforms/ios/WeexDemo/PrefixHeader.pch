@@ -55,5 +55,7 @@
 
 #define DOCUMENT_URL [NSString stringWithFormat:@"file://%@/bundlejs",DOCUMENT_PATH]
 
+#define BUNDLE_RESOURCE_URL [NSString stringWithFormat:@"file://%@/bundlejs",[NSBundle mainBundle].bundlePath]
+
 #define WeakSelf(type) __weak typeof(type) weak##type = type;
 #define StrongSelf(type) __strong typeof(weak##type) strong##type = weak##type;

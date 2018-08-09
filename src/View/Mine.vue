@@ -72,8 +72,9 @@
             },
             avaterAction () {
                 navigator.push({
-                    url: util.setBundleUrl(weex.config.bundleUrl, 'Mine/Login.js'),
-                    animated: 'true'
+                    url: '/Mine/Login.js',
+                    animated: 'true',
+                    type: 'weex'
                 }, event => {
 
                 })
@@ -93,21 +94,12 @@
 
                         break;
                     case 1:
-                        var url = 'http://baidu.com/?id=123';
                         navigator.push({
-                            url: util.setBundleUrl(bundlePath,'page/webview.js?weburl=' + url),
-                            animated: "true"
+                            url: 'http://baidu.com/?id=123',
+                            animated: "true",
+                            type: 'web',
+                            param: {},
                         })
-
-                        /*
-                        config.getSandBoxDocumentUrl(res=> {
-                            navigator.push({
-                                url: util.setBundleUrl(res,'page/webview.js?weburl=' + url),
-                                animated: "true"
-                            })
-                        })
-                        */
-
                         break;
                     case 2:
                         um_share.shareEvent({
@@ -121,10 +113,11 @@
                         });
                         break;
                     case 3:
-                        var url = 'http://baidu.com/';
                         navigator.push({
-                            url: util.setBundleUrl(bundlePath,'page/webview.js?weburl=' + url),
-                            animated: "true"
+                            url: 'http://baidu.com/?id=123',
+                            animated: "true",
+                            type: 'web',
+                            param: {},
                         })
                         break;
                     case 4:

@@ -12,6 +12,7 @@
 #import "WXDemoViewController.h"
 #import "WXImgLoaderDefaultImpl.h"
 #import "UM_WeexModule.h"
+#import "WXNavigatorHandle.h"
 
 @implementation WeexSDKManager
 
@@ -57,6 +58,7 @@
     [WXSDKEngine initSDKEnvironment];
     
     [WXSDKEngine registerHandler:[WXImgLoaderDefaultImpl new] withProtocol:@protocol(WXImgLoaderProtocol)];
+    [WXSDKEngine registerHandler:[WXNavigatorHandle new] withProtocol:@protocol(WXNavigationProtocol)];
     [WXSDKEngine registerModule:@"UM_Event" withClass:NSClassFromString(@"UM_WeexModule")];
     [WXSDKEngine registerModule:@"NV_Navigator" withClass:NSClassFromString(@"NavigatorModule")];
     [WXSDKEngine registerModule:@"NV_Notice" withClass:NSClassFromString(@"NoticeModule")];

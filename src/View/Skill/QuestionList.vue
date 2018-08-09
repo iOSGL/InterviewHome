@@ -57,11 +57,12 @@
                 })
             },
             didSelectRow (obj) {
-                let path = 'QuestionDetail.js?questionID=' + obj._id;
+                let path = '/Skills/QuestionDetail.js?questionID=' + obj._id;
                 const url = weex.config.bundleUrl;
                 navigator.push({
-                    url: util.setBundleUrl(url, path),
-                    animation: 'true'
+                    url: path,
+                    animation: 'true',
+                    type: 'weex'
                 }, function (callBack) {
 
                 })

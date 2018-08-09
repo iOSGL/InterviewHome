@@ -48,11 +48,12 @@
         methods: {
             pushPageList (e) {
                 const url = weex.config.bundleUrl;
-                const path =  'Skills/QuestionList.js?pageID='+e.pageID;
+                const path =  '/Skills/QuestionList.js?pageID='+e.pageID;
                 storage.setItem('params', e.title);
                 navigator.push({
-                    url: util.setBundleUrl(url, path),
-                    animation: 'true'
+                    url: path,
+                    animation: 'true',
+                    type: 'weex',
                 }, function (callBack) {
 
                 })

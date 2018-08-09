@@ -46,6 +46,7 @@
 		A971DF6720F866AA00240C91 /* UM_WeexModule.m in Sources */ = {isa = PBXBuildFile; fileRef = A971DF6620F866AA00240C91 /* UM_WeexModule.m */; };
 		A971DF6E20F884FF00240C91 /* AppConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = A971DF6D20F884FF00240C91 /* AppConfig.m */; };
 		A98801C721103E0600479775 /* NoticeModule.m in Sources */ = {isa = PBXBuildFile; fileRef = A98801C621103E0600479775 /* NoticeModule.m */; };
+		A9B17BA8211AF44600132021 /* WXNavigatorHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B17BA7211AF44600132021 /* WXNavigatorHandle.m */; };
 		D3DB97659EA84DC3ADEFA660 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B116DBF2254E48A0816816AE /* ImageIO.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		D5FFB0F3F6F246E9A93F5369 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 983B223F3951480F8D2048E3 /* CoreLocation.framework */; };
 		DC5E503E1D0D97130059F0EB /* weex.png in Resources */ = {isa = PBXBuildFile; fileRef = DC5E503C1D0D97130059F0EB /* weex.png */; };
@@ -145,6 +146,8 @@
 		A971DF6D20F884FF00240C91 /* AppConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppConfig.m; sourceTree = "<group>"; };
 		A98801C521103E0600479775 /* NoticeModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoticeModule.h; sourceTree = "<group>"; };
 		A98801C621103E0600479775 /* NoticeModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoticeModule.m; sourceTree = "<group>"; };
+		A9B17BA6211AF44600132021 /* WXNavigatorHandle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXNavigatorHandle.h; sourceTree = "<group>"; };
+		A9B17BA7211AF44600132021 /* WXNavigatorHandle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXNavigatorHandle.m; sourceTree = "<group>"; };
 		B116DBF2254E48A0816816AE /* ImageIO.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		B16099883D828D1227C710E2 /* libPods-WeexDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeexDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BECB15C78BC5454C86CFBC04 /* AVFoundation.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -195,6 +198,8 @@
 				0A3122AC1E1F41E30041B972 /* WeexSDKManager.m */,
 				0A7758D51EA0D39C00AE9815 /* WXImgLoaderDefaultImpl.h */,
 				0A7758D61EA0D39C00AE9815 /* WXImgLoaderDefaultImpl.m */,
+				A9B17BA6211AF44600132021 /* WXNavigatorHandle.h */,
+				A9B17BA7211AF44600132021 /* WXNavigatorHandle.m */,
 			);
 			path = WeexConfig;
 			sourceTree = "<group>";
@@ -762,6 +767,7 @@
 				A971DF6E20F884FF00240C91 /* AppConfig.m in Sources */,
 				A95D743520FC87340012A0C5 /* BaseRequest.m in Sources */,
 				A957D13B210DAA2F004CA715 /* BaseProcessHandler.m in Sources */,
+				A9B17BA8211AF44600132021 /* WXNavigatorHandle.m in Sources */,
 				A95D743920FC88B30012A0C5 /* SkillsApi.m in Sources */,
 				A95D740820FC415E0012A0C5 /* MethodsUtil.m in Sources */,
 				A95D741120FC51E50012A0C5 /* BaseNavigationController.m in Sources */,
@@ -907,6 +913,30 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/WeexDemo/PrefixHeader.pch";
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
+					"\"${PODS_ROOT}/Headers/Public/Masonry\"",
+					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
+					"\"${PODS_ROOT}/Headers/Public/SSZipArchive\"",
+					"\"${PODS_ROOT}/Headers/Public/SVProgressHUD\"",
+					"\"${PODS_ROOT}/Headers/Public/SocketRocket\"",
+					"\"${PODS_ROOT}/Headers/Public/UMCAnalytics\"",
+					"\"${PODS_ROOT}/Headers/Public/UMCCommon\"",
+					"\"${PODS_ROOT}/Headers/Public/UMCPush\"",
+					"\"${PODS_ROOT}/Headers/Public/UMCSecurityPlugins\"",
+					"\"${PODS_ROOT}/Headers/Public/UMCShare\"",
+					"\"${PODS_ROOT}/Headers/Public/WeexPluginLoader\"",
+					"\"${PODS_ROOT}/Headers/Public/YTKNetwork\"",
+					"\"${PODS_ROOT}/Headers/Public/YYCache\"",
+					"\"${PODS_ROOT}/Headers/Public/YYCategories\"",
+					"\"${PODS_ROOT}/Headers/Public/YYImage\"",
+					"\"${PODS_ROOT}/Headers/Public/YYModel\"",
+					"\"${PODS_ROOT}/Headers/Public/YYText\"",
+					"\"${PODS_ROOT}/Headers/Public/YYWebImage\"",
+					"\"${PODS_ROOT}/Headers/Public/WeexSDK\"",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/WeexDemo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -955,6 +985,30 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/WeexDemo/PrefixHeader.pch";
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
+					"\"${PODS_ROOT}/Headers/Public/Masonry\"",
+					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
+					"\"${PODS_ROOT}/Headers/Public/SSZipArchive\"",
+					"\"${PODS_ROOT}/Headers/Public/SVProgressHUD\"",
+					"\"${PODS_ROOT}/Headers/Public/SocketRocket\"",
+					"\"${PODS_ROOT}/Headers/Public/UMCAnalytics\"",
+					"\"${PODS_ROOT}/Headers/Public/UMCCommon\"",
+					"\"${PODS_ROOT}/Headers/Public/UMCPush\"",
+					"\"${PODS_ROOT}/Headers/Public/UMCSecurityPlugins\"",
+					"\"${PODS_ROOT}/Headers/Public/UMCShare\"",
+					"\"${PODS_ROOT}/Headers/Public/WeexPluginLoader\"",
+					"\"${PODS_ROOT}/Headers/Public/YTKNetwork\"",
+					"\"${PODS_ROOT}/Headers/Public/YYCache\"",
+					"\"${PODS_ROOT}/Headers/Public/YYCategories\"",
+					"\"${PODS_ROOT}/Headers/Public/YYImage\"",
+					"\"${PODS_ROOT}/Headers/Public/YYModel\"",
+					"\"${PODS_ROOT}/Headers/Public/YYText\"",
+					"\"${PODS_ROOT}/Headers/Public/YYWebImage\"",
+					"\"${PODS_ROOT}/Headers/Public/WeexSDK\"",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/WeexDemo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
