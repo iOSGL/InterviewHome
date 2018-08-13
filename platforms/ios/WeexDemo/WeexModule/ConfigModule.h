@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <WeexSDK.h>
 
+typedef void (^WXModuleKeepAliveCallback)(id result, BOOL keepAlive);
+
 @interface ConfigModule : NSObject <WXModuleProtocol>
 
 @end

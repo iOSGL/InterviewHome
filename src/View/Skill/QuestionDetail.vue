@@ -2,7 +2,7 @@
     <div v-bind:class="['wrapper', ipx?'w-ipx':'']">
         <navigation-header title="详情" :leftBtn="leftBtn" @leftAction="back"></navigation-header>
         <scroller class="scroller" :style="{height: pageHeight + 'px'}">
-            <top :leftText="className" :collection="collection" :rightTetx="numText" :ID="questionID" :title="title"></top>
+            <!--<top :leftText="className" :collection="collection" :rightTetx="numText" :ID="questionID" :title="title"></top>-->
             <ques-detail :title="title" :content="content"></ques-detail>
         </scroller>
         <bottom @up="upAction" @down="nextAction"></bottom>
@@ -26,7 +26,7 @@
                 leftBtn: {
                     name:'e609;'
                 },
-                questionID: '',
+                questionID: '5b3c2241beba9477358a3760',
                 dataGroup: {
 
                 },

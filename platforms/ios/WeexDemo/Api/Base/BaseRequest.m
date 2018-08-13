@@ -10,13 +10,23 @@
 
 @implementation BaseRequest
 
-- (NSDictionary *)requestHeaderFieldValueDictionary {
-    return nil;
-}
 
 - (NSTimeInterval)requestTimeoutInterval {
     return 30;
 }
+
+- (YTKRequestMethod)requestMethod {
+    return YTKRequestMethodPOST;
+}
+
+- (YTKRequestSerializerType)requestSerializerType {
+    return YTKRequestSerializerTypeJSON;
+}
+
+- (YTKResponseSerializerType)responseSerializerType {
+    return YTKResponseSerializerTypeJSON;
+}
+
 
 
 @end

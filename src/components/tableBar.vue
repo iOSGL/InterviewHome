@@ -1,14 +1,14 @@
 <template>
     <div :class="['wrapper', isIpx&&isIpx()?'w-ipx':'']">
 
-        <div class="bar-item" @click="tabTo('Trending')">
-            <text class="bar-ic iconfont" :class="[this.isActive('Trending')]">&#xe615;</text>
-            <text class="bar-txt" :class="[this.isActive('Trending')]">趋势</text>
-        </div>
+        <!--<div class="bar-item" @click="tabTo('Trending')">-->
+            <!--<text class="bar-ic iconfont" :class="[this.isActive('Trending')]">&#xe615;</text>-->
+            <!--<text class="bar-txt" :class="[this.isActive('Trending')]">趋势</text>-->
+        <!--</div>-->
 
         <div class="bar-item" @click="tabTo('Skils')">
-            <text class="bar-ic iconfont" :class="[this.pIndexKey == 'Skils'?'bar-active':'']">&#xe6b4;</text>
-            <text class="bar-txt" :class="[this.pIndexKey == 'Skils'?'bar-active':'']">技能</text>
+            <text class="bar-ic iconfont" :class="[this.isActive('Skils')]">&#xe6b4;</text>
+            <text class="bar-txt" :class="[this.isActive('Skils')]">技能</text>
             <!--<text class="notice-dot"></text>-->
         </div>
 
@@ -32,7 +32,7 @@
         name: "tableBar",
         data() {
             return {
-                pIndexKey:'Trending'
+                pIndexKey:'Skils'
             }
         },
         created() {

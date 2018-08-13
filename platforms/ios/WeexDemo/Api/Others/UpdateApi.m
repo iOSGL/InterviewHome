@@ -21,11 +21,15 @@
 }
 
 - (NSString *)requestUrl {
-    return @"/source/down";
+    return @"https://www.mianshihome.com:8080/mianshi/rest/release/chickRelease";
+}
+
+- (id)requestArgument {
+    return @{ @"version": _version};
 }
 
 - (YTKRequestMethod)requestMethod {
-    return YTKRequestMethodGET;
+    return YTKRequestMethodPOST;
 }
 
 @end

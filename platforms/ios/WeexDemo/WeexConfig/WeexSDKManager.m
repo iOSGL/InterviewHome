@@ -39,10 +39,10 @@
 #endif
     
     
-//    if ([AppConfig isServerJS]) {
-//        NSString *path = [NSString stringWithFormat:@"%@/index.js",DOCUMENT_URL];
-//        url = [NSURL URLWithString:path];
-//    }
+    if ([AppConfig isServerJS]) {
+        NSString *path = [NSString stringWithFormat:@"%@/index.js",DOCUMENT_URL];
+        url = [NSURL URLWithString:path];
+    }
     
     [self initWeexSDK];
     [self loadCustomContainWithScannerWithUrl:url];

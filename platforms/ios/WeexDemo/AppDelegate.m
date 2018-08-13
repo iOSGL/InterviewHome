@@ -19,6 +19,7 @@
 #import "BaseProcessHandler.h"
 #import "DownloadApi.h"
 #import <SSZipArchive/SSZipArchive.h>
+#import "UpdateApi.h"
 
 
 @interface AppDelegate () <UNUserNotificationCenterDelegate>
@@ -39,6 +40,7 @@
 #define QQ_APPKEY @"E1Hf6wZZA8jue3m4"
 #define WX_APPKEY @"wx7479228bc30af11a"
 #define WX_APP_SECRETC @"1eb4d50dcd3ddf61fb92bb0885398f61"
+#define LOCAL_VERSION @"jsbundle_version"
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
@@ -52,11 +54,6 @@
     [self.window makeKeyAndVisible];
 //    [self startSplashScreen];
     [self checkUpdate];
-    
-    [UMessage addAlias:@"8" type:@"pushTest" response:^(id  _Nonnull responseObject, NSError * _Nonnull error) {
-
-    }];
-    
     return YES;
 }
 
@@ -255,29 +252,45 @@
 #pragma mark -
 
 - (void)checkUpdate {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"发现新版本" message:@"" preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"暂不更新" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    NSString *localVersion = [[NSUserDefaults standardUserDefaults]stringForKey:LOCAL_VERSION];
+    if (!localVersion) {
+        localVersion = [UIApplication sharedApplication].appVersion;
+    }
+    UpdateApi *update = [[UpdateApi alloc]initWithLocakVersion:localVersion];
+    [update startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        if ([[DataAnalytical getStatusCode:request] isEqualToString:@"200"]) {
+            NSDictionary *dic = [DataAnalytical getResponseDic:request];
+            DownloadApi *download = [[DownloadApi alloc]initWithUrl:dic[@"RELEASE_URL"]];
+            [download startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+                if ([SSZipArchive unzipFileAtPath:ZIP_PATH toDestination:DOCUMENT_PATH]) {
+                    [[NSUserDefaults standardUserDefaults]setObject:dic[@"RELEASE_NUM"] forKey:LOCAL_VERSION];
+                    [[NSUserDefaults standardUserDefaults]synchronize];
+                } else {
+                    [SVProgressHUD showErrorWithStatus:@"解压失败"];
+                }
+                NSFileManager *manger = [NSFileManager defaultManager];
+                if ([manger fileExistsAtPath:ZIP_PATH]) {
+                    [manger removeItemAtPath:ZIP_PATH error:nil];
+                }
+            } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+                [SVProgressHUD showErrorWithStatus:@"更新失败"];
+            }];
+        }
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
         
     }];
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"立即更新" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        DownloadApi *download = [[DownloadApi alloc]init];
-        [download startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
-            if ([SSZipArchive unzipFileAtPath:ZIP_PATH toDestination:DOCUMENT_PATH]) {
-                
-            } else {
-                [SVProgressHUD showErrorWithStatus:@"解压失败"];
-            }
-            NSFileManager *manger = [NSFileManager defaultManager];
-            if ([manger fileExistsAtPath:ZIP_PATH]) {
-                [manger removeItemAtPath:ZIP_PATH error:nil];
-            }
-        } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-            [SVProgressHUD showErrorWithStatus:@"更新失败"];
-        }];
-    }];
-    [alert addAction:cancelAction];
-    [alert addAction:okAction];
-    [[MethodsUtil getCurrentVC] presentViewController:alert animated:YES completion:nil];
+    
+
+//    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"发现新版本" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+//    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"暂不更新" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+//
+//    }];
+//    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"立即更新" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//
+//    }];
+//    [alert addAction:cancelAction];
+//    [alert addAction:okAction];
+//    [[MethodsUtil getCurrentVC] presentViewController:alert animated:YES completion:nil];
 }
 
 @end

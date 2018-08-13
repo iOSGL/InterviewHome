@@ -353,7 +353,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 Vue.use(_vueRouter2.default);
 
 module.exports = new _vueRouter2.default({
-    routes: [{ path: '/', redirect: '/Trending' }, { path: '/Trending', name: 'Trending', component: _Trending2.default }, { path: '/Skils', name: 'Skils', component: _Skils2.default }, { path: '/Forum', name: 'Forum', component: _Forum2.default }, { path: '/Mine', name: 'Mine', component: _Mine2.default }, { path: '/QuestionList', name: 'QuestionList', component: _QuestionList2.default }]
+    routes: [
+    // {path: '/', redirect: '/Trending'},
+    // {path: '/Trending', name: 'Trending', component: Trending},
+    { path: '/', redirect: '/Skils' }, { path: '/Skils', name: 'Skils', component: _Skils2.default }, { path: '/Forum', name: 'Forum', component: _Forum2.default }, { path: '/Mine', name: 'Mine', component: _Mine2.default }, { path: '/QuestionList', name: 'QuestionList', component: _QuestionList2.default }]
 });
 
 /***/ }),
@@ -3772,9 +3775,9 @@ exports.default = {
     name: "Mine",
     data: function data() {
         return {
-            list: ['我的收藏', '产品交流', '分享给好友', '关于我们', '退出登录'],
+            list: ['产品交流', '分享给好友', '关于我们', '退出登录'],
             token: '',
-            user: {}
+            user: { pic: 'https://mianshizhijia.oss-cn-hangzhou.aliyuncs.com/Avatar/defaulet_avatar.png?x-oss-process=style/Avatar' }
         };
     },
     created: function created() {
@@ -3813,35 +3816,33 @@ exports.default = {
             });
         },
         avaterAction: function avaterAction() {
-            navigator.push({
-                url: '/Mine/Login.js',
-                animated: 'true',
-                type: 'weex'
-            }, function (event) {});
+            _util2.default.getUserID().then(function (res) {
+                if (res.data !== 'undefined') {
+                    config.setUserAvatarWithUserID(res.data, function (e) {
+                        if (e == '上传成功') {
+                            this.getUserInfo();
+                        }
+                    });
+                } else {
+                    navigator.push({
+                        url: '/Mine/Login.js',
+                        animated: 'true',
+                        type: 'weex'
+                    }, function (event) {});
+                }
+            });
         },
         rowAction: function rowAction(i) {
-            var bundlePath = weex.config.bundleUrl;
             switch (i) {
                 case 0:
-                    if (_util2.default.isEmpty(this.token)) {
-                        this.avaterAction();
-                        return;
-                    }
-                    modal.toast({
-                        message: '功能还未实现',
-                        duration: 0.3
-                    });
-
-                    break;
-                case 1:
                     navigator.push({
-                        url: 'http://baidu.com/?id=123',
+                        url: 'https://www.mianshihome.com/jl.html',
                         animated: "true",
                         type: 'web',
                         param: {}
                     });
                     break;
-                case 2:
+                case 1:
                     um_share.shareEvent({
                         type: 'link',
                         title: 'title',
@@ -3850,7 +3851,7 @@ exports.default = {
                         linkUrl: ''
                     }, function (callback) {});
                     break;
-                case 3:
+                case 2:
                     navigator.push({
                         url: 'http://baidu.com/?id=123',
                         animated: "true",
@@ -3858,7 +3859,7 @@ exports.default = {
                         param: {}
                     });
                     break;
-                case 4:
+                case 3:
                     var that = this;
                     if (_util2.default.isEmpty(this.token)) {
                         modal.toast({
@@ -3884,7 +3885,7 @@ exports.default = {
                             });
 
                             that.token = '';
-                            that.user = {};
+                            that.user = { pic: 'https://mianshizhijia.oss-cn-hangzhou.aliyuncs.com/Avatar/defaulet_avatar.png?x-oss-process=style/Avatar' };
                         }
                     });
                     break;
@@ -3913,7 +3914,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _c('image', {
     staticClass: ["avater"],
     attrs: {
-      "src": _vm.user.pic
+      "src": _vm.user.pic,
+      "resize": "cover"
     },
     on: {
       "click": _vm.avaterAction
@@ -4125,7 +4127,7 @@ exports.default = {
             });
         },
         didSelectRow: function didSelectRow(obj) {
-            var path = '/QuestionDetail.js?questionID=' + obj._id;
+            var path = '/Skills/QuestionDetail.js?questionID=' + obj._id;
             var url = weex.config.bundleUrl;
             navigator.push({
                 url: path,
@@ -4479,7 +4481,7 @@ exports.default = {
     name: "tableBar",
     data: function data() {
         return {
-            pIndexKey: 'Trending'
+            pIndexKey: 'Skils'
         };
     },
     created: function created() {
@@ -4518,28 +4520,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: ["bar-item"],
     on: {
       "click": function($event) {
-        _vm.tabTo('Trending')
-      }
-    }
-  }, [_c('text', {
-    staticClass: ["bar-ic", "iconfont"],
-    class: [this.isActive('Trending')]
-  }, [_vm._v("")]), _c('text', {
-    staticClass: ["bar-txt"],
-    class: [this.isActive('Trending')]
-  }, [_vm._v("趋势")])]), _c('div', {
-    staticClass: ["bar-item"],
-    on: {
-      "click": function($event) {
         _vm.tabTo('Skils')
       }
     }
   }, [_c('text', {
     staticClass: ["bar-ic", "iconfont"],
-    class: [this.pIndexKey == 'Skils' ? 'bar-active' : '']
+    class: [this.isActive('Skils')]
   }, [_vm._v("")]), _c('text', {
     staticClass: ["bar-txt"],
-    class: [this.pIndexKey == 'Skils' ? 'bar-active' : '']
+    class: [this.isActive('Skils')]
   }, [_vm._v("技能")])]), _c('div', {
     staticClass: ["bar-item"],
     on: {

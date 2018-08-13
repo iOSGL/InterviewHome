@@ -10,4 +10,6 @@
 
 @interface DownloadApi : BaseRequest
 
+- (instancetype)initWithUrl:(NSString *)sourceUrl;
+
 @end

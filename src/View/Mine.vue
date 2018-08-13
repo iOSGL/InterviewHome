@@ -3,7 +3,7 @@
         <scroller class="scroller">
             <div class="top-dev">
                 <image class="header-bg" resize="cover" src=""></image>
-                <image class="avater" v-on:click="avaterAction" :src="user.pic"></image>
+                <image class="avater" v-on:click="avaterAction" :src="user.pic" resize="cover"></image>
                 <text class="nickname">{{user.nickname? user.nickname:'点击头像登陆'}}</text>
             </div>
             <div class="space"></div>
@@ -31,9 +31,9 @@
         name: "Mine",
         data () {
             return {
-                list: ['我的收藏', '产品交流', '分享给好友', '关于我们', '退出登录'],
+                list: ['产品交流', '分享给好友', '关于我们', '退出登录'],
                 token: '',
-                user: {},
+                user: {pic:'https://mianshizhijia.oss-cn-hangzhou.aliyuncs.com/Avatar/defaulet_avatar.png?x-oss-process=style/Avatar'},
             }
         },
         created () {
@@ -71,37 +71,36 @@
 
             },
             avaterAction () {
-                navigator.push({
-                    url: '/Mine/Login.js',
-                    animated: 'true',
-                    type: 'weex'
-                }, event => {
+                util.getUserID().then(res=> {
+                    if (res.data !== 'undefined') {
+                        config.setUserAvatarWithUserID(res.data, function (e) {
+                            if (e == '上传成功') {
+                               this.getUserInfo();
+                            }
+                        });
+                    } else {
+                        navigator.push({
+                            url: '/Mine/Login.js',
+                            animated: 'true',
+                            type: 'weex'
+                        }, event => {
 
-                })
+                        });
+                    }
+                });
+
             },
             rowAction (i) {
-                const bundlePath = weex.config.bundleUrl;
                 switch (i) {
                     case 0:
-                        if (util.isEmpty(this.token)) {
-                            this.avaterAction()
-                            return;
-                        }
-                        modal.toast({
-                            message: '功能还未实现',
-                            duration: 0.3
-                        })
-
-                        break;
-                    case 1:
                         navigator.push({
-                            url: 'http://baidu.com/?id=123',
+                            url: 'https://www.mianshihome.com/jl.html',
                             animated: "true",
                             type: 'web',
                             param: {},
                         })
                         break;
-                    case 2:
+                    case 1:
                         um_share.shareEvent({
                             type:'link',
                             title:'title',
@@ -112,7 +111,7 @@
 
                         });
                         break;
-                    case 3:
+                    case 2:
                         navigator.push({
                             url: 'http://baidu.com/?id=123',
                             animated: "true",
@@ -120,7 +119,7 @@
                             param: {},
                         })
                         break;
-                    case 4:
+                    case 3:
                         var that = this;
                         if (util.isEmpty(this.token)) {
                             modal.toast({
@@ -148,7 +147,7 @@
                                 });
 
                                 that.token = '';
-                                that.user = {};
+                                that.user = {pic:'https://mianshizhijia.oss-cn-hangzhou.aliyuncs.com/Avatar/defaulet_avatar.png?x-oss-process=style/Avatar'};
                             }
                         })
                         break;

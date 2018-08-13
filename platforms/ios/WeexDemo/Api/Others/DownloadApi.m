@@ -8,10 +8,20 @@
 
 #import "DownloadApi.h"
 
-@implementation DownloadApi
+@implementation DownloadApi {
+    NSString *_url;
+}
+
+- (instancetype)initWithUrl:(NSString *)sourceUrl {
+    self = [super init];
+    if (self) {
+        _url = [sourceUrl copy];
+    }
+    return self;
+}
 
 - (NSString *)requestUrl {
-    return @"/app_version/mianshi.zip";
+    return _url;
 }
 
 - (BOOL)useCDN {
@@ -23,7 +33,6 @@
 }
 
 - (NSString *)resumableDownloadPath {
-    NSLog(@"%@",DOCUMENT_PATH);
     return DOCUMENT_PATH;
 }
 

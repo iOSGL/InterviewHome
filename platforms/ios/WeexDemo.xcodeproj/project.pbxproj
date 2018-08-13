@@ -47,6 +47,7 @@
 		A971DF6E20F884FF00240C91 /* AppConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = A971DF6D20F884FF00240C91 /* AppConfig.m */; };
 		A98801C721103E0600479775 /* NoticeModule.m in Sources */ = {isa = PBXBuildFile; fileRef = A98801C621103E0600479775 /* NoticeModule.m */; };
 		A9B17BA8211AF44600132021 /* WXNavigatorHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B17BA7211AF44600132021 /* WXNavigatorHandle.m */; };
+		A9C7B1C121213626001C9D3B /* UploadImageApi.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C7B1C021213626001C9D3B /* UploadImageApi.m */; };
 		D3DB97659EA84DC3ADEFA660 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B116DBF2254E48A0816816AE /* ImageIO.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		D5FFB0F3F6F246E9A93F5369 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 983B223F3951480F8D2048E3 /* CoreLocation.framework */; };
 		DC5E503E1D0D97130059F0EB /* weex.png in Resources */ = {isa = PBXBuildFile; fileRef = DC5E503C1D0D97130059F0EB /* weex.png */; };
@@ -148,6 +149,8 @@
 		A98801C621103E0600479775 /* NoticeModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoticeModule.m; sourceTree = "<group>"; };
 		A9B17BA6211AF44600132021 /* WXNavigatorHandle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXNavigatorHandle.h; sourceTree = "<group>"; };
 		A9B17BA7211AF44600132021 /* WXNavigatorHandle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXNavigatorHandle.m; sourceTree = "<group>"; };
+		A9C7B1BF21213626001C9D3B /* UploadImageApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UploadImageApi.h; sourceTree = "<group>"; };
+		A9C7B1C021213626001C9D3B /* UploadImageApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UploadImageApi.m; sourceTree = "<group>"; };
 		B116DBF2254E48A0816816AE /* ImageIO.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		B16099883D828D1227C710E2 /* libPods-WeexDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeexDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BECB15C78BC5454C86CFBC04 /* AVFoundation.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -316,6 +319,7 @@
 		A95D73FD20FC3BAE0012A0C5 /* Api */ = {
 			isa = PBXGroup;
 			children = (
+				A9C7B1BE2121360D001C9D3B /* Mine */,
 				A957D134210D719C004CA715 /* Others */,
 				A95D743620FC88990012A0C5 /* Skills */,
 				A95D73FE20FC3C030012A0C5 /* Base */,
@@ -453,6 +457,15 @@
 				A95D740720FC415E0012A0C5 /* MethodsUtil.m */,
 			);
 			path = Tool;
+			sourceTree = "<group>";
+		};
+		A9C7B1BE2121360D001C9D3B /* Mine */ = {
+			isa = PBXGroup;
+			children = (
+				A9C7B1BF21213626001C9D3B /* UploadImageApi.h */,
+				A9C7B1C021213626001C9D3B /* UploadImageApi.m */,
+			);
+			path = Mine;
 			sourceTree = "<group>";
 		};
 		D5ADF0861C77133B00597CA6 /* Source */ = {
@@ -761,6 +774,7 @@
 				A95D743220FC84500012A0C5 /* SkillTableView.m in Sources */,
 				A971DF6720F866AA00240C91 /* UM_WeexModule.m in Sources */,
 				A95D741820FC54B80012A0C5 /* BaseViewController.m in Sources */,
+				A9C7B1C121213626001C9D3B /* UploadImageApi.m in Sources */,
 				A95D744520FC946D0012A0C5 /* SkillsTableViewCell.m in Sources */,
 				0A4A05F91E0405070046E1BE /* UIViewController+WXDemoNaviBar.m in Sources */,
 				A95D741420FC521A0012A0C5 /* BaseImageView.m in Sources */,
