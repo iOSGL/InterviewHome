@@ -3845,11 +3845,9 @@ exports.default = {
                     break;
                 case 1:
                     um_share.shareEvent({
-                        type: 'link',
+                        type: 'pic',
                         title: 'title',
-                        des: '',
-                        picUrl: '',
-                        linkUrl: ''
+                        picUrl: 'https://mianshizhijia.oss-cn-hangzhou.aliyuncs.com/resourse_image/%E5%88%86%E4%BA%AB.jpg'
                     }, function (callback) {});
                     break;
                 case 2:

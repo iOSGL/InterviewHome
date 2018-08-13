@@ -116,11 +116,9 @@ static NSString *identifier = @"listCell";
     if (self.model.islock) {
         UM_WeexModule *sharModule = [[UM_WeexModule alloc]init];
         NSDictionary *parames = @{
-                                  @"type":@"link",
-                                  @"title":@"面试之家一款不错的应用",
-                                  @"des":@"面试之家你想要的全都有",
-                                  @"picUrl":@"https://ws4.sinaimg.cn/large/006tKfTcgy1ft89152cmuj30z20yumx8.jpg",
-                                  @"linkUrl":@"https://m.you.163.com/act/pub/DxDpYNfbBd.html"
+                                  @"type":@"pic",
+                                  @"title":@"面试之家提升自我必备",
+                                  @"picUrl":@"https://mianshizhijia.oss-cn-hangzhou.aliyuncs.com/resourse_image/%E5%88%86%E4%BA%AB.jpg"
                                   };
         [sharModule shareEvent:parames callback:^(id result, BOOL keepAlive) {
             
@@ -128,11 +126,9 @@ static NSString *identifier = @"listCell";
     } else {
         UM_WeexModule *sharModule = [[UM_WeexModule alloc]init];
         NSDictionary *parames = @{
-                                  @"type":@"link",
-                                  @"title":@"面试之家一款不错的应用",
-                                  @"des":@"面试之家你想要的全都有",
-                                  @"picUrl":@"https://ws4.sinaimg.cn/large/006tKfTcgy1ft89152cmuj30z20yumx8.jpg",
-                                  @"linkUrl":@"https://m.you.163.com/act/pub/DxDpYNfbBd.html"
+                                  @"type":@"pic",
+                                  @"title":@"面试之家提升自我必备",
+                                  @"picUrl":@"https://mianshizhijia.oss-cn-hangzhou.aliyuncs.com/resourse_image/%E5%88%86%E4%BA%AB.jpg"
                                   };
         [sharModule shareEvent:parames callback:^(id result, BOOL keepAlive) {
             

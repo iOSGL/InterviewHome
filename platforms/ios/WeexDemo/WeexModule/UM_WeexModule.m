@@ -107,14 +107,14 @@ WX_EXPORT_METHOD(@selector(setalias:))
                 callback(error.userInfo[@"message"],false);
             }else{
                 [SVProgressHUD showSuccessWithStatus:@"分享成功"];
-                callback(@"1",true);
+                callback(@"1",false);
             }
         }];
     }];
 }
 
 - (void)setalias:(NSDictionary *)params {
-    [UMessage addAlias:params[@"userID"] type:params[@"type"] response:^(id  _Nonnull responseObject, NSError * _Nonnull error) {
+    [UMessage addAlias:[NSString stringWithFormat:@"%@",params[@"userID"]] type:params[@"type"] response:^(id  _Nonnull responseObject, NSError * _Nonnull error) {
         
     }];
 }
