@@ -10,12 +10,14 @@
                 <text class="btnTetx">注册</text>
             </div>
         </div>
+        <wxc-loading :show="isShow" type="default"></wxc-loading>
     </div>
 </template>
 
 <script>
     import header from '../../components/Header.vue'
     import util from '../../util.js';
+    import { WxcLoading, WxcPartLoading } from 'weex-ui';
     var navigator = weex.requireModule('navigator');
     var modal = weex.requireModule('modal')
     export default {
@@ -31,10 +33,11 @@
                 pwd: '',
                 againPwd: '',
                 availableNumber: false,
+                isShow: false,
             }
         },
         components: {
-            'navigation-header': header,
+            'navigation-header': header,WxcLoading,WxcPartLoading
         },
         created () {
             util.initIconFont();
@@ -117,8 +120,9 @@
                     telephone: this.tel,
                     nickname: this.nickName
                 }
-
+                this.isShow = true;
                 util.POST(':8080/mianshi/rest/userbase/insertuser',param).then(res => {
+                    this.isShow = false;
                     if (res.data.code == '200') {
                         modal.toast({
                             message: '注册成功',
@@ -132,6 +136,7 @@
                         })
                     }
                 }).catch(res => {
+                    this.isShow = false;
                     modal.toast({
                        message: res.data.msg,
                        duration: 0.3

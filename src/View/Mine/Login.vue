@@ -8,6 +8,8 @@
                 <text class="btnTetx">登陆</text>
             </div>
         </div>
+
+        <wxc-loading :show="isShow" type="default"></wxc-loading>
     </div>
 
 </template>
@@ -15,6 +17,7 @@
 <script>
     import header from '../../components/Header.vue'
     import util from '../../util';
+    import { WxcLoading, WxcPartLoading } from 'weex-ui';
 
     var navigator = weex.requireModule('navigator');
     var modal = weex.requireModule('modal');
@@ -35,10 +38,11 @@
                 tel:'',
                 pwd: '',
                 availableNumber: false,
+                isShow: false,
             }
         },
         components: {
-            'navigation-header': header,
+            'navigation-header': header,WxcLoading,WxcPartLoading
         },
         created () {
             util.initIconFont();
@@ -92,8 +96,9 @@
                         duration: 0.3
                     })
                 }
-
+                this.isShow = true;
                 util.POST(':8080/mianshi/rest/login/baseLogin',{"telephone": this.tel, "password": this.pwd}).then(res =>{
+                    this.isShow = false;
                     if (res.data.code == '200') {
                         umevent.setalias({userID:res.data.data.userID, type:'iOS'});
                         storage.setItem('token', res.data.data.token, event=> {
@@ -115,6 +120,7 @@
                     }
 
                 }).catch(res => {
+                    this.isShow = false;
                     modal.toast({
                         message: res.data.msg ,
                         duration: 0.3

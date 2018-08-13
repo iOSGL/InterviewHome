@@ -3835,6 +3835,7 @@ exports.default = {
         rowAction: function rowAction(i) {
             switch (i) {
                 case 0:
+                    storage.setItem('webTitle', '产品交流');
                     navigator.push({
                         url: 'https://www.mianshihome.com/jl.html',
                         animated: "true",
@@ -3852,8 +3853,9 @@ exports.default = {
                     }, function (callback) {});
                     break;
                 case 2:
+                    storage.setItem('webTitle', '关于我们');
                     navigator.push({
-                        url: 'http://baidu.com/?id=123',
+                        url: 'https://www.mianshihome.com/about.html',
                         animated: "true",
                         type: 'web',
                         param: {}

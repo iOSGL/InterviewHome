@@ -6,7 +6,7 @@
                 <text class="btnTxt iconfont"  @click="back">&#xe609;</text>
                 <text class="btnTxt iconfont"  @click="close">&#xe606;</text>
             </div>
-            <text class="tlt"></text>
+            <text class="tlt">{{webTitle}}</text>
             <div class="right">
                 <text class="btnTxt iconfont" @click="reload">&#xe850;</text>
             </div>
@@ -19,6 +19,7 @@
 <script>
     const navigator = weex.requireModule('navigator');
     const webview = weex.requireModule('webview');
+    var storage = weex.requireModule('storage')
     import util from '../util';
     export default {
         components: {
@@ -26,12 +27,16 @@
         data () {
             return {
                 url0 : 'http://m.you.163.com',
+                webTitle:''
             }
         },
         created (_e) {
             util.initIconFont();
             this.url =  util.getUrlSearch(weex.config.bundleUrl,'weburl') || this.url0;
-           console.log('webPageURL', this.url )
+            storage.getItem('webTitle', event => {
+                this.webTitle = event.data;
+                storage.removeItem('params');
+            })
         },
         computed:{
             isipx : function() {
