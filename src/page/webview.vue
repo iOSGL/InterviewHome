@@ -40,7 +40,10 @@
         },
         methods: {
             back (event) {
-                webview.goBack(this.$refs.wv);
+                // webview.goBack(this.$refs.wv);
+                navigator.pop({
+                    animated:"true"
+                });
             },
             close (event) {
                 navigator.pop({
