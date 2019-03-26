@@ -27,6 +27,7 @@
     var modal = weex.requireModule('modal');
     var globalEvent = weex.requireModule('globalEvent');
     var config = weex.requireModule('NV_ConfigModule'); //获取本地资源路径
+    var app_navigator = weex.requireModule('NV_Navigator'); // 导航至原生页面
     export default {
         name: "Mine",
         data () {
@@ -93,13 +94,14 @@
             rowAction (i) {
                 switch (i) {
                     case 0:
-                        storage.setItem('webTitle', '产品交流');
-                        navigator.push({
-                            url: 'https://www.mianshihome.com/jl.html',
-                            animated: "true",
-                            type: 'web',
-                            param: {},
-                        })
+                        // storage.setItem('webTitle', '产品交流');
+                        // navigator.push({
+                        //     url: 'https://www.mianshihome.com/jl.html',
+                        //     animated: "true",
+                        //     type: 'web',
+                        //     param: {},
+                        // })
+                        app_navigator.pushViewController("StorageViewController",{}, true);
                         break;
                     case 1:
                         um_share.shareEvent({
