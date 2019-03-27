@@ -57,5 +57,9 @@
 
 #define BUNDLE_RESOURCE_URL [NSString stringWithFormat:@"file://%@/bundlejs",[NSBundle mainBundle].bundlePath]
 
+#define DB_SANDBOX_TABLE [NSString stringWithFormat:@"%@/WX.db",DOCUMENT_PATH] // Storing data
+
+#define DB_RESOURCE_TABLE [NSString stringWithFormat:@"file://%@/WX.db",[NSBundle mainBundle].bundlePath] // get data
+
 #define WeakSelf(type) __weak typeof(type) weak##type = type;
 #define StrongSelf(type) __strong typeof(weak##type) strong##type = weak##type;

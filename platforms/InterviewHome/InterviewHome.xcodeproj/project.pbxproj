@@ -10,7 +10,6 @@
 		A9F9AC4D2249D713008694AA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F9AC4C2249D713008694AA /* AppDelegate.m */; };
 		A9F9AC662249D98D008694AA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F9AC622249D98D008694AA /* main.m */; };
 		A9F9AC672249D98D008694AA /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A9F9AC632249D98D008694AA /* Info.plist */; };
-		A9F9AC682249D98D008694AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9F9AC652249D98D008694AA /* Assets.xcassets */; };
 		A9F9AD2E2249DD37008694AA /* WXNavigatorHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F9ACDC2249DD37008694AA /* WXNavigatorHandle.m */; };
 		A9F9AD2F2249DD37008694AA /* WeexSDKManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F9ACDD2249DD37008694AA /* WeexSDKManager.m */; };
 		A9F9AD302249DD37008694AA /* WXImgLoaderDefaultImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F9ACE32249DD37008694AA /* WXImgLoaderDefaultImpl.m */; };
@@ -42,6 +41,12 @@
 		A9F9AD4B2249DD37008694AA /* MethodsUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F9AD2B2249DD37008694AA /* MethodsUtil.m */; };
 		A9F9AD612249F0D1008694AA /* WXViewController+WXNaviBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F9AD602249F0D1008694AA /* WXViewController+WXNaviBar.m */; };
 		A9F9AD632249FF52008694AA /* bundlejs in Resources */ = {isa = PBXBuildFile; fileRef = A9F9AD622249FF52008694AA /* bundlejs */; };
+		A9F9AD66224A0DB2008694AA /* WXDBManger.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F9AD65224A0DB2008694AA /* WXDBManger.m */; };
+		A9F9AD69224A1548008694AA /* WXDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F9AD68224A1548008694AA /* WXDatabase.m */; };
+		A9F9AD6B224A20E8008694AA /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A9F9AD6A224A20E8008694AA /* libsqlite3.0.tbd */; };
+		A9F9AD6E224B0984008694AA /* WXDatabaseModule.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F9AD6D224B0984008694AA /* WXDatabaseModule.m */; };
+		A9F9AD70224B1031008694AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9F9AD6F224B1031008694AA /* Assets.xcassets */; };
+		A9F9AD72224B1CB9008694AA /* WX.db in Resources */ = {isa = PBXBuildFile; fileRef = A9F9AD71224B1CB9008694AA /* WX.db */; };
 		E110E2622BFABB6F27D19F8C /* libPods-InterviewHome.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AAC664E98C64CBD662EF91BB /* libPods-InterviewHome.a */; };
 /* End PBXBuildFile section */
 
@@ -53,7 +58,6 @@
 		A9F9AC4C2249D713008694AA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		A9F9AC622249D98D008694AA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A9F9AC632249D98D008694AA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A9F9AC652249D98D008694AA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A9F9ACD82249DBD6008694AA /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		A9F9ACDC2249DD37008694AA /* WXNavigatorHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXNavigatorHandle.m; sourceTree = "<group>"; };
 		A9F9ACDD2249DD37008694AA /* WeexSDKManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeexSDKManager.m; sourceTree = "<group>"; };
@@ -119,6 +123,15 @@
 		A9F9AD5F2249F0D1008694AA /* WXViewController+WXNaviBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WXViewController+WXNaviBar.h"; sourceTree = "<group>"; };
 		A9F9AD602249F0D1008694AA /* WXViewController+WXNaviBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "WXViewController+WXNaviBar.m"; sourceTree = "<group>"; };
 		A9F9AD622249FF52008694AA /* bundlejs */ = {isa = PBXFileReference; lastKnownFileType = folder; path = bundlejs; sourceTree = SOURCE_ROOT; };
+		A9F9AD64224A0DB2008694AA /* WXDBManger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXDBManger.h; sourceTree = "<group>"; };
+		A9F9AD65224A0DB2008694AA /* WXDBManger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXDBManger.m; sourceTree = "<group>"; };
+		A9F9AD67224A1548008694AA /* WXDatabase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXDatabase.h; sourceTree = "<group>"; };
+		A9F9AD68224A1548008694AA /* WXDatabase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXDatabase.m; sourceTree = "<group>"; };
+		A9F9AD6A224A20E8008694AA /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		A9F9AD6C224B0984008694AA /* WXDatabaseModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXDatabaseModule.h; sourceTree = "<group>"; };
+		A9F9AD6D224B0984008694AA /* WXDatabaseModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXDatabaseModule.m; sourceTree = "<group>"; };
+		A9F9AD6F224B1031008694AA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A9F9AD71224B1CB9008694AA /* WX.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = WX.db; sourceTree = SOURCE_ROOT; };
 		AAC664E98C64CBD662EF91BB /* libPods-InterviewHome.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-InterviewHome.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -127,6 +140,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9F9AD6B224A20E8008694AA /* libsqlite3.0.tbd in Frameworks */,
 				E110E2622BFABB6F27D19F8C /* libPods-InterviewHome.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -137,6 +151,7 @@
 		22D2C8BA54443A2FE8E82759 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A9F9AD6A224A20E8008694AA /* libsqlite3.0.tbd */,
 				AAC664E98C64CBD662EF91BB /* libPods-InterviewHome.a */,
 			);
 			name = Frameworks;
@@ -186,8 +201,9 @@
 		A9F9AC642249D98D008694AA /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				A9F9AD71224B1CB9008694AA /* WX.db */,
+				A9F9AD6F224B1031008694AA /* Assets.xcassets */,
 				A9F9AD622249FF52008694AA /* bundlejs */,
-				A9F9AC652249D98D008694AA /* Assets.xcassets */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -247,6 +263,8 @@
 				A9F9ACEA2249DD37008694AA /* NavigatorModule.m */,
 				A9F9ACEE2249DD37008694AA /* UM_WeexModule.h */,
 				A9F9ACEB2249DD37008694AA /* UM_WeexModule.m */,
+				A9F9AD6C224B0984008694AA /* WXDatabaseModule.h */,
+				A9F9AD6D224B0984008694AA /* WXDatabaseModule.m */,
 			);
 			path = WeexModule;
 			sourceTree = "<group>";
@@ -295,8 +313,8 @@
 		A9F9ACF82249DD37008694AA /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				A9F9ACF92249DD37008694AA /* StorageViewController.m */,
 				A9F9ACFA2249DD37008694AA /* StorageViewController.h */,
+				A9F9ACF92249DD37008694AA /* StorageViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -304,6 +322,10 @@
 		A9F9ACFB2249DD37008694AA /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A9F9AD64224A0DB2008694AA /* WXDBManger.h */,
+				A9F9AD65224A0DB2008694AA /* WXDBManger.m */,
+				A9F9AD67224A1548008694AA /* WXDatabase.h */,
+				A9F9AD68224A1548008694AA /* WXDatabase.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -328,8 +350,8 @@
 		A9F9ACFE2249DD37008694AA /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				A9F9ACFF2249DD37008694AA /* SkillsViewController.m */,
 				A9F9AD002249DD37008694AA /* SkillsViewController.h */,
+				A9F9ACFF2249DD37008694AA /* SkillsViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -347,9 +369,9 @@
 			isa = PBXGroup;
 			children = (
 				A9F9AD052249DD37008694AA /* SkillTableView.h */,
-				A9F9AD062249DD37008694AA /* SkillsTableViewCell.m */,
 				A9F9AD072249DD37008694AA /* SkillTableView.m */,
 				A9F9AD082249DD37008694AA /* SkillsTableViewCell.h */,
+				A9F9AD062249DD37008694AA /* SkillsTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -429,10 +451,10 @@
 		A9F9AD292249DD37008694AA /* Tool */ = {
 			isa = PBXGroup;
 			children = (
-				A9F9AD2A2249DD37008694AA /* AppConfig.m */,
-				A9F9AD2B2249DD37008694AA /* MethodsUtil.m */,
-				A9F9AD2C2249DD37008694AA /* MethodsUtil.h */,
 				A9F9AD2D2249DD37008694AA /* AppConfig.h */,
+				A9F9AD2A2249DD37008694AA /* AppConfig.m */,
+				A9F9AD2C2249DD37008694AA /* MethodsUtil.h */,
+				A9F9AD2B2249DD37008694AA /* MethodsUtil.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -510,8 +532,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A9F9AC682249D98D008694AA /* Assets.xcassets in Resources */,
+				A9F9AD72224B1CB9008694AA /* WX.db in Resources */,
 				A9F9AC672249D98D008694AA /* Info.plist in Resources */,
+				A9F9AD70224B1031008694AA /* Assets.xcassets in Resources */,
 				A9F9AD632249FF52008694AA /* bundlejs in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -593,7 +616,9 @@
 				A9F9AD3E2249DD37008694AA /* BaseNavigationController.m in Sources */,
 				A9F9AD3C2249DD37008694AA /* SkillTableView.m in Sources */,
 				A9F9AD432249DD37008694AA /* DownloadApi.m in Sources */,
+				A9F9AD66224A0DB2008694AA /* WXDBManger.m in Sources */,
 				A9F9AD422249DD37008694AA /* UpdateApi.m in Sources */,
+				A9F9AD69224A1548008694AA /* WXDatabase.m in Sources */,
 				A9F9AD3B2249DD37008694AA /* SkillsTableViewCell.m in Sources */,
 				A9F9AD352249DD37008694AA /* UM_WeexModule.m in Sources */,
 				A9F9AD392249DD37008694AA /* SkillsViewController.m in Sources */,
@@ -601,6 +626,7 @@
 				A9F9AD2E2249DD37008694AA /* WXNavigatorHandle.m in Sources */,
 				A9F9AD382249DD37008694AA /* StorageViewController.m in Sources */,
 				A9F9AD492249DD37008694AA /* BaseRequest.m in Sources */,
+				A9F9AD6E224B0984008694AA /* WXDatabaseModule.m in Sources */,
 				A9F9AC4D2249D713008694AA /* AppDelegate.m in Sources */,
 				A9F9AD3A2249DD37008694AA /* SkillsModel.m in Sources */,
 				A9F9AD4B2249DD37008694AA /* MethodsUtil.m in Sources */,

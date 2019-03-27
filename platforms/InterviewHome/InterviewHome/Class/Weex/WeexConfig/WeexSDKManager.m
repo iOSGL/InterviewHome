@@ -13,6 +13,7 @@
 #import "WXImgLoaderDefaultImpl.h"
 #import "UM_WeexModule.h"
 #import "WXNavigatorHandle.h"
+#import "WXDatabaseModule.h"
 
 @implementation WeexSDKManager
 
@@ -63,6 +64,7 @@
     [WXSDKEngine registerModule:@"NV_Navigator" withClass:NSClassFromString(@"NavigatorModule")];
     [WXSDKEngine registerModule:@"NV_Notice" withClass:NSClassFromString(@"NoticeModule")];
     [WXSDKEngine registerModule:@"NV_ConfigModule" withClass:NSClassFromString(@"ConfigModule")];
+    [WXSDKEngine registerModule:@"GL_DatabaseModule" withClass:NSClassFromString(@"WXDatabaseModule")];
     [WXSDKEngine registerComponent:@"NV_SkillCompent" withClass:NSClassFromString(@"SkillsComponent")];
     
 #ifdef DEBUG
