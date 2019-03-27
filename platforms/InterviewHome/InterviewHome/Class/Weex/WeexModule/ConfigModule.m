@@ -37,7 +37,7 @@ WX_EXPORT_METHOD(@selector(setUserAvatarWithUserID:callBack:))
     UIActionSheet *sheet;
     // 判断是否支持相机
     _userID = [userID copy];
-    self.callBack=callback;
+    self.callBack = callback;
     if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         sheet  = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:nil destructiveButtonTitle:@"拍照" otherButtonTitles:@"从相册选择",@"取消", nil];
     } else {

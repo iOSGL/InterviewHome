@@ -18,6 +18,8 @@
     import detailBottom from '../../components/DetailBottom.vue'
     var navigator = weex.requireModule('navigator');
     var modal = weex.requireModule('modal')
+    var db = weex.requireModule('GL_DatabaseModule');
+
     export default {
         name: "QuestionDetail",
         data () {
@@ -55,6 +57,11 @@
             }
             this.requestData('/skill/questionDetail',param, '');
             this.pageHeight = util.getListHeight(113 + 120, true);
+
+
+            db.selectQuestionsWithClassID("1530667061552", function(e){
+                    console.log(e);
+                })
 
         },
         methods: {

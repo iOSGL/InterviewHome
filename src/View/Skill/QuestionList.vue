@@ -15,10 +15,12 @@
 </template>
 
 <script>
-    import header from '../../components/Header.vue'
-    import util from '../../util';
+    import header from '../../components/Header.vue';
+    import util from '../../util.js';
     var navigator = weex.requireModule('navigator');
-    var storage = weex.requireModule('storage')
+    var storage = weex.requireModule('storage');
+    var db = weex.requireModule('GL_DatabaseModule');
+    
     export default {
         name: "QuestionList",
         data () {
@@ -44,11 +46,19 @@
                 storage.removeItem('params');
             })
             this.pageID = util.getUrlSearch(weex.config.bundleUrl, 'pageID');
-            util.POST('/skill/questionList', {groupId:this.pageID}).then(res => {
-                this.dataArray =  res.data.data;
-            }).catch(res => {
-                this.dataArray =  res.data.data;
+
+
+            var self = this;
+            db.selectQuestionsWithClassID(this.pageID, function(data){
+                self.dataArray = data;
             })
+
+            // util.POST('/skill/questionList', {groupId:this.pageID}).then(res => {
+            //     this.dataArray =  res.data.data;
+                
+            // }).catch(res => {
+            //     this.dataArray =  res.data.data;
+            // })
         },
         methods: {
             back () {
@@ -71,16 +81,13 @@
     }
 </script>
 
-<style>
+<style scoped>
     body{
         margin: 0;
         padding: 0;
         background-color: #f4f4f4;
         color:#333;
     }
-</style>
-
-<style scoped>
     .wrapper{
         position: absolute;
         left: 0;
@@ -125,5 +132,4 @@
         white-space:nowrap;
         lines: 1;
     }
-
 </style>

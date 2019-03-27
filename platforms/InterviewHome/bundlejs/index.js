@@ -3772,6 +3772,8 @@ var modal = weex.requireModule('modal');
 var globalEvent = weex.requireModule('globalEvent');
 var config = weex.requireModule('NV_ConfigModule'); //获取本地资源路径
 var app_navigator = weex.requireModule('NV_Navigator'); // 导航至原生页面
+var db = weex.requireModule('GL_DatabaseModule');
+
 exports.default = {
     name: "Mine",
     data: function data() {
@@ -3843,7 +3845,10 @@ exports.default = {
                     //     type: 'web',
                     //     param: {},
                     // })
-                    app_navigator.pushViewController("StorageViewController", {}, true);
+                    // app_navigator.pushViewController("StorageViewController",{}, true);
+                    db.selectQuestionsWithClassID("1530667061552", function (e) {
+                        console.log(e);
+                    });
                     break;
                 case 1:
                     um_share.shareEvent({
