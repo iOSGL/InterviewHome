@@ -13,6 +13,7 @@
 
 WX_EXPORT_METHOD(@selector(selectAllSubjects:))
 WX_EXPORT_METHOD(@selector(selectQuestionsWithClassID:callBack:))
+WX_EXPORT_METHOD(@selector(selectQuestionDetailWithClassID:index:callBack:))
 
 - (void)selectAllSubjects:(WXKeepAliveCallback)callbak {
     NSArray *array = [[WXDBManger database]seletAllSubjects];
@@ -25,6 +26,12 @@ WX_EXPORT_METHOD(@selector(selectQuestionsWithClassID:callBack:))
     NSArray *array = [[WXDBManger database] selectQuestionsWithClassID:classID];
     if (callback) {
         callback(array, false);
+    }
+}
+
+- (void)selectQuestionDetailWithClassID:(NSString *)classID index:(NSString *)number callBack:(WXKeepAliveCallback)callback {
+    if (callback) {
+        callback([[WXDBManger database]selectQuestionDetail:number classID:classID], false);
     }
 }
 

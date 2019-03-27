@@ -5,7 +5,7 @@
             <template v-for="(obj, index) in dataArray">
                 <cell class="box" v-on:click="didSelectRow(obj)">
                     <div class="box contentView" >
-                        <text class="no-text">{{'第' + (index+1) + '题' }}</text>
+                        <text class="no-text">{{'第' + obj.number + '题' }}</text>
                         <text class="tlt-text">{{obj.questionTitle}}</text>
                     </div>
                 </cell>
@@ -46,19 +46,10 @@
                 storage.removeItem('params');
             })
             this.pageID = util.getUrlSearch(weex.config.bundleUrl, 'pageID');
-
-
             var self = this;
             db.selectQuestionsWithClassID(this.pageID, function(data){
                 self.dataArray = data;
             })
-
-            // util.POST('/skill/questionList', {groupId:this.pageID}).then(res => {
-            //     this.dataArray =  res.data.data;
-                
-            // }).catch(res => {
-            //     this.dataArray =  res.data.data;
-            // })
         },
         methods: {
             back () {
@@ -67,7 +58,7 @@
                 })
             },
             didSelectRow (obj) {
-                let path = '/Skills/QuestionDetail.js?questionID=' + obj._id;
+                let path = '/Skills/QuestionDetail.js?questionID=' + obj.number + 'and' + obj.classId;
                 const url = weex.config.bundleUrl;
                 navigator.push({
                     url: path,

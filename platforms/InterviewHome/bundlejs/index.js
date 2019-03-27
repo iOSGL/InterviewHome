@@ -300,9 +300,9 @@ module.exports = __vue_exports__
 /* weex initialized here, please do not move this line */
 
 var router = __webpack_require__(3);
-var App = __webpack_require__(29);
-var filters = __webpack_require__(38);
-var mixins = __webpack_require__(39);
+var App = __webpack_require__(28);
+var filters = __webpack_require__(37);
+var mixins = __webpack_require__(38);
 
 // register global utility filters.
 Object.keys(filters).forEach(function (key) {
@@ -3772,7 +3772,6 @@ var modal = weex.requireModule('modal');
 var globalEvent = weex.requireModule('globalEvent');
 var config = weex.requireModule('NV_ConfigModule'); //获取本地资源路径
 var app_navigator = weex.requireModule('NV_Navigator'); // 导航至原生页面
-var db = weex.requireModule('GL_DatabaseModule');
 
 exports.default = {
     name: "Mine",
@@ -3845,10 +3844,8 @@ exports.default = {
                     //     type: 'web',
                     //     param: {},
                     // })
-                    // app_navigator.pushViewController("StorageViewController",{}, true);
-                    db.selectQuestionsWithClassID("1530667061552", function (e) {
-                        console.log(e);
-                    });
+                    app_navigator.pushViewController("StorageViewController", {}, true);
+
                     break;
                 case 1:
                     um_share.shareEvent({
@@ -3960,14 +3957,12 @@ var __vue_styles__ = []
 /* styles */
 __vue_styles__.push(__webpack_require__(25)
 )
-__vue_styles__.push(__webpack_require__(26)
-)
 
 /* script */
-__vue_exports__ = __webpack_require__(27)
+__vue_exports__ = __webpack_require__(26)
 
 /* template */
-var __vue_template__ = __webpack_require__(28)
+var __vue_template__ = __webpack_require__(27)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -3998,12 +3993,6 @@ module.exports = __vue_exports__
 
 /***/ }),
 /* 25 */
-/***/ (function(module, exports) {
-
-module.exports = {}
-
-/***/ }),
-/* 26 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -4053,7 +4042,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 27 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4092,6 +4081,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var navigator = weex.requireModule('navigator');
 var storage = weex.requireModule('storage');
+var db = weex.requireModule('GL_DatabaseModule');
+
 exports.default = {
     name: "QuestionList",
     data: function data() {
@@ -4120,11 +4111,18 @@ exports.default = {
             storage.removeItem('params');
         });
         this.pageID = _util2.default.getUrlSearch(weex.config.bundleUrl, 'pageID');
-        _util2.default.POST('/skill/questionList', { groupId: this.pageID }).then(function (res) {
-            _this.dataArray = res.data.data;
-        }).catch(function (res) {
-            _this.dataArray = res.data.data;
+
+        var self = this;
+        db.selectQuestionsWithClassID(this.pageID, function (data) {
+            self.dataArray = data;
         });
+
+        // util.POST('/skill/questionList', {groupId:this.pageID}).then(res => {
+        //     this.dataArray =  res.data.data;
+
+        // }).catch(res => {
+        //     this.dataArray =  res.data.data;
+        // })
     },
 
     methods: {
@@ -4146,7 +4144,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 28 */
+/* 27 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -4186,23 +4184,23 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 29 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(30)
+__vue_styles__.push(__webpack_require__(29)
 )
-__vue_styles__.push(__webpack_require__(31)
+__vue_styles__.push(__webpack_require__(30)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(32)
+__vue_exports__ = __webpack_require__(31)
 
 /* template */
-var __vue_template__ = __webpack_require__(37)
+var __vue_template__ = __webpack_require__(36)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -4232,13 +4230,13 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 30 */
+/* 29 */
 /***/ (function(module, exports) {
 
 module.exports = {}
 
 /***/ }),
-/* 31 */
+/* 30 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -4255,7 +4253,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 32 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4265,7 +4263,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _tableBar = __webpack_require__(33);
+var _tableBar = __webpack_require__(32);
 
 var _tableBar2 = _interopRequireDefault(_tableBar);
 
@@ -4335,21 +4333,21 @@ exports.default = {
 };
 
 /***/ }),
-/* 33 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(34)
+__vue_styles__.push(__webpack_require__(33)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(35)
+__vue_exports__ = __webpack_require__(34)
 
 /* template */
-var __vue_template__ = __webpack_require__(36)
+var __vue_template__ = __webpack_require__(35)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -4379,7 +4377,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 34 */
+/* 33 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -4445,7 +4443,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 35 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4517,7 +4515,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 36 */
+/* 35 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -4554,7 +4552,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 37 */
+/* 36 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -4574,7 +4572,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 38 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4630,7 +4628,7 @@ function unescape(text) {
 }
 
 /***/ }),
-/* 39 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

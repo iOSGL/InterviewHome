@@ -52,7 +52,7 @@
 }
 
 - (void)createQuestionsTable {
-    NSString *table =  @"CREATE TABLE IF NOT EXISTS Questions_Table (q_id integer PRIMARY KEY AUTOINCREMENT NOT NULL,_id varchar(128),questionTitle varchar(128),classId varchar(128),isCollection integer,answer varchar(128),author varchar(128),createTime varchar(128))";
+    NSString *table =  @"CREATE TABLE IF NOT EXISTS Questions_Table (q_id integer PRIMARY KEY AUTOINCREMENT NOT NULL,_id varchar(128),questionTitle varchar(128),classId varchar(128),isCollection integer,answer varchar(128),author varchar(128),createTime varchar(128), number integer)";
     if ([_db open]) {
         BOOL sucess = [_db executeStatements:table];
         if (sucess) {
@@ -116,7 +116,8 @@
         return;
     }
     if ([_db open]) {
-       
+        NSInteger num = 1;
+        NSMutableDictionary *recodDic = [NSMutableDictionary dictionary];
         for (NSInteger i = 0; i < questions.count; i ++) {
             @autoreleasepool {
                 [_db beginTransaction];
@@ -130,7 +131,16 @@
                     NSString *answer = obj[@"answer"];
                     NSString *author = obj[@"author"];
                     NSString *createTime = obj[@"createTime"];
-                    [_db executeUpdate:@"insert into Questions_Table(_id, questionTitle, classId, isCollection, answer, author, createTime) values (?, ?, ?, ?, ?, ?, ?)", _id, questionTitle, classId, @(isCollection), answer, author, createTime];
+                    
+                    if (recodDic[classId]) {
+                        num = [recodDic[classId] integerValue];
+                        num++;
+                    } else {
+                        num = 1;
+                    }
+                    [recodDic setObject:@(num) forKey:classId];
+                    [_db executeUpdate:@"insert into Questions_Table(_id, questionTitle, classId, isCollection, answer, author, createTime, number) values (?, ?, ?, ?, ?, ?, ?, ?)", _id, questionTitle, classId, @(isCollection), answer, author, createTime, @(num)];
+            
                 } @catch (NSException *exception) {
                     isRollBack = true;
                     [self->_db rollback];
@@ -198,6 +208,7 @@
                                    @"answer": [set stringForColumn:@"answer"],
                                    @"author": [set stringForColumn:@"author"],
                                    @"createTime": [set stringForColumn:@"createTime"],
+                                   @"number": @([set intForColumn:@"number"]),
                                   };
             [array addObject:dic];
         }
@@ -205,6 +216,23 @@
     [_db close];
     
     return [array copy];
+}
+
+- (NSDictionary *)selectQuestionDetail:(NSString *)questionID classID:(NSString *)classID {
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    if ([_db open]) {
+        NSString *sql = [NSString stringWithFormat:@"select * from Questions_Table where classId = %@ and number = %@", classID, questionID];
+        FMResultSet *set = [_db executeQuery:sql];
+        while ([set next]) {
+            [dic setObject:@([set intForColumn:@"isCollection"]) forKey:@"isCollection"];
+            [dic setObject:[set stringForColumn:@"questionTitle"] forKey:@"questionTitle"];
+            [dic setObject:[set stringForColumn:@"answer"] forKey:@"answer"];
+            [dic setObject:[set stringForColumn:@"classId"] forKey:@"classId"];
+            [dic setObject:@([set intForColumn:@"number"]) forKey:@"number"];
+        }
+    }
+    [_db close];
+    return [dic copy];
 }
 
 @end

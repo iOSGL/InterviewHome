@@ -18,7 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self configUI];
-//    [self loadData];
+    [self loadData];
 
 }
 
@@ -33,7 +33,7 @@
     self.navigationItem.title = @"测试存储";
     self.view.backgroundColor = [UIColor whiteColor];
     
-    
+    NSLog(@"%@", DB_SANDBOX_TABLE);
     //  创建表
 //    [[WXDBManger database]createAllSubjectTable];
 //    [[WXDBManger database]createAllClassTable];

@@ -2,7 +2,7 @@
     <div v-bind:class="['wrapper', ipx?'w-ipx':'']">
         <navigation-header title="详情" :leftBtn="leftBtn" @leftAction="back"></navigation-header>
         <scroller class="scroller" :style="{height: pageHeight + 'px'}">
-            <!--<top :leftText="className" :collection="collection" :rightTetx="numText" :ID="questionID" :title="title"></top>-->
+            <!-- <top :leftText="className" :collection="collection" :rightTetx="numText" :ID="questionID" :title="title"></top> -->
             <ques-detail :title="title" :content="content"></ques-detail>
         </scroller>
         <bottom @up="upAction" @down="nextAction"></bottom>
@@ -28,7 +28,8 @@
                 leftBtn: {
                     name:'e609;'
                 },
-                questionID: '5b3c2241beba9477358a3760',
+                questionID: '',
+                classID: '',
                 dataGroup: {
 
                 },
@@ -50,19 +51,16 @@
         created () {
             util.initIconFont();
             this.ipx = util.isIpx();
-            this.questionID = util.getUrlSearch(weex.config.bundleUrl, 'questionID');
+            var arg = util.getUrlSearch(weex.config.bundleUrl, 'questionID');
+            var array = arg.split("and");
+            this.questionID = array[0];
+            this.classID = array[1];
             let param = {
                 isSingle: true,
                 groupId: this.questionID,
             }
             this.requestData('/skill/questionDetail',param, '');
             this.pageHeight = util.getListHeight(113 + 120, true);
-
-
-            db.selectQuestionsWithClassID("1530667061552", function(e){
-                    console.log(e);
-                })
-
         },
         methods: {
             back () {
@@ -71,45 +69,56 @@
                 })
             },
             upAction () {
-                let param = {
-                    type: 'prev',
-                    id: this.questionID,
+                this.questionID = (parseInt(this.questionID) - 1) + '';
+                if(parseInt(this.questionID) == 0) {
+                    modal.toast({
+                              message: '已经是第一题了',
+                              duration: 0.3
+                          })
+                          return;
                 }
-                this.requestData('/skill/paging',param, 'upAction');
+                this.requestData('/skill/paging', {}, 'upAction');
             },
             nextAction () {
-                let param = {
-                    type: 'next',
-                    id: this.questionID,
-                }
-                this.requestData('/skill/paging',param, 'nextAction');
+                this.questionID = (parseInt(this.questionID) + 1) + '';
+                this.requestData('/skill/paging', {}, 'nextAction');
             },
             requestData (path,param, type) {
-                util.POST(path, param).then(res => {
-                    this.dataGroup = res.data.data[0];
-                    if (type == 'nextAction' && res.data.data.length == 0)  {
+                var self = this;
+                db.selectQuestionDetailWithClassID(this.classID, this.questionID, function(data){
+                     if (type == 'nextAction' &&  data == "undefined")  {
                           modal.toast({
                               message: '已经是最后一题了',
                               duration: 0.3
                           })
                           return;
-                      } else if (type == 'upAction' && res.data.data.length == 0) {
+                      } else if (type == 'upAction' && data == "undefined") {
+                          self.questionID--;
                           modal.toast({
                               message: '已经是第一题了',
                               duration: 0.3
                           })
                           return;
+                      } else {
+                        self.className = data.className;
+                        self.collection = data.isCollection;
+                        self.title = data.questionTitle;
+                        self.content = '        ' + data.answer;
+                        self.questionID = data.questionID;
+                        self.classID = dara.classID;
                       }
-
-                    this.className = this.dataGroup.className;
-                    this.collection = this.dataGroup.isCollection;
-                    this.numText = '1/200';
-                    this.title = this.dataGroup.questionTitle;
-                    this.content = '        ' + this.dataGroup.answer;
-                    this.questionID = this.dataGroup._id;
-                }).catch( res => {
-                    console.log('失败'  + res);
                 })
+                // util.POST(path, param).then(res => {
+                //     this.dataGroup = res.data.data[0];
+                //     this.className = this.dataGroup.className;
+                //     this.collection = this.dataGroup.isCollection;
+                //     this.numText = '1/200';
+                //     this.title = this.dataGroup.questionTitle;
+                //     this.content = '        ' + this.dataGroup.answer;
+                //     this.questionID = this.dataGroup._id;
+                // }).catch( res => {
+                //     console.log('失败'  + res);
+                // })
             }
         }
 

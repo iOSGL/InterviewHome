@@ -25,6 +25,8 @@
 
 - (NSArray *)selectQuestionsWithClassID:(NSString *)classID;
 
+- (NSDictionary *)selectQuestionDetail:(NSString *)questionID classID:(NSString *)classID;
+
 @end
 
 
