@@ -224,6 +224,13 @@
         NSString *sql = [NSString stringWithFormat:@"select * from Questions_Table where classId = %@ and number = %@", classID, questionID];
         FMResultSet *set = [_db executeQuery:sql];
         while ([set next]) {
+            
+            FMResultSet *childSet = [_db executeQuery:@"select content from Subjects_Table where s_id in (select s_id from Class_Table where pageID = ?)", classID];
+            NSString *className = nil;
+            if ([childSet next]) {
+                className = [childSet stringForColumn:@"content"];
+            }
+            [dic setObject:PARAM_IS_NIL_ERROR(className) forKey:@"className"];
             [dic setObject:@([set intForColumn:@"isCollection"]) forKey:@"isCollection"];
             [dic setObject:[set stringForColumn:@"questionTitle"] forKey:@"questionTitle"];
             [dic setObject:[set stringForColumn:@"answer"] forKey:@"answer"];
