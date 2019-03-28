@@ -38,7 +38,8 @@
                 numText: '',
                 title: '',
                 content: '',
-                pageHeight: 1334
+                pageHeight: 1334,
+                totals: 0
 
             }
         },
@@ -55,11 +56,8 @@
             var array = arg.split("and");
             this.questionID = array[0];
             this.classID = array[1];
-            let param = {
-                isSingle: true,
-                groupId: this.questionID,
-            }
-            this.requestData('/skill/questionDetail',param, '');
+            this.totals = array[2];
+            this.requestData();
             this.pageHeight = util.getListHeight(113 + 120, true);
         },
         methods: {
@@ -70,55 +68,40 @@
             },
             upAction () {
                 this.questionID = (parseInt(this.questionID) - 1) + '';
-                if(parseInt(this.questionID) == 0) {
+                if(parseInt(this.questionID) <= 0) {
+                    this.questionID = '1';
                     modal.toast({
                               message: '已经是第一题了',
                               duration: 0.3
                           })
-                          return;
+                        return;
                 }
-                this.requestData('/skill/paging', {}, 'upAction');
+                this.requestData();
             },
             nextAction () {
-                this.questionID = (parseInt(this.questionID) + 1) + '';
-                this.requestData('/skill/paging', {}, 'nextAction');
-            },
-            requestData (path,param, type) {
-                var self = this;
-                db.selectQuestionDetailWithClassID(this.classID, this.questionID, function(data){
-                     if (type == 'nextAction' &&  data == "undefined")  {
-                          modal.toast({
+                if (parseInt(this.questionID) == parseInt(this.totals)) {
+                    modal.toast({
                               message: '已经是最后一题了',
                               duration: 0.3
-                          })
-                          return;
-                      } else if (type == 'upAction' && data == "undefined") {
-                          self.questionID--;
-                          modal.toast({
-                              message: '已经是第一题了',
-                              duration: 0.3
-                          })
-                          return;
-                      } else {
+                        })
+                         return;
+                    
+                } else {
+                    this.questionID = (parseInt(this.questionID) + 1) + '';
+                }
+                
+                this.requestData();
+            },
+            requestData () {
+                var self = this;
+                db.selectQuestionDetailWithClassID(this.classID, this.questionID, function(data){
                         self.className = data.className;
                         self.collection = data.isCollection;
                         self.title = data.questionTitle;
                         self.content = '        ' + data.answer;
-                        self.questionID = data.questionID;
+                        self.questionID = data.number;
                         self.classID = dara.classID;
-                      }
                 })
-                // util.POST(path, param).then(res => {
-                //     this.dataGroup = res.data.data[0];
-                //     this.className = this.dataGroup.className;
-                //     this.collection = this.dataGroup.isCollection;
-                //     this.numText = '1/200';
-                //     this.title = this.dataGroup.questionTitle;
-                //     this.content = '        ' + this.dataGroup.answer;
-                //     this.questionID = this.dataGroup._id;
-                // }).catch( res => {
-                //     console.log('失败'  + res);
-                // })
             }
         }
 

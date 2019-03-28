@@ -58,7 +58,7 @@
                 })
             },
             didSelectRow (obj) {
-                let path = '/Skills/QuestionDetail.js?questionID=' + obj.number + 'and' + obj.classId;
+                let path = '/Skills/QuestionDetail.js?questionID=' + obj.number + 'and' + obj.classId + 'and' + this.dataArray.length;
                 const url = weex.config.bundleUrl;
                 navigator.push({
                     url: path,
