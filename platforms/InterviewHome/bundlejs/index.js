@@ -3687,8 +3687,7 @@ module.exports = {
     "left": 0,
     "right": 0,
     "top": 0,
-    "bottom": 0,
-    "backgroundColor": "#FFA500"
+    "bottom": 0
   },
   "avater": {
     "width": "120",
@@ -3703,20 +3702,17 @@ module.exports = {
     "fontSize": "26",
     "marginTop": "15"
   },
-  "space": {
-    "height": "100"
-  },
   "cell": {
-    "height": "88",
+    "flexDirection": "row",
+    "justifyContent": "space-between",
+    "alignItems": "center",
+    "paddingLeft": "20",
+    "paddingRight": "20",
     "borderBottomWidth": "1",
     "borderStyle": "solid",
     "borderBottomColor": "#eeeeee",
     "backgroundColor": "#FFFFFF",
-    "justifyContent": "space-between",
-    "paddingLeft": "20",
-    "paddingRight": "20",
-    "flexDirection": "row",
-    "alignItems": "center"
+    "height": "88"
   },
   "tlt": {
     "color": "#333333",
@@ -3724,6 +3720,12 @@ module.exports = {
   },
   "right-arrow": {
     "fontSize": "30"
+  },
+  "fav-container": {
+    "marginTop": "80"
+  },
+  "list-class": {
+    "marginTop": "20"
   }
 }
 
@@ -3745,6 +3747,15 @@ var _util2 = _interopRequireDefault(_util);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var navigator = weex.requireModule('navigator'); //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3894,7 +3905,15 @@ exports.default = {
                     });
                     break;
             }
-        }
+        },
+        myfav: function myfav() {
+            navigator.push({
+                url: '/Mine/Collection.js',
+                animated: 'true',
+                type: 'weex'
+            }, function (event) {});
+        },
+        myreply: function myreply() {}
     }
 };
 
@@ -3913,7 +3932,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: ["header-bg"],
     attrs: {
       "resize": "cover",
-      "src": ""
+      "src": "https://mianshizhijia.oss-cn-hangzhou.aliyuncs.com/resourse_image/1.jpeg"
     }
   }), _c('image', {
     staticClass: ["avater"],
@@ -3927,8 +3946,30 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _c('text', {
     staticClass: ["nickname"]
   }, [_vm._v(_vm._s(_vm.user.nickname ? _vm.user.nickname : '点击头像登陆'))])]), _c('div', {
-    staticClass: ["space"]
-  }), _c('div', {
+    staticClass: ["fav-container"]
+  }, [_c('div', {
+    staticClass: ["cell"],
+    on: {
+      "click": function($event) {
+        _vm.myfav()
+      }
+    }
+  }, [_c('text', {
+    staticClass: ["tlt"]
+  }, [_vm._v("我的收藏")]), _c('text', {
+    staticClass: ["right-arrow", "iconfont"]
+  }, [_vm._v("")])]), _c('div', {
+    staticClass: ["cell"],
+    on: {
+      "click": function($event) {
+        _vm.myreply()
+      }
+    }
+  }, [_c('text', {
+    staticClass: ["tlt"]
+  }, [_vm._v("我的申请")]), _c('text', {
+    staticClass: ["right-arrow", "iconfont"]
+  }, [_vm._v("")])])]), _c('div', {
     staticClass: ["list-class"]
   }, [_vm._l((_vm.list), function(title, index) {
     return [_c('div', {
@@ -4111,18 +4152,10 @@ exports.default = {
             storage.removeItem('params');
         });
         this.pageID = _util2.default.getUrlSearch(weex.config.bundleUrl, 'pageID');
-
         var self = this;
         db.selectQuestionsWithClassID(this.pageID, function (data) {
             self.dataArray = data;
         });
-
-        // util.POST('/skill/questionList', {groupId:this.pageID}).then(res => {
-        //     this.dataArray =  res.data.data;
-
-        // }).catch(res => {
-        //     this.dataArray =  res.data.data;
-        // })
     },
 
     methods: {
@@ -4132,7 +4165,7 @@ exports.default = {
             });
         },
         didSelectRow: function didSelectRow(obj) {
-            var path = '/Skills/QuestionDetail.js?questionID=' + obj._id;
+            var path = '/Skills/QuestionDetail.js?questionID=' + obj.number + 'and' + obj.classId + 'and' + this.dataArray.length;
             var url = weex.config.bundleUrl;
             navigator.push({
                 url: path,
@@ -4176,7 +4209,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: ["box", "contentView"]
     }, [_c('text', {
       staticClass: ["no-text"]
-    }, [_vm._v(_vm._s('第' + (index + 1) + '题'))]), _c('text', {
+    }, [_vm._v(_vm._s('第' + obj.number + '题'))]), _c('text', {
       staticClass: ["tlt-text"]
     }, [_vm._v(_vm._s(obj.questionTitle))])])])]
   })], 2)], 1)

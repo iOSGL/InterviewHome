@@ -242,4 +242,40 @@
     return [dic copy];
 }
 
+- (NSInteger)updateCollection:(NSString *)questionID  classID:(NSString *)classID status:(NSInteger)status {
+    NSInteger isSucess = 0;
+    if ([_db open]) {
+        NSString *sql = [NSString stringWithFormat:@"update Questions_Table set isCollection = %zi where classId = %@ and number = %@ ", status, classID, questionID];
+        if ([_db executeUpdate:sql]) {
+            isSucess = 1;
+        }
+    }
+    [_db close];
+    return isSucess;
+    
+}
+
+- (NSArray *)selectAllCollertion {
+     NSMutableArray *array = [NSMutableArray array];
+    if ([_db open]) {
+        FMResultSet *set = [_db executeQuery:@"select * from Questions_Table where isCollection = 1"];
+        while ([set next]) {
+            NSDictionary *dic = @{
+                                  @"q_id": @([set intForColumn:@"q_id"]),
+                                  @"_id": [set stringForColumn:@"_id"],
+                                  @"questionTitle": [set stringForColumn:@"questionTitle"],
+                                  @"classId": [set stringForColumn:@"classId"],
+                                  @"isCollection": @([set intForColumn:@"isCollection"]),
+                                  @"answer": [set stringForColumn:@"answer"],
+                                  @"author": [set stringForColumn:@"author"],
+                                  @"createTime": [set stringForColumn:@"createTime"],
+                                  @"number": @([set intForColumn:@"number"]),
+                                  };
+            [array addObject:dic];
+        }
+    }
+    [_db class];
+    return [array copy];
+}
+
 @end

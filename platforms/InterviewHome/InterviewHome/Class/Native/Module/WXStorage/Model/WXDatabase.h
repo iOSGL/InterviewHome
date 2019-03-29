@@ -27,6 +27,10 @@
 
 - (NSDictionary *)selectQuestionDetail:(NSString *)questionID classID:(NSString *)classID;
 
+- (NSInteger)updateCollection:(NSString *)questionID  classID:(NSString *)classID status:(NSInteger)status;
+
+- (NSArray *)selectAllCollertion;
+
 @end
 
 

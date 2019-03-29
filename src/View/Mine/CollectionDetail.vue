@@ -5,8 +5,6 @@
             <top :leftText="className" :collection="collection" :rightTetx="numText" :ID="questionID" :title="title" :classID="classID"></top>
             <ques-detail :title="title" :content="content"></ques-detail>
         </scroller>
-        <bottom @up="upAction" @down="nextAction"></bottom>
-
     </div>
 </template>
 
@@ -15,7 +13,6 @@
     import header from '../../components/Header.vue';
     import detailTop from '../../components/DetailTop.vue'
     import detailContent from '../../components/DetailContent.vue'
-    import detailBottom from '../../components/DetailBottom.vue'
     var navigator = weex.requireModule('navigator');
     var modal = weex.requireModule('modal')
     var db = weex.requireModule('GL_DatabaseModule');
@@ -46,8 +43,7 @@
         components: {
             'navigation-header': header,
             'top': detailTop,
-            'ques-detail': detailContent,
-            'bottom': detailBottom
+            'ques-detail': detailContent
         },
         created () {
             util.initIconFont();
@@ -65,32 +61,6 @@
                 navigator.pop({
                     animated: 'true',
                 })
-            },
-            upAction () {
-                this.questionID = (parseInt(this.questionID) - 1) + '';
-                if(parseInt(this.questionID) <= 0) {
-                    this.questionID = '1';
-                    modal.toast({
-                              message: '已经是第一题了',
-                              duration: 0.3
-                          })
-                        return;
-                }
-                this.requestData();
-            },
-            nextAction () {
-                if (parseInt(this.questionID) == parseInt(this.totals)) {
-                    modal.toast({
-                              message: '已经是最后一题了',
-                              duration: 0.3
-                        })
-                         return;
-                    
-                } else {
-                    this.questionID = (parseInt(this.questionID) + 1) + '';
-                }
-                
-                this.requestData();
             },
             requestData () {
                 var self = this;

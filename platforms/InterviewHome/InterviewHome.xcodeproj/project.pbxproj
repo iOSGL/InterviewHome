@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A9BBBDF1224CC8A80057F416 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = A9BBBDF0224CC8A80057F416 /* logo.png */; };
+		A9BBBDF8224CCD3E0057F416 /* collection.png in Resources */ = {isa = PBXBuildFile; fileRef = A9BBBDF6224CCD3E0057F416 /* collection.png */; };
+		A9BBBDF9224CCD3E0057F416 /* nocollection.png in Resources */ = {isa = PBXBuildFile; fileRef = A9BBBDF7224CCD3E0057F416 /* nocollection.png */; };
 		A9F9AC4D2249D713008694AA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F9AC4C2249D713008694AA /* AppDelegate.m */; };
 		A9F9AC662249D98D008694AA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F9AC622249D98D008694AA /* main.m */; };
 		A9F9AC672249D98D008694AA /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A9F9AC632249D98D008694AA /* Info.plist */; };
@@ -53,6 +56,9 @@
 /* Begin PBXFileReference section */
 		1F869F7339B41A6660C386B8 /* Pods-InterviewHome.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InterviewHome.debug.xcconfig"; path = "Target Support Files/Pods-InterviewHome/Pods-InterviewHome.debug.xcconfig"; sourceTree = "<group>"; };
 		46350496F7D02265D5D8EA4C /* Pods-InterviewHome.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InterviewHome.release.xcconfig"; path = "Target Support Files/Pods-InterviewHome/Pods-InterviewHome.release.xcconfig"; sourceTree = "<group>"; };
+		A9BBBDF0224CC8A80057F416 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		A9BBBDF6224CCD3E0057F416 /* collection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = collection.png; sourceTree = "<group>"; };
+		A9BBBDF7224CCD3E0057F416 /* nocollection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nocollection.png; sourceTree = "<group>"; };
 		A9F9AC482249D713008694AA /* InterviewHome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InterviewHome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9F9AC4B2249D713008694AA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A9F9AC4C2249D713008694AA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -157,6 +163,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A9BBBDEF224CC8A80057F416 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				A9BBBDF6224CCD3E0057F416 /* collection.png */,
+				A9BBBDF7224CCD3E0057F416 /* nocollection.png */,
+				A9BBBDF0224CC8A80057F416 /* logo.png */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
 		A9F9AC3F2249D713008694AA = {
 			isa = PBXGroup;
 			children = (
@@ -201,6 +217,7 @@
 		A9F9AC642249D98D008694AA /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				A9BBBDEF224CC8A80057F416 /* images */,
 				A9F9AD71224B1CB9008694AA /* WX.db */,
 				A9F9AD6F224B1031008694AA /* Assets.xcassets */,
 				A9F9AD622249FF52008694AA /* bundlejs */,
@@ -533,6 +550,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A9F9AD72224B1CB9008694AA /* WX.db in Resources */,
+				A9BBBDF8224CCD3E0057F416 /* collection.png in Resources */,
+				A9BBBDF9224CCD3E0057F416 /* nocollection.png in Resources */,
+				A9BBBDF1224CC8A80057F416 /* logo.png in Resources */,
 				A9F9AC672249D98D008694AA /* Info.plist in Resources */,
 				A9F9AD70224B1031008694AA /* Assets.xcassets in Resources */,
 				A9F9AD632249FF52008694AA /* bundlejs in Resources */,

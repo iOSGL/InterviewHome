@@ -1,7 +1,8 @@
 <template>
     <div class="wrapper">
         <text class="left-text">{{leftText}}</text>
-        <text :class="['image-text', 'iconfont', collection?'selectimage':'']" @click="isCollection(ID,title)">&#xe66c;</text>
+        <!-- <text :class="['image-text', 'iconfont', collection?'selectimage':'']" @click="isCollection(ID,title)">&#xe66c;</text> -->
+        <image class="image" @click="isCollection(ID, classID)" :src="collection?'local://collection.png':'local://nocollection.png'" style="width:64px;height:64px" resize="cover"></image>
         <text class="right-text">{{rightTetx}}</text>
     </div>
 </template>
@@ -9,9 +10,11 @@
 <script>
     import util from '../util.js'
     var modal = weex.requireModule('modal');
+    var db = weex.requireModule('GL_DatabaseModule');
+
     export default {
         name: "DetailTop",
-        props: ['leftText', 'collection', 'rightTetx', 'ID', 'title'],
+        props: ['leftText', 'collection', 'rightTetx', 'ID', 'title', 'classID'],
         data () {
             return {
                 userID: '',
@@ -24,49 +27,29 @@
             });
         },
         methods: {
-            isCollection (i, t) {
-                if (this.collection == false) {
-                    util.POST(':8080/mianshi/rest/userbase/addcollection', {userID:this.userID, questId:i, title:t}).then(res=> {
-                        if (res.data.code == '200') {
-                            this.collection = true;
+            isCollection (i,e) {
+                var self = this;
+                db.updateCollectionStatus(i, e, !this.collection, function(sucess){
+                    if(sucess) {
+                        self.collection = !self.collection;
+                        if(self.collection) {
                             modal.toast({
                                 message: '收藏成功',
                                 duration: 0.3
                             })
                         } else {
                             modal.toast({
-                                message: res.data.msg,
-                                duration: 0.3
-                            })
-                        }
-                    }).catch(res=> {
-                        modal.toast({
-                            message: res.data.msg,
-                            duration: 0.3
-                        })
-                    })
-                } else  {
-                    util.POST(':8080/mianshi/rest/userbase/delcollection', {userID:this.userID, questId:i}).then(res=> {
-                        if (res.data.code == '200') {
-                            this.collection = false;
-                            modal.toast({
                                 message: '取消收藏',
                                 duration: 0.3
                             })
-                        } else {
-                            modal.toast({
-                                message: res.data.msg,
+                        }
+                    } else {
+                        modal.toast({
+                                message: '操作失败',
                                 duration: 0.3
                             })
-                        }
-                    }).catch(res=> {
-                        modal.toast({
-                            message: res.data.msg,
-                            duration: 0.3
-                        })
-                    })
-                }
-
+                    }
+                });
             }
 
         }
@@ -76,11 +59,12 @@
 <style scoped>
     .wrapper {
         margin-top: 0px;
-        height: 100px;
+        display: flex;
+        flex-direction: row;
         background-color: #eee;
         justify-content: space-between;
-        flex-direction: row;
         align-items: center;
+        height: 100px;
     }
     .iconfont {
         font-family:iconfont;

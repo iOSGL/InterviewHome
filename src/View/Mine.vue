@@ -2,11 +2,20 @@
     <div :class="['wrapper', isIpx&&isIpx()?'w-ipx':'']">
         <scroller class="scroller">
             <div class="top-dev">
-                <image class="header-bg" resize="cover" src=""></image>
+                <image class="header-bg" resize="cover" src="https://mianshizhijia.oss-cn-hangzhou.aliyuncs.com/resourse_image/1.jpeg"></image>
                 <image class="avater" v-on:click="avaterAction" :src="user.pic" resize="cover"></image>
                 <text class="nickname">{{user.nickname? user.nickname:'点击头像登陆'}}</text>
             </div>
-            <div class="space"></div>
+            <div class="fav-container">
+                <div class="cell" @click="myfav()">
+                    <text class="tlt">我的收藏</text>
+                    <text class="right-arrow iconfont">&#xe62d;</text>
+                </div>
+                <div class="cell" @click="myreply()">
+                    <text class="tlt">我的申请</text>
+                    <text class="right-arrow iconfont">&#xe62d;</text>
+                </div>
+            </div>
             <div class="list-class">
                 <template v-for="(title, index) in list">
                     <div class="cell" @click="rowAction(index)">
@@ -156,6 +165,19 @@
                         })
                         break;
                 }
+            },
+            myfav() {  
+                navigator.push({
+                        url: '/Mine/Collection.js',
+                        animated: 'true',
+                        type: 'weex'
+                        }, event => {
+
+                    }
+                );
+            },
+            myreply() {
+
             }
         }
     }
@@ -167,9 +189,6 @@
     }
     .iconfont {
         font-family:iconfont;
-    }
-    .scroller {
-
     }
     .top-dev {
         flex-direction: column;
@@ -185,7 +204,6 @@
         right: 0;
         top: 0;
         bottom: 0;
-        background-color: orange;
     }
     .avater {
         width: 120px;
@@ -200,21 +218,17 @@
         font-size: 26px;
         margin-top: 15px;
     }
-    .space {
-        height: 100px;
-    }
     .cell {
-        height: 88px;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding-left: 20px;
+        padding-right: 20px;
         border-bottom-width: 1px;
         border-style: solid;
         border-bottom-color: #eee;
         background-color: white;
-        justify-content: center;
-        padding-left: 20px;
-        padding-right: 20px;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
+        height: 88px;
     }
     .tlt {
         color: #333;
@@ -222,5 +236,11 @@
     }
     .right-arrow {
         font-size: 30px;
+    }
+    .fav-container{
+        margin-top: 80px;
+    }
+    .list-class{
+        margin-top: 20px;
     }
 </style>
