@@ -30,8 +30,8 @@
 
 <script>
 
-  import tableBar from './components/tableBar'
-  import utils from './util'
+  import tableBar from './components/tableBar.vue'
+  import utils from './util.js'
   var NV_Notice = weex.requireModule('NV_Notice');
 
   export default {

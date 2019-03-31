@@ -104,15 +104,14 @@
             rowAction (i) {
                 switch (i) {
                     case 0:
-                        // storage.setItem('webTitle', '产品交流');
-                        // navigator.push({
-                        //     url: 'https://www.mianshihome.com/jl.html',
-                        //     animated: "true",
-                        //     type: 'web',
-                        //     param: {},
-                        // })
-                        app_navigator.pushViewController("StorageViewController",{}, true);
-                        
+                        storage.setItem('webTitle', '产品交流');
+                        navigator.push({
+                            url: 'https://www.mianshihome.com/jl.html',
+                            animated: "true",
+                            type: 'web',
+                            param: {},
+                        })
+                        // app_navigator.pushViewController("StorageViewController",{}, true); 跳转原生界面调试存储
                         break;
                     case 1:
                         um_share.shareEvent({

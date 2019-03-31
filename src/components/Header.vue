@@ -40,8 +40,8 @@
         top: 0;
         left: 0;
         right: 0;
-        height: 114px;
-        padding-top: 44px;
+        height: 128px;
+        padding-top: 40px;
         background-color: #fafafa;
         opacity: .99;
         z-index: 101;
@@ -52,8 +52,8 @@
         border-bottom-color: #d9d9d9;
     }
     .w-ipx{
-        height: 154px;
-        padding-top: 84px;
+        height: 168px;
+        padding-top: 80px;
     }
     .tlt {
         flex: 1;

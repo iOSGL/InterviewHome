@@ -300,9 +300,9 @@ module.exports = __vue_exports__
 /* weex initialized here, please do not move this line */
 
 var router = __webpack_require__(3);
-var App = __webpack_require__(28);
-var filters = __webpack_require__(37);
-var mixins = __webpack_require__(38);
+var App = __webpack_require__(20);
+var filters = __webpack_require__(29);
+var mixins = __webpack_require__(30);
 
 // register global utility filters.
 Object.keys(filters).forEach(function (key) {
@@ -335,28 +335,22 @@ var _Skils = __webpack_require__(12);
 
 var _Skils2 = _interopRequireDefault(_Skils);
 
-var _Forum = __webpack_require__(16);
-
-var _Forum2 = _interopRequireDefault(_Forum);
-
-var _Mine = __webpack_require__(20);
+var _Mine = __webpack_require__(16);
 
 var _Mine2 = _interopRequireDefault(_Mine);
 
-var _QuestionList = __webpack_require__(24);
-
-var _QuestionList2 = _interopRequireDefault(_QuestionList);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// import Forum from '@/View/Forum';  待用 
 
 /*global Vue*/
 Vue.use(_vueRouter2.default);
 
 module.exports = new _vueRouter2.default({
-    routes: [
-    // {path: '/', redirect: '/Trending'},
-    // {path: '/Trending', name: 'Trending', component: Trending},
-    { path: '/', redirect: '/Skils' }, { path: '/Skils', name: 'Skils', component: _Skils2.default }, { path: '/Forum', name: 'Forum', component: _Forum2.default }, { path: '/Mine', name: 'Mine', component: _Mine2.default }, { path: '/QuestionList', name: 'QuestionList', component: _QuestionList2.default }]
+    routes: [{ path: '/', redirect: '/Trending' }, { path: '/Trending', name: 'Trending', component: _Trending2.default }, { path: '/Skils', name: 'Skils', component: _Skils2.default }, { path: '/Mine', name: 'Mine', component: _Mine2.default
+        // {path: '/', redirect: '/Skils'},
+        // {path: '/Forum', name: 'Forum', component: Forum},
+    }]
 });
 
 /***/ }),
@@ -3040,42 +3034,64 @@ module.exports = __vue_exports__
 
 module.exports = {
   "wrapper": {
-    "backgroundColor": "#eeeeee"
+    "marginTop": "128",
+    "marginBottom": "98"
   },
   "w-ipx": {
-    "marginTop": "40",
-    "marginBottom": "50"
-  },
-  "bg-image": {
-    "position": "absolute",
-    "top": "113",
-    "bottom": "90",
-    "left": 0,
-    "right": 0
-  },
-  "list": {
-    "marginTop": "113",
-    "marginBottom": "90"
+    "marginTop": "168",
+    "marginBottom": "166"
   },
   "panel": {
-    "flex": 1,
+    "height": "200",
+    "marginBottom": "10",
     "flexDirection": "column",
+    "backgroundColor": "#FFFFFF"
+  },
+  "topContainer": {
+    "flexDirection": "row",
+    "borderBottomWidth": 1,
+    "borderBottomStyle": "solid",
+    "borderBottomColor": "#eeeeee",
+    "height": "150",
+    "width": "750"
+  },
+  "topContainer-left": {
     "justifyContent": "center",
     "alignItems": "center",
-    "height": "300",
-    "marginLeft": "75",
-    "marginRight": "75",
-    "marginTop": "35",
-    "marginBottom": "35",
-    "backgroundColor": "#FFA500",
-    "borderRadius": "15",
-    "borderStyle": "solid",
-    "borderWidth": "1",
-    "borderColor": "#eeeeee"
+    "width": "150",
+    "height": "150"
   },
-  "content-title": {
-    "fontSize": "36",
-    "color": "#FFFFFF"
+  "logo": {
+    "width": "120",
+    "height": "120"
+  },
+  "title-text": {
+    "marginTop": "20",
+    "paddingRight": "30",
+    "line": 1
+  },
+  "topContainer-right": {
+    "flex": 1,
+    "flexDirection": "column"
+  },
+  "company-view": {
+    "flexDirection": "row",
+    "justifyContent": "space-between",
+    "alignItems": "center",
+    "paddingRight": "30"
+  },
+  "centerContainer": {
+    "alignItems": "center",
+    "flexDirection": "row",
+    "width": "750",
+    "height": 50,
+    "backgroundColor": "#FFFFFF"
+  },
+  "centerContainer-right": {
+    "flexDirection": "row",
+    "justifyContent": "flex-end",
+    "alignItems": "center",
+    "flex": 1
   }
 }
 
@@ -3134,32 +3150,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 var navigator = weex.requireModule('navigator');
 var um_module = weex.requireModule('UM_Event');
@@ -3173,16 +3163,15 @@ exports.default = {
     },
     data: function data() {
         return {
-            pageBg: '',
-            listItem: []
+            jobList: [],
+            isIpx: ''
         };
     },
     created: function created() {
-        var _this = this;
-
-        this.POST('/trend/home').then(function (res) {
-            _this.pageBg = res.data.data.pageBg;
-            _this.listItem = res.data.data.listItem;
+        this.isIpx = _util2.default.isIpx();
+        var self = this;
+        this.POST('/homeJob').then(function (res) {
+            self.jobList = res.data.data.data.jobs;
         }).catch(function (res) {});
     },
 
@@ -3193,6 +3182,19 @@ exports.default = {
                 animated: 'true',
                 type: 'web'
             });
+        },
+        setDate: function setDate(t) {
+            if (!t) return "短信通知";
+            var nowDate = getDate(t);
+            var month = nowDate.getMonth();
+            var weak = nowDate.getDay();
+            var day = nowDate.getDate();
+            var hours = nowDate.getHours();
+            var mintutes = nowDate.getMinutes();
+            return month + '月' + day + '日周(' + weak + ')' + hours + ':' + mintutes;
+        },
+        getMoney: function getMoney(e, f) {
+            return e / 1000 + '-' + f / 1000 + 'k';
         }
     }
 };
@@ -3207,8 +3209,8 @@ module.exports = {
     "top": 0,
     "left": 0,
     "right": 0,
-    "height": "114",
-    "paddingTop": "44",
+    "height": "128",
+    "paddingTop": "40",
     "backgroundColor": "#fafafa",
     "opacity": 0.99,
     "zIndex": 101,
@@ -3219,8 +3221,8 @@ module.exports = {
     "borderBottomColor": "#d9d9d9"
   },
   "w-ipx": {
-    "height": "154",
-    "paddingTop": "84"
+    "height": "168",
+    "paddingTop": "80"
   },
   "tlt": {
     "flex": 1,
@@ -3335,20 +3337,17 @@ module.exports.render._withStripped = true
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    class: ['wrapper', _vm.isIpx && _vm.isIpx() ? 'w-ipx' : '']
+    class: ['wrapper', _vm.isIpx ? 'w-ipx' : '']
   }, [_c('navigation-header', {
     attrs: {
-      "title": "趋势"
-    }
-  }), _c('image', {
-    staticClass: ["bg-image"],
-    attrs: {
-      "src": _vm.pageBg,
-      "resize": "cover"
+      "title": "职位"
     }
   }), _c('list', {
-    staticClass: ["list"]
-  }, _vm._l((_vm.listItem), function(obj) {
+    staticClass: ["list"],
+    attrs: {
+      "showScrollbar": "false"
+    }
+  }, _vm._l((_vm.jobList), function(e) {
     return _c('cell', {
       staticClass: ["cell"],
       appendAsTree: true,
@@ -3356,17 +3355,63 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "append": "tree"
       }
     }, [_c('div', {
-      staticClass: ["panel"],
-      on: {
-        "click": function($event) {
-          _vm.jumpWeb(obj.webUrl ? obj.webUrl : 'https://m.you.163.com/act/pub/DxDpYNfbBd.html')
-        }
+      staticClass: ["panel"]
+    }, [_c('div', {
+      staticClass: ["topContainer"]
+    }, [_c('div', {
+      staticClass: ["topContainer-left"]
+    }, [_c('image', {
+      staticClass: ["logo"],
+      attrs: {
+        "src": e.company.logo,
+        "resize": "stretch"
       }
+    })]), _c('div', {
+      staticClass: ["topContainer-right"]
     }, [_c('text', {
-      staticClass: ["content-title"]
-    }, [_vm._v(_vm._s(obj.title))])])])
+      staticClass: ["title-text"]
+    }, [_vm._v(_vm._s(e.title))]), _c('div', {
+      staticClass: ["company-view"]
+    }, [_c('text', {
+      staticStyle: {
+        fontSize: "22px"
+      }
+    }, [_vm._v(_vm._s(e.company.name))]), _c('text', {
+      staticStyle: {
+        fontSize: "22rpx",
+        color: "red"
+      }
+    }, [_vm._v(_vm._s(_vm.getMoney(e.salary.total.lb, e.salary.total.ub)))])]), _c('text', {
+      staticStyle: {
+        fontSize: "24rpx"
+      }
+    }, [_vm._v(_vm._s(e.district + "-" + e.eduRequire + '-经验不限'))])])]), _c('div', {
+      staticClass: ["centerContainer"]
+    }, [_c('text', {
+      staticStyle: {
+        fontSize: "20px",
+        color: "#999",
+        marginLeft: "30px"
+      }
+    }, [_vm._v("面试时间:")]), _c('text', {
+      staticStyle: {
+        fontSize: "20px",
+        color: "#DEAD73",
+        marginLeft: "10px"
+      }
+    }, [_vm._v(_vm._s(_vm.setDate(e.ivDate)))]), _vm._m(0, true)])])])
   }))], 1)
-},staticRenderFns: []}
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["centerContainer-right"]
+  }, [_c('text', {
+    staticStyle: {
+      fontSize: "20px",
+      color: "#1f8461",
+      marginRight: "30px"
+    }
+  }, [_vm._v("电话沟通")])])
+}]}
 module.exports.render._withStripped = true
 
 /***/ }),
@@ -3562,91 +3607,6 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "/Users/leiMac/Desktop/面试之家/app/src/View/Forum.vue"
-__vue_options__.render = __vue_template__.render
-__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-2a9ae3f6"
-__vue_options__.style = __vue_options__.style || {}
-__vue_styles__.forEach(function (module) {
-  for (var name in module) {
-    __vue_options__.style[name] = module[name]
-  }
-})
-if (typeof __register_static_styles__ === "function") {
-  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
-}
-
-module.exports = __vue_exports__
-
-
-/***/ }),
-/* 17 */
-/***/ (function(module, exports) {
-
-module.exports = {}
-
-/***/ }),
-/* 18 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-//
-//
-//
-//
-
-exports.default = {
-    name: "Forum"
-};
-
-/***/ }),
-/* 19 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (false),
-      expression: "false"
-    }]
-  }, [_c('text', [_vm._v("show")])])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-
-/***/ }),
-/* 20 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __vue_exports__, __vue_options__
-var __vue_styles__ = []
-
-/* styles */
-__vue_styles__.push(__webpack_require__(21)
-)
-
-/* script */
-__vue_exports__ = __webpack_require__(22)
-
-/* template */
-var __vue_template__ = __webpack_require__(23)
-__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-if (
-  typeof __vue_exports__.default === "object" ||
-  typeof __vue_exports__.default === "function"
-) {
-if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-__vue_options__ = __vue_exports__ = __vue_exports__.default
-}
-if (typeof __vue_options__ === "function") {
-  __vue_options__ = __vue_options__.options
-}
 __vue_options__.__file = "/Users/leiMac/Desktop/面试之家/app/src/View/Mine.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
@@ -3665,7 +3625,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 21 */
+/* 17 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -3730,7 +3690,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 22 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3848,15 +3808,14 @@ exports.default = {
         rowAction: function rowAction(i) {
             switch (i) {
                 case 0:
-                    // storage.setItem('webTitle', '产品交流');
-                    // navigator.push({
-                    //     url: 'https://www.mianshihome.com/jl.html',
-                    //     animated: "true",
-                    //     type: 'web',
-                    //     param: {},
-                    // })
-                    app_navigator.pushViewController("StorageViewController", {}, true);
-
+                    storage.setItem('webTitle', '产品交流');
+                    navigator.push({
+                        url: 'https://www.mianshihome.com/jl.html',
+                        animated: "true",
+                        type: 'web',
+                        param: {}
+                    });
+                    // app_navigator.pushViewController("StorageViewController",{}, true); 跳转原生界面调试存储
                     break;
                 case 1:
                     um_share.shareEvent({
@@ -3918,7 +3877,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 23 */
+/* 19 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -3989,251 +3948,23 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 24 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(25)
+__vue_styles__.push(__webpack_require__(21)
+)
+__vue_styles__.push(__webpack_require__(22)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(26)
+__vue_exports__ = __webpack_require__(23)
 
 /* template */
-var __vue_template__ = __webpack_require__(27)
-__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-if (
-  typeof __vue_exports__.default === "object" ||
-  typeof __vue_exports__.default === "function"
-) {
-if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-__vue_options__ = __vue_exports__ = __vue_exports__.default
-}
-if (typeof __vue_options__ === "function") {
-  __vue_options__ = __vue_options__.options
-}
-__vue_options__.__file = "/Users/leiMac/Desktop/面试之家/app/src/View/Skill/QuestionList.vue"
-__vue_options__.render = __vue_template__.render
-__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-1ca0f686"
-__vue_options__.style = __vue_options__.style || {}
-__vue_styles__.forEach(function (module) {
-  for (var name in module) {
-    __vue_options__.style[name] = module[name]
-  }
-})
-if (typeof __register_static_styles__ === "function") {
-  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
-}
-
-module.exports = __vue_exports__
-
-
-/***/ }),
-/* 25 */
-/***/ (function(module, exports) {
-
-module.exports = {
-  "wrapper": {
-    "position": "absolute",
-    "left": 0,
-    "right": 0,
-    "bottom": 0,
-    "top": 0
-  },
-  "w-ipx": {
-    "marginTop": "40",
-    "marginBottom": "0"
-  },
-  "list": {
-    "marginTop": "113",
-    "marginBottom": "0"
-  },
-  "box": {
-    "height": "110"
-  },
-  "contentView": {
-    "flexDirection": "column",
-    "borderBottomWidth": "1",
-    "borderBottomColor": "#eeeeee",
-    "borderBottomStyle": "solid"
-  },
-  "no-text": {
-    "fontSize": "25",
-    "marginLeft": "30",
-    "marginTop": "10",
-    "flexWrap": "nowrap",
-    "color": "#B0B0B0"
-  },
-  "tlt-text": {
-    "fontSize": "30",
-    "marginLeft": "30",
-    "marginTop": "10",
-    "marginRight": "5",
-    "flexWrap": "nowrap",
-    "color": "#696969",
-    "overflow": "hidden",
-    "textOverflow": "ellipsis",
-    "whiteSpace": "nowrap",
-    "lines": 1
-  }
-}
-
-/***/ }),
-/* 26 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _Header = __webpack_require__(1);
-
-var _Header2 = _interopRequireDefault(_Header);
-
-var _util = __webpack_require__(0);
-
-var _util2 = _interopRequireDefault(_util);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-var navigator = weex.requireModule('navigator');
-var storage = weex.requireModule('storage');
-var db = weex.requireModule('GL_DatabaseModule');
-
-exports.default = {
-    name: "QuestionList",
-    data: function data() {
-        return {
-            leftBtn: {
-                name: 'e609;'
-            },
-            title: '',
-            pageID: '',
-            dataArray: [],
-            ipx: ''
-
-        };
-    },
-
-    components: {
-        'navigation-header': _Header2.default
-    },
-    created: function created() {
-        var _this = this;
-
-        _util2.default.initIconFont();
-        this.ipx = _util2.default.isIpx();
-        storage.getItem('params', function (event) {
-            _this.title = event.data;
-            storage.removeItem('params');
-        });
-        this.pageID = _util2.default.getUrlSearch(weex.config.bundleUrl, 'pageID');
-        var self = this;
-        db.selectQuestionsWithClassID(this.pageID, function (data) {
-            self.dataArray = data;
-        });
-    },
-
-    methods: {
-        back: function back() {
-            navigator.pop({
-                animated: 'true'
-            });
-        },
-        didSelectRow: function didSelectRow(obj) {
-            var path = '/Skills/QuestionDetail.js?questionID=' + obj.number + 'and' + obj.classId + 'and' + this.dataArray.length;
-            var url = weex.config.bundleUrl;
-            navigator.push({
-                url: path,
-                animation: 'true',
-                type: 'weex'
-            }, function (callBack) {});
-        }
-    }
-};
-
-/***/ }),
-/* 27 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    class: ['wrapper', _vm.ipx ? 'w-ipx' : '']
-  }, [_c('navigation-header', {
-    attrs: {
-      "title": _vm.title,
-      "leftBtn": _vm.leftBtn
-    },
-    on: {
-      "leftAction": _vm.back
-    }
-  }), _c('list', {
-    staticClass: ["list"]
-  }, [_vm._l((_vm.dataArray), function(obj, index) {
-    return [_c('cell', {
-      staticClass: ["box"],
-      appendAsTree: true,
-      attrs: {
-        "append": "tree"
-      },
-      on: {
-        "click": function($event) {
-          _vm.didSelectRow(obj)
-        }
-      }
-    }, [_c('div', {
-      staticClass: ["box", "contentView"]
-    }, [_c('text', {
-      staticClass: ["no-text"]
-    }, [_vm._v(_vm._s('第' + obj.number + '题'))]), _c('text', {
-      staticClass: ["tlt-text"]
-    }, [_vm._v(_vm._s(obj.questionTitle))])])])]
-  })], 2)], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-
-/***/ }),
-/* 28 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __vue_exports__, __vue_options__
-var __vue_styles__ = []
-
-/* styles */
-__vue_styles__.push(__webpack_require__(29)
-)
-__vue_styles__.push(__webpack_require__(30)
-)
-
-/* script */
-__vue_exports__ = __webpack_require__(31)
-
-/* template */
-var __vue_template__ = __webpack_require__(36)
+var __vue_template__ = __webpack_require__(28)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -4263,13 +3994,13 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 29 */
+/* 21 */
 /***/ (function(module, exports) {
 
 module.exports = {}
 
 /***/ }),
-/* 30 */
+/* 22 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -4286,7 +4017,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 31 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4296,7 +4027,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _tableBar = __webpack_require__(32);
+var _tableBar = __webpack_require__(24);
 
 var _tableBar2 = _interopRequireDefault(_tableBar);
 
@@ -4366,21 +4097,21 @@ exports.default = {
 };
 
 /***/ }),
-/* 32 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(33)
+__vue_styles__.push(__webpack_require__(25)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(34)
+__vue_exports__ = __webpack_require__(26)
 
 /* template */
-var __vue_template__ = __webpack_require__(35)
+var __vue_template__ = __webpack_require__(27)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -4410,7 +4141,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 33 */
+/* 25 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -4422,7 +4153,7 @@ module.exports = {
     "bottom": "0",
     "left": "0",
     "right": "0",
-    "height": "90",
+    "height": "98",
     "flexWrap": "nowrap",
     "flexDirection": "row",
     "justifyContent": "space-around",
@@ -4431,7 +4162,7 @@ module.exports = {
     "backgroundColor": "#fafafa"
   },
   "w-ipx": {
-    "height": "140"
+    "height": "166"
   },
   "bar-item": {
     "flex": 1
@@ -4476,7 +4207,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 34 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4485,6 +4216,13 @@ module.exports = {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+
+var _util = __webpack_require__(0);
+
+var _util2 = _interopRequireDefault(_util);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 //
 //
 //
@@ -4519,15 +4257,13 @@ exports.default = {
     name: "tableBar",
     data: function data() {
         return {
-            pIndexKey: 'Skils'
+            pIndexKey: 'Trending', // 控制tab默认界面
+            isIpx: ''
         };
     },
     created: function created() {
-        this.POST('/trend/home').then(function (res) {
-            console.log(res);
-        }).catch(function (res) {
-            console.log(res);
-        });
+
+        this.isIpx = _util2.default.isIpx();
     },
 
     methods: {
@@ -4548,13 +4284,26 @@ exports.default = {
 };
 
 /***/ }),
-/* 35 */
+/* 27 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    class: ['wrapper', _vm.isIpx && _vm.isIpx() ? 'w-ipx' : '']
+    class: ['wrapper', _vm.isIpx ? 'w-ipx' : '']
   }, [_c('div', {
+    staticClass: ["bar-item"],
+    on: {
+      "click": function($event) {
+        _vm.tabTo('Trending')
+      }
+    }
+  }, [_c('text', {
+    staticClass: ["bar-ic", "iconfont"],
+    class: [this.isActive('Trending')]
+  }, [_vm._v("")]), _c('text', {
+    staticClass: ["bar-txt"],
+    class: [this.isActive('Trending')]
+  }, [_vm._v("职位")])]), _c('div', {
     staticClass: ["bar-item"],
     on: {
       "click": function($event) {
@@ -4585,7 +4334,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 36 */
+/* 28 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -4605,7 +4354,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 37 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4661,7 +4410,7 @@ function unescape(text) {
 }
 
 /***/ }),
-/* 38 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

@@ -1,10 +1,10 @@
 <template>
-    <div :class="['wrapper', isIpx&&isIpx()?'w-ipx':'']">
+    <div :class="['wrapper', isIpx?'w-ipx':'']">
 
-        <!--<div class="bar-item" @click="tabTo('Trending')">-->
-            <!--<text class="bar-ic iconfont" :class="[this.isActive('Trending')]">&#xe615;</text>-->
-            <!--<text class="bar-txt" :class="[this.isActive('Trending')]">趋势</text>-->
-        <!--</div>-->
+        <div class="bar-item" @click="tabTo('Trending')">
+            <text class="bar-ic iconfont" :class="[this.isActive('Trending')]">&#xe615;</text>
+            <text class="bar-txt" :class="[this.isActive('Trending')]">职位</text>
+        </div>
 
         <div class="bar-item" @click="tabTo('Skils')">
             <text class="bar-ic iconfont" :class="[this.isActive('Skils')]">&#xe6b4;</text>
@@ -28,19 +28,18 @@
 
 <script>
     var  model = weex.requireModule('modal');
+    import util from '../util.js'
     export default {
         name: "tableBar",
         data() {
             return {
-                pIndexKey:'Skils'
+                pIndexKey:'Trending', // 控制tab默认界面
+                isIpx:''
             }
         },
         created() {
-            this.POST('/trend/home').then(function (res) {
-                console.log(res);
-            }).catch(function (res) {
-                console.log(res);
-            })
+
+            this.isIpx = util.isIpx();
         },
         methods: {
             isActive: function (_c) {
@@ -75,7 +74,7 @@
         bottom: 0px;
         left: 0px;
         right: 0px;
-        height: 90px;
+        height: 98px;
         flex-wrap: nowrap;
         flex-direction: row;
         justify-content: space-around;
@@ -84,7 +83,7 @@
         background-color: #fafafa;
     }
     .w-ipx{
-        height: 140px;
+        height: 166px;
     }
     .bar-item{
         flex: 1;

@@ -16,7 +16,7 @@
 
 <script>
     import header from '../../components/Header.vue'
-    import util from '../../util';
+    import util from '../../util.js';
     import { WxcLoading, WxcPartLoading } from 'weex-ui';
 
     var navigator = weex.requireModule('navigator');
