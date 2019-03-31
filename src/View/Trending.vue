@@ -1,7 +1,12 @@
 <template>
     <div :class="['wrapper', isIpx?'w-ipx':'']">
+     <wxc-loading :show="isShow" type="default"></wxc-loading>
         <navigation-header title="职位"></navigation-header>
          <list class="list" show-scrollbar=false>
+            <refresh class="refresh" @refresh="onrefresh"  :display="refreshing ? 'show' : 'hide'">
+                <text class="indicator-text">加载中...</text>
+                <loading-indicator class="indicator"></loading-indicator>
+             </refresh>
             <cell class="cell" v-for="e in jobList">
                 <div class="panel">
                     <div class="topContainer">
@@ -29,10 +34,15 @@
                 </div>
             </cell>
         </list>
+        <wxc-result type="noNetwork"
+              :show="showerror"
+              padding-top="232"
+              @wxcResultButtonClicked="tryReload()"></wxc-result>
     </div>
 </template>
 
 <script>
+    import { WxcLoading, WxcPartLoading, WxcResult} from 'weex-ui';
     import header from '../components/Header'
     import util from '../util'
     var navigator = weex.requireModule('navigator');
@@ -44,11 +54,17 @@
         name: "Trending-view",
         components: {
             'navigation-header': header,
+            WxcLoading,
+            WxcPartLoading,
+            WxcResult
         },
         data() {
             return {
                 jobList: [],
                 isIpx: '',
+                refreshing: false,
+                isShow: true,
+                showerror: false,
             }
         },
         created() {
@@ -56,8 +72,11 @@
             var self = this;
             this.POST('/homeJob').then(res => {
                 self.jobList = res.data.data.data.jobs;
+                self.isShow = false;
+                self.showerror = false;
             }).catch(res => {
-
+                self.isShow = false;
+                self.showerror = true;
             })
         },
         methods: {
@@ -80,6 +99,27 @@
             },
             getMoney(e, f) {
                 return e / 1000 + '-' + f / 1000 + 'k'
+            },
+            onrefresh (event) {
+                this.refreshing = true;
+                this.reload();
+            },
+            tryReload(e){
+                this.reload();
+            },
+            reload(){
+                var self = this;
+                this.isShow = true;
+                this.POST('/homeJob').then(res => {
+                    self.jobList = res.data.data.data.jobs;
+                    self.isShow = false;
+                    self.refreshing = false;
+                    self.showerror = false;
+                }).catch(res => {
+                    self.isShow = false;
+                    self.refreshing = false;
+                    self.showerror = true;
+                })
             }
         }
     }
@@ -147,6 +187,22 @@
       justify-content: flex-end;
       align-items: center;
       flex: 1;
+  }
+  .refresh {
+    width: 750;
+    justify-content: center;
+    align-items: center;
+  }
+  .indicator-text {
+    color: #666666;
+    font-size: 24px;
+    text-align: center;
+  }
+  .indicator {
+    margin-top: 10px;
+    height: 50px;
+    width: 50px;
+    color: #666666;
   }
   
 </style>
