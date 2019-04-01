@@ -5,7 +5,7 @@
             <input maxlength="11" class="tel input" type="tel" placeholder="手机号" @input="telInput" @change="telChange"/>
             <input maxlength="12" class="pwd input" type="password" placeholder="密码" @input="pwdInput" @change="pwdChange"/>
             <div class="btn" @click="loginAction">
-                <text class="btnTetx">登陆</text>
+                <text class="btnTetx">登录</text>
             </div>
         </div>
 
@@ -172,14 +172,14 @@
         height: 100px;
         border-style: solid;
         border-width: 2px;
+        border-color: #eee;
         border-radius: 5px;
-        border-color: orange;
         align-items: center;
         justify-content: center;
-        background-color: orange;
+        background-color: #eee;
     }
     .btnTetx {
-        color: white;
+        color: #666;
         font-size: 30px;
         text-align: center;
     }

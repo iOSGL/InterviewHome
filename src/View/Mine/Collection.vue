@@ -11,10 +11,15 @@
                 </cell>
             </template>
         </list>
+        <wxc-result type="errorPage"
+              :show="showerror"
+              padding-top="232"
+              @wxcResultButtonClicked="tryReload()" :custom-set="customSet"></wxc-result>
     </div>
 </template>
 
 <script>
+    import {WxcResult} from 'weex-ui';
     import header from '../../components/Header.vue';
     import util from '../../util.js';
     var navigator = weex.requireModule('navigator');
@@ -30,17 +35,22 @@
                 },
                 title:'我的收藏',
                 dataArray: [],
-                ipx: ''
+                ipx: '',
+                showerror: false,
+                customSet: {errorPage: { button: null, desc: '可以先去刷题', content: '抱歉主人，您还没有收藏题目' }},
             }
         },
         components: {
             'navigation-header': header,
+            WxcResult,
         },
         created () {
             util.initIconFont();
             this.ipx = util.isIpx();
             var self = this;
             db.selectAllCollertionWithcallBack(function(data){
+                self.showerror = data.length; 
+                self.showerror = !self.showerror;
                 self.dataArray = data;
             });
         },

@@ -37,6 +37,7 @@
 #define LOCAL_VERSION @"jsbundle_version"
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [self moveDB];
     [self configUM]; // 配置友盟
     [self configUMPush:launchOptions]; // 配置友盟推送
     [self configUMSharePlatforms]; // 配置分享平台
@@ -272,6 +273,37 @@
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
         
     }];
+}
+
+- (void)moveDB{
+     NSString * docPath = [[NSBundle mainBundle] pathForResource:@"WX" ofType:@"db"];
+    NSString * appDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSString *filePath = [appDir stringByAppendingPathComponent:@"WX.db"];
+    if(![fileManager fileExistsAtPath:filePath]) {
+        BOOL filesPresent = [self copyMissingFile:docPath toPath:appDir];
+        if (filesPresent) {
+            NSLog(@"Copy Success");
+        }
+        else
+        {
+            NSLog(@"Copy Fail");
+        }
+    }
+    else
+    {
+        NSLog(@"文件已存在");
+    }
+}
+
+- (BOOL)copyMissingFile:(NSString *)sourcePath toPath:(NSString *)toPath
+{
+    BOOL retVal = YES; // If the file already exists, we'll return success…
+    NSString * finalLocation = [toPath stringByAppendingPathComponent:[sourcePath lastPathComponent]];
+    if (![[NSFileManager defaultManager] fileExistsAtPath:finalLocation]){
+        retVal = [[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:finalLocation error:NULL];
+    }
+    return retVal;
 }
 
 @end

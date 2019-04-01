@@ -20,7 +20,7 @@
     self = [super init];
     if (self) {
 //        _db = [FMDatabase databaseWithPath:DB_SANDBOX_TABLE];
-        _db = [FMDatabase databaseWithURL:[NSURL URLWithString:DB_RESOURCE_TABLE]];
+        _db = [FMDatabase databaseWithURL:[NSURL URLWithString:DB_SANDBOX_TABLE]];
     }
     return self;
 }
@@ -245,7 +245,7 @@
 - (NSInteger)updateCollection:(NSString *)questionID  classID:(NSString *)classID status:(NSInteger)status {
     NSInteger isSucess = 0;
     if ([_db open]) {
-        NSString *sql = [NSString stringWithFormat:@"update Questions_Table set isCollection = %zi where classId = %@ and number = %@ ", status, classID, questionID];
+        NSString *sql = [NSString stringWithFormat:@"update Questions_Table set isCollection=%@ where classId=%@ and number=%@ ", @(status), classID, questionID];
         if ([_db executeUpdate:sql]) {
             isSucess = 1;
         }

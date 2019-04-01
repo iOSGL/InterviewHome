@@ -191,14 +191,14 @@
         height: 100px;
         border-style: solid;
         border-width: 2px;
+        border-color: #eee;
         border-radius: 5px;
-        border-color: orange;
         align-items: center;
         justify-content: center;
-        background-color: orange;
+        background-color: #eee;
     }
     .btnTetx {
-        color: white;
+        color: #666;
         font-size: 30px;
         text-align: center;
     }

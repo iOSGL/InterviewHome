@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A9858DAA2252199600D9C858 /* WX.db in Resources */ = {isa = PBXBuildFile; fileRef = A9858DA92252199600D9C858 /* WX.db */; };
 		A9BBBDF1224CC8A80057F416 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = A9BBBDF0224CC8A80057F416 /* logo.png */; };
 		A9BBBDF8224CCD3E0057F416 /* collection.png in Resources */ = {isa = PBXBuildFile; fileRef = A9BBBDF6224CCD3E0057F416 /* collection.png */; };
 		A9BBBDF9224CCD3E0057F416 /* nocollection.png in Resources */ = {isa = PBXBuildFile; fileRef = A9BBBDF7224CCD3E0057F416 /* nocollection.png */; };
@@ -49,13 +50,13 @@
 		A9F9AD6B224A20E8008694AA /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A9F9AD6A224A20E8008694AA /* libsqlite3.0.tbd */; };
 		A9F9AD6E224B0984008694AA /* WXDatabaseModule.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F9AD6D224B0984008694AA /* WXDatabaseModule.m */; };
 		A9F9AD70224B1031008694AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9F9AD6F224B1031008694AA /* Assets.xcassets */; };
-		A9F9AD72224B1CB9008694AA /* WX.db in Resources */ = {isa = PBXBuildFile; fileRef = A9F9AD71224B1CB9008694AA /* WX.db */; };
 		E110E2622BFABB6F27D19F8C /* libPods-InterviewHome.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AAC664E98C64CBD662EF91BB /* libPods-InterviewHome.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1F869F7339B41A6660C386B8 /* Pods-InterviewHome.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InterviewHome.debug.xcconfig"; path = "Target Support Files/Pods-InterviewHome/Pods-InterviewHome.debug.xcconfig"; sourceTree = "<group>"; };
 		46350496F7D02265D5D8EA4C /* Pods-InterviewHome.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InterviewHome.release.xcconfig"; path = "Target Support Files/Pods-InterviewHome/Pods-InterviewHome.release.xcconfig"; sourceTree = "<group>"; };
+		A9858DA92252199600D9C858 /* WX.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = WX.db; sourceTree = "<group>"; };
 		A9BBBDF0224CC8A80057F416 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		A9BBBDF6224CCD3E0057F416 /* collection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = collection.png; sourceTree = "<group>"; };
 		A9BBBDF7224CCD3E0057F416 /* nocollection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nocollection.png; sourceTree = "<group>"; };
@@ -137,7 +138,6 @@
 		A9F9AD6C224B0984008694AA /* WXDatabaseModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXDatabaseModule.h; sourceTree = "<group>"; };
 		A9F9AD6D224B0984008694AA /* WXDatabaseModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXDatabaseModule.m; sourceTree = "<group>"; };
 		A9F9AD6F224B1031008694AA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		A9F9AD71224B1CB9008694AA /* WX.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = WX.db; sourceTree = SOURCE_ROOT; };
 		AAC664E98C64CBD662EF91BB /* libPods-InterviewHome.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-InterviewHome.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -217,8 +217,8 @@
 		A9F9AC642249D98D008694AA /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				A9858DA92252199600D9C858 /* WX.db */,
 				A9BBBDEF224CC8A80057F416 /* images */,
-				A9F9AD71224B1CB9008694AA /* WX.db */,
 				A9F9AD6F224B1031008694AA /* Assets.xcassets */,
 				A9F9AD622249FF52008694AA /* bundlejs */,
 			);
@@ -549,9 +549,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A9F9AD72224B1CB9008694AA /* WX.db in Resources */,
 				A9BBBDF8224CCD3E0057F416 /* collection.png in Resources */,
 				A9BBBDF9224CCD3E0057F416 /* nocollection.png in Resources */,
+				A9858DAA2252199600D9C858 /* WX.db in Resources */,
 				A9BBBDF1224CC8A80057F416 /* logo.png in Resources */,
 				A9F9AC672249D98D008694AA /* Info.plist in Resources */,
 				A9F9AD70224B1031008694AA /* Assets.xcassets in Resources */,

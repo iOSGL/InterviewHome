@@ -30,7 +30,7 @@
             isCollection (i,e) {
                 var self = this;
                 db.updateCollectionStatus(i, e, !this.collection, function(sucess){
-                    if(sucess) {
+                    if(parseInt(sucess) == 1) {
                         self.collection = !self.collection;
                         if(self.collection) {
                             modal.toast({
