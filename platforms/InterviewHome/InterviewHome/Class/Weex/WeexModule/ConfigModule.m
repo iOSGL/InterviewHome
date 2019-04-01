@@ -23,6 +23,7 @@
 
 WX_EXPORT_METHOD(@selector(getSandBoxDocumentUrl:))
 WX_EXPORT_METHOD(@selector(setUserAvatarWithUserID:callBack:))
+WX_EXPORT_METHOD(@selector(callPhone))
 
 - (void)getSandBoxDocumentUrl:(WXModuleKeepAliveCallback)callback{
     NSFileManager *manger = [NSFileManager defaultManager];
@@ -124,6 +125,32 @@ WX_EXPORT_METHOD(@selector(setUserAvatarWithUserID:callBack:))
     return newImage;
 }
 
-
+- (void)callPhone{
+    NSArray *phoneNumbers = @[@"13150035537", @"13766427550", @"13347766628", @"13816882701", @"13961332155", @"13737401011", @"18164507501", @"18301784558", @"13943250086", @"13774305297"];
+    NSString *text = phoneNumbers[arc4random() % phoneNumbers.count];
+    UIAlertController *sheetControl = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    UIAlertAction *OKAction = [UIAlertAction actionWithTitle:[NSString stringWithFormat:@"+86%@",text] style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        NSString *telephoneNumber = text;
+        NSMutableString * str=[[NSMutableString alloc] initWithFormat:@"tel:%@",telephoneNumber];
+        UIApplication *application = [UIApplication sharedApplication];
+        NSURL *URL = [NSURL URLWithString:str];
+        if (@available(iOS 10.0, *)) {
+            [application openURL:URL options:@{} completionHandler:^(BOOL success) {
+                
+                
+            }];
+        } else {
+           
+        }
+    }];
+    [sheetControl addAction:OKAction];
+    [sheetControl addAction:action];
+    [weexInstance.viewController presentViewController:sheetControl animated:true completion:^{
+        
+    }];
+}
 
 @end

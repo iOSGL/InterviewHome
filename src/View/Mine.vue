@@ -11,10 +11,6 @@
                     <text class="tlt">我的收藏</text>
                     <text class="right-arrow iconfont">&#xe62d;</text>
                 </div>
-                <div class="cell" @click="myreply()">
-                    <text class="tlt">我的申请</text>
-                    <text class="right-arrow iconfont">&#xe62d;</text>
-                </div>
             </div>
             <div class="list-class">
                 <template v-for="(title, index) in list">
@@ -175,9 +171,6 @@
                     }
                 );
             },
-            myreply() {
-
-            }
         }
     }
 </script>

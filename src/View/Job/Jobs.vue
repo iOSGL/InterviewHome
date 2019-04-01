@@ -1,17 +1,8 @@
 <template>
     <div :class="['wrapper', isIpx?'w-ipx':'']">
      <wxc-loading :show="isShow" type="default"></wxc-loading>
-        <navigation-header title="职位"></navigation-header>
-        <slider auto-play="true" class="slider-container">
-             <div v-for="item in images">
-                <image :src="item.image" style="width:750px;height:300px" resize="corver"  :data-url="item.url" @click="imageClick"></image>
-            </div>
-        </slider>
+         <navigation-header title="职位" :leftBtn="leftBtn" @leftAction="back"></navigation-header>
          <list class="list" show-scrollbar=false>
-            <refresh class="refresh" @refresh="onrefresh"  :display="refreshing ? 'show' : 'hide'">
-                <text class="indicator-text">加载中...</text>
-                <loading-indicator class="indicator"></loading-indicator>
-             </refresh>
             <cell class="cell" v-for="e in jobList">
                 <div class="panel" @click="cellClick">
                     <div class="topContainer">
@@ -28,7 +19,6 @@
                         </div>
 
                     </div>
-
                     <div class="centerContainer">
                         <text style='font-size:20px; color:#999; margin-left:30px'>面试时间:</text>
                         <text style='font-size:20px; color:#DEAD73; margin-left:10px'>{{setDate(e.ivDate)}}</text>
@@ -48,8 +38,8 @@
 
 <script>
     import { WxcLoading, WxcPartLoading, WxcResult} from 'weex-ui';
-    import header from '../components/Header'
-    import util from '../util.js'
+   import header from '../../components/Header.vue';
+    import util from '../../util.js';
     var navigator = weex.requireModule('navigator');
     var um_module = weex.requireModule('UM_Event');
     var NV_Navigator = weex.requireModule('NV_Navigator');
@@ -58,7 +48,7 @@
     var storage = weex.requireModule('storage');
 
     export default {
-        name: "Trending-view",
+        name: "job-view",
         components: {
             'navigation-header': header,
             WxcLoading,
@@ -72,14 +62,27 @@
                 refreshing: false,
                 isShow: true,
                 showerror: false,
-                images:[]
+                url:'',
+                leftBtn: {
+                    name: 'e609;'
+                },
             }
         },
         created() {
             this.isIpx = util.isIpx();
-            this.reload();
+            storage.getItem('params', event => {
+                this.url = event.data;
+                storage.removeItem('params');
+                 this.reload();
+            })
+           
         },
         methods: {
+            back () {
+                navigator.pop({
+                    animated: 'true'
+                })
+            },
             jumpWeb (_url) {
                 navigator.push({
                     url: _url,
@@ -111,7 +114,7 @@
             reload(){
                 var self = this;
                 this.isShow = true;
-                util.POST('/homeJob').then(res => {
+                util.POST('/communication/jobList', {url: this.url}).then(res => {
                     self.jobList = res.data.data.data.jobs;
                     self.isShow = false;
                     self.refreshing = false;
@@ -121,24 +124,6 @@
                     self.refreshing = false;
                     self.showerror = true;
                 })
-
-                util.POST('/communication/hotJob').then(res => {
-                    self.images = res.data.data;
-                }).catch(res => {
-                })
-            },
-            imageClick(e){
-                var url = e.currentTarget.attr.dataUrl;
-                const path =  '/Jobs/Jobs.js';
-                storage.setItem('params', url);
-                navigator.push({
-                    url: path,
-                    animation: 'true',
-                    type: 'weex',
-                }, function (callBack) {
-
-                })
-                
             },
             cellClick(){
                 modal.confirm({
@@ -159,11 +144,11 @@
 <style scoped>
     .wrapper{
         margin-top: 128px;
-        margin-bottom: 98px;
+        margin-bottom: 0px;
     }
     .w-ipx {
          margin-top: 168px;
-        margin-bottom: 166px;
+        margin-bottom: 0px;
     }
     .panel {
         height: 200px;

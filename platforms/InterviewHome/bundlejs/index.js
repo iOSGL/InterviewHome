@@ -3440,7 +3440,7 @@ module.exports = {
   "title-text": {
     "marginTop": "20",
     "paddingRight": "30",
-    "line": 1
+    "lines": 1
   },
   "topContainer-right": {
     "flex": 1,
@@ -3480,6 +3480,10 @@ module.exports = {
     "height": "50",
     "width": "50",
     "color": "#666666"
+  },
+  "slider-container": {
+    "width": "750",
+    "height": "300"
   }
 }
 
@@ -3559,10 +3563,17 @@ var navigator = weex.requireModule('navigator'); //
 //
 //
 //
+//
+//
+//
+//
+//
 
 var um_module = weex.requireModule('UM_Event');
 var NV_Navigator = weex.requireModule('NV_Navigator');
 var modal = weex.requireModule('modal');
+var callModal = weex.requireModule('NV_ConfigModule');
+var storage = weex.requireModule('storage');
 
 exports.default = {
     name: "Trending-view",
@@ -3578,20 +3589,13 @@ exports.default = {
             isIpx: '',
             refreshing: false,
             isShow: true,
-            showerror: false
+            showerror: false,
+            images: []
         };
     },
     created: function created() {
         this.isIpx = _util2.default.isIpx();
-        var self = this;
-        this.POST('/homeJob').then(function (res) {
-            self.jobList = res.data.data.data.jobs;
-            self.isShow = false;
-            self.showerror = false;
-        }).catch(function (res) {
-            self.isShow = false;
-            self.showerror = true;
-        });
+        this.reload();
     },
 
     methods: {
@@ -3603,6 +3607,7 @@ exports.default = {
             });
         },
         setDate: function setDate(t) {
+            return "短信通知";
             if (!t) return "短信通知";
             var nowDate = getDate(t);
             var month = nowDate.getMonth();
@@ -3625,7 +3630,7 @@ exports.default = {
         reload: function reload() {
             var self = this;
             this.isShow = true;
-            this.POST('/homeJob').then(function (res) {
+            _util2.default.POST('/homeJob').then(function (res) {
                 self.jobList = res.data.data.data.jobs;
                 self.isShow = false;
                 self.refreshing = false;
@@ -3634,6 +3639,32 @@ exports.default = {
                 self.isShow = false;
                 self.refreshing = false;
                 self.showerror = true;
+            });
+
+            _util2.default.POST('/communication/hotJob').then(function (res) {
+                self.images = res.data.data;
+            }).catch(function (res) {});
+        },
+        imageClick: function imageClick(e) {
+            var url = e.currentTarget.attr.dataUrl;
+            var path = '/Jobs/Jobs.js';
+            storage.setItem('params', url);
+            navigator.push({
+                url: path,
+                animation: 'true',
+                type: 'weex'
+            }, function (callBack) {});
+        },
+        cellClick: function cellClick() {
+            modal.confirm({
+                message: '1.电话交流后收到面试邀请在去面试 \n 2.面试或者入职千万不要交钱 \n  3.若发现异常，提高警惕避免人身财产安全遭到侵害',
+                duration: 5,
+                okTitle: '申请',
+                cancelTitle: '取消'
+            }, function (value) {
+                if (value == '申请') {
+                    callModal.callPhone();
+                }
             });
         }
     }
@@ -5159,7 +5190,27 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "title": "职位"
     }
-  }), _c('list', {
+  }), _c('slider', {
+    staticClass: ["slider-container"],
+    attrs: {
+      "autoPlay": "true"
+    }
+  }, _vm._l((_vm.images), function(item) {
+    return _c('div', [_c('image', {
+      staticStyle: {
+        width: "750px",
+        height: "300px"
+      },
+      attrs: {
+        "src": item.image,
+        "resize": "corver",
+        "dataUrl": item.url
+      },
+      on: {
+        "click": _vm.imageClick
+      }
+    })])
+  })), _c('list', {
     staticClass: ["list"],
     attrs: {
       "showScrollbar": "false"
@@ -5184,7 +5235,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "append": "tree"
       }
     }, [_c('div', {
-      staticClass: ["panel"]
+      staticClass: ["panel"],
+      on: {
+        "click": _vm.cellClick
+      }
     }, [_c('div', {
       staticClass: ["topContainer"]
     }, [_c('div', {
@@ -5572,10 +5626,6 @@ var navigator = weex.requireModule('navigator'); //
 //
 //
 //
-//
-//
-//
-//
 
 var um_share = weex.requireModule('UM_Event');
 var storage = weex.requireModule('storage');
@@ -5711,8 +5761,7 @@ exports.default = {
                 animated: 'true',
                 type: 'weex'
             }, function (event) {});
-        },
-        myreply: function myreply() {}
+        }
     }
 };
 
@@ -5756,17 +5805,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('text', {
     staticClass: ["tlt"]
   }, [_vm._v("我的收藏")]), _c('text', {
-    staticClass: ["right-arrow", "iconfont"]
-  }, [_vm._v("")])]), _c('div', {
-    staticClass: ["cell"],
-    on: {
-      "click": function($event) {
-        _vm.myreply()
-      }
-    }
-  }, [_c('text', {
-    staticClass: ["tlt"]
-  }, [_vm._v("我的申请")]), _c('text', {
     staticClass: ["right-arrow", "iconfont"]
   }, [_vm._v("")])])]), _c('div', {
     staticClass: ["list-class"]
