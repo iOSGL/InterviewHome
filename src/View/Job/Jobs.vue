@@ -38,7 +38,7 @@
 
 <script>
     import { WxcLoading, WxcPartLoading, WxcResult} from 'weex-ui';
-   import header from '../../components/Header.vue';
+    import header from '../../components/Header.vue';
     import util from '../../util.js';
     var navigator = weex.requireModule('navigator');
     var um_module = weex.requireModule('UM_Event');

@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		A9858DAA2252199600D9C858 /* WX.db in Resources */ = {isa = PBXBuildFile; fileRef = A9858DA92252199600D9C858 /* WX.db */; };
+		A988A63122524BAD002343BE /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A9F9AC632249D98D008694AA /* Info.plist */; };
 		A9BBBDF1224CC8A80057F416 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = A9BBBDF0224CC8A80057F416 /* logo.png */; };
 		A9BBBDF8224CCD3E0057F416 /* collection.png in Resources */ = {isa = PBXBuildFile; fileRef = A9BBBDF6224CCD3E0057F416 /* collection.png */; };
 		A9BBBDF9224CCD3E0057F416 /* nocollection.png in Resources */ = {isa = PBXBuildFile; fileRef = A9BBBDF7224CCD3E0057F416 /* nocollection.png */; };
 		A9F9AC4D2249D713008694AA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F9AC4C2249D713008694AA /* AppDelegate.m */; };
 		A9F9AC662249D98D008694AA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F9AC622249D98D008694AA /* main.m */; };
-		A9F9AC672249D98D008694AA /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A9F9AC632249D98D008694AA /* Info.plist */; };
 		A9F9AD2E2249DD37008694AA /* WXNavigatorHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F9ACDC2249DD37008694AA /* WXNavigatorHandle.m */; };
 		A9F9AD2F2249DD37008694AA /* WeexSDKManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F9ACDD2249DD37008694AA /* WeexSDKManager.m */; };
 		A9F9AD302249DD37008694AA /* WXImgLoaderDefaultImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F9ACE32249DD37008694AA /* WXImgLoaderDefaultImpl.m */; };
@@ -396,16 +396,16 @@
 		A9F9AD092249DD37008694AA /* BaseClass */ = {
 			isa = PBXGroup;
 			children = (
-				A9F9AD0A2249DD37008694AA /* BaseViewController.m */,
-				A9F9AD0B2249DD37008694AA /* BaseNavigationController.m */,
-				A9F9AD0C2249DD37008694AA /* BaseModel.m */,
-				A9F9AD0D2249DD37008694AA /* BaseProcessHandler.m */,
-				A9F9AD0E2249DD37008694AA /* BaseImageView.m */,
-				A9F9AD0F2249DD37008694AA /* BaseProcessHandler.h */,
-				A9F9AD102249DD37008694AA /* BaseModel.h */,
-				A9F9AD112249DD37008694AA /* BaseNavigationController.h */,
 				A9F9AD122249DD37008694AA /* BaseViewController.h */,
+				A9F9AD0A2249DD37008694AA /* BaseViewController.m */,
+				A9F9AD112249DD37008694AA /* BaseNavigationController.h */,
+				A9F9AD0B2249DD37008694AA /* BaseNavigationController.m */,
+				A9F9AD102249DD37008694AA /* BaseModel.h */,
+				A9F9AD0C2249DD37008694AA /* BaseModel.m */,
+				A9F9AD0F2249DD37008694AA /* BaseProcessHandler.h */,
+				A9F9AD0D2249DD37008694AA /* BaseProcessHandler.m */,
 				A9F9AD132249DD37008694AA /* BaseImageView.h */,
+				A9F9AD0E2249DD37008694AA /* BaseImageView.m */,
 			);
 			path = BaseClass;
 			sourceTree = "<group>";
@@ -519,6 +519,9 @@
 					A9F9AC472249D713008694AA = {
 						CreatedOnToolsVersion = 10.1;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};
@@ -553,9 +556,9 @@
 				A9BBBDF9224CCD3E0057F416 /* nocollection.png in Resources */,
 				A9858DAA2252199600D9C858 /* WX.db in Resources */,
 				A9BBBDF1224CC8A80057F416 /* logo.png in Resources */,
-				A9F9AC672249D98D008694AA /* Info.plist in Resources */,
 				A9F9AD70224B1031008694AA /* Assets.xcassets in Resources */,
 				A9F9AD632249FF52008694AA /* bundlejs in Resources */,
+				A988A63122524BAD002343BE /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -782,8 +785,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DMLGJX6EPE;
 				GCC_PREFIX_HEADER = "/Users/leiMac/Desktop/面试之家/app/platforms/InterviewHome/InterviewHome/Supportting Files/PrefixHeader.pch";
-				INFOPLIST_FILE = "/Users/leiMac/Desktop/面试之家/InterviewHome/InterviewHome/Supportting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				INFOPLIST_FILE = "$(SRCROOT)/InterviewHome/Supportting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -804,8 +807,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DMLGJX6EPE;
 				GCC_PREFIX_HEADER = "/Users/leiMac/Desktop/面试之家/app/platforms/InterviewHome/InterviewHome/Supportting Files/PrefixHeader.pch";
-				INFOPLIST_FILE = "/Users/leiMac/Desktop/面试之家/InterviewHome/InterviewHome/Supportting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				INFOPLIST_FILE = "$(SRCROOT)/InterviewHome/Supportting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

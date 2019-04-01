@@ -33,15 +33,6 @@
 #pragma mark - Load Data
 
 - (void)loadData {
-//    SkillsApi *api = [[SkillsApi alloc]init];
-//    [api startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
-//        if ([[DataAnalytical getStatusCode:request] isEqualToString:@"200"]) {
-//            self.listModel = [SkillsListModel yy_modelWithDictionary:[DataAnalytical getResponseDic:request]];
-//            [self reloadData];
-//        }
-//    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-//
-//    }];
     NSArray *array = [[WXDBManger database]seletAllSubjects];
     if (array) {
         self.listModel = [SkillsListModel yy_modelWithDictionary:@{@"data":array}];

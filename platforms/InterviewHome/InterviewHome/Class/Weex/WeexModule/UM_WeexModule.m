@@ -11,6 +11,7 @@
 #import <UShareUI/UShareUI.h>
 #import <UMPush/UMessage.h>
 
+
 @implementation UM_WeexModule
 
 @synthesize weexInstance;
@@ -23,7 +24,6 @@ WX_EXPORT_METHOD(@selector(setalias:))
         [SVProgressHUD showErrorWithStatus:@"非法传参"];
         return;
     }
-    
     [UMSocialUIManager showShareMenuViewInWindowWithPlatformSelectionBlock:^(UMSocialPlatformType platformType, NSDictionary *userInfo) {
         switch (platformType) {
             case UMSocialPlatformType_Sina: {

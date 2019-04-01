@@ -38,9 +38,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [self moveDB];
-    [self configUM]; // 配置友盟
-    [self configUMPush:launchOptions]; // 配置友盟推送
+    [self configUM]; // 配置友盟、
     [self configUMSharePlatforms]; // 配置分享平台
+    [self configUMPush:launchOptions]; // 配置友盟推送
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
     [AppConfig setUp];
@@ -184,7 +184,7 @@
     [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatSession appKey:WX_APPKEY appSecret:WX_APP_SECRETC redirectURL:@"http://mobile.umeng.com/social"];
     [[UMSocialManager defaultManager] removePlatformProviderWithPlatformTypes:@[@(UMSocialPlatformType_WechatFavorite)]];
     [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_QQ appKey:QQ_APPKID/*设置QQ平台的appID*/  appSecret:nil redirectURL:@"http://mobile.umeng.com/social"];
-    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Sina appKey:SINA_APPKEY  appSecret:SINA_SECRET redirectURL:@"https://sns.whalecloud.com/sina2/callback"];
+     [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Sina appKey:SINA_APPKEY  appSecret:SINA_SECRET redirectURL:@"https://sns.whalecloud.com/sina2/callback"];
 }
 
 #pragma mark
