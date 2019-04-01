@@ -1,7 +1,7 @@
 <template>
     <div v-bind:class="['wrapper', ipx?'w-ipx':'']">
         <navigation-header :title="title" :leftBtn="leftBtn" @leftAction="back"></navigation-header>
-        <list class="list" >
+        <list class="list" :style="{marginBottom: ipx?'168px':'128px'}">
             <template v-for="(obj, index) in dataArray">
                 <cell class="box" v-on:click="didSelectRow(obj)">
                     <div class="box contentView" >
@@ -31,7 +31,8 @@
                 title:'',
                 pageID:'',
                 dataArray: [],
-                ipx: ''
+                ipx: '',
+                pageHeight: 0,
 
             }
         },
@@ -41,6 +42,7 @@
         created () {
             util.initIconFont();
             this.ipx = util.isIpx();
+            this.pageHeight = util.getListHeight(this.isIpx? 168: 128, true);
             storage.getItem('params', event => {
                 this.title = event.data;
                 storage.removeItem('params');
@@ -73,26 +75,16 @@
 </script>
 
 <style scoped>
-    body{
-        margin: 0;
-        padding: 0;
-        background-color: #f4f4f4;
-        color:#333;
-    }
-    .wrapper{
-        position: absolute;
-        left: 0;
-        right:0;
-        bottom: 0;
-        top:0;
+     .wrapper{
+        margin-top: 128px;
+        margin-bottom: 0px;
     }
     .w-ipx {
-        margin-top: 40px;
-        margin-bottom:0px;
+         margin-top: 168px;
+         margin-bottom: 0px;
     }
-    .list {
-        margin-top: 113px;
-        margin-bottom: 0px;
+    .list{
+        margin-top: 0px;
     }
     .box {
         height: 110px;

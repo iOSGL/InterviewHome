@@ -2,7 +2,7 @@
     <div :class="['wrapper', isIpx?'w-ipx':'']">
      <wxc-loading :show="isShow" type="default"></wxc-loading>
          <navigation-header title="职位" :leftBtn="leftBtn" @leftAction="back"></navigation-header>
-         <list class="list" show-scrollbar=false>
+         <list class="list" show-scrollbar=false :style="{marginBottom: isIpx?'168px':'128px'}">
             <cell class="cell" v-for="e in jobList">
                 <div class="panel" @click="cellClick">
                     <div class="topContainer">

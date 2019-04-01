@@ -1,5 +1,5 @@
 <template>
-    <div :class="['wrapper', isIpx&&isIpx()?'w-ipx':'']">
+    <div :class="['wrapper', isIpx?'w-ipx':'']">
         <navigation-header title="技能"></navigation-header>
         <NV_SkillCompent
                 :style="{height: pageHeight + 'px'}"
@@ -13,17 +13,13 @@
 
 <style scoped>
     .wrapper{
-        background-color: #f4f4f4;
+        margin-top: 128px;
+        margin-bottom: 98px;
     }
-    .w-ipx{
-        margin-top: 40px;
-        margin-bottom: 50px;
+    .w-ipx {
+         margin-top: 168px;
+        margin-bottom: 166px;
     }
-    .NV_Skill {
-        margin-top: 113px;
-        margin-bottom: 90px;
-    }
-
 </style>
 
 <script>
@@ -40,10 +36,12 @@
         data () {
             return {
                 pageHeight:0,
+                isIpx: '',
             }
         },
         created() {
-            this.pageHeight = util.getListHeight(113 + 90, true);
+            this.isIpx = util.isIpx();
+            this.pageHeight = util.getListHeight(this.isIpx? 168 + 166 : 128 + 98, true);
         },
         methods: {
             pushPageList (e) {

@@ -5358,15 +5358,12 @@ module.exports = __vue_exports__
 
 module.exports = {
   "wrapper": {
-    "backgroundColor": "#f4f4f4"
+    "marginTop": "128",
+    "marginBottom": "98"
   },
   "w-ipx": {
-    "marginTop": "40",
-    "marginBottom": "50"
-  },
-  "NV_Skill": {
-    "marginTop": "113",
-    "marginBottom": "90"
+    "marginTop": "168",
+    "marginBottom": "166"
   }
 }
 
@@ -5415,10 +5412,6 @@ var modal = weex.requireModule('modal'); //
 //
 //
 //
-//
-//
-//
-//
 
 var navigator = weex.requireModule('navigator');
 
@@ -5430,11 +5423,13 @@ exports.default = {
     },
     data: function data() {
         return {
-            pageHeight: 0
+            pageHeight: 0,
+            isIpx: ''
         };
     },
     created: function created() {
-        this.pageHeight = _util2.default.getListHeight(113 + 90, true);
+        this.isIpx = _util2.default.isIpx();
+        this.pageHeight = _util2.default.getListHeight(this.isIpx ? 168 + 166 : 128 + 98, true);
     },
 
     methods: {
@@ -5457,7 +5452,7 @@ exports.default = {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    class: ['wrapper', _vm.isIpx && _vm.isIpx() ? 'w-ipx' : '']
+    class: ['wrapper', _vm.isIpx ? 'w-ipx' : '']
   }, [_c('navigation-header', {
     attrs: {
       "title": "技能"

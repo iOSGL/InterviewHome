@@ -37,36 +37,47 @@
 <style scoped>
     .wrapper {
         height: 120px;
-        background-color: #FAB340;
+        background-color: #eeeeee;
         position: absolute;
         left: 0;
         right: 0;
         bottom: 0px;
         justify-content: center;
-        padding-left: 100px;
-        padding-right: 100px;
+        padding-left: 50px;
+        padding-right: 50px;
+        align-items: center;
     }
     .w-ipx{
         height: 120px;
-        background-color: #FAB340;
+        background-color: #eeeeee;
         position: absolute;
         left: 0;
         right: 0;
         bottom: 50px;
         justify-content: center;
-        padding-left: 100px;
-        padding-right: 100px;
+        padding-left: 50px;
+        padding-right: 50px;
+        align-items: center;
     }
     .text-dev {
         flex-direction: row;
         justify-content: space-around;
+        align-items: center;
     }
     .up-text {
-        color: white;
+        color: #666;
         font-size: 30px;
+        height: 120px;
+        width: 150px;
+        text-align: center;
+        line-height: 120px;
     }
     .down-text {
-        color: white;
+        color: #666;
         font-size: 30px;
+        width: 150px;
+        height: 120px;
+        text-align: center;
+        line-height: 120px;
     }
 </style>
