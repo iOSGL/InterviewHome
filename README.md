@@ -1,7 +1,5 @@
-<<<<<<< HEAD
 # InterviewHome
 Weex开发完整项目
-=======
 # Introduction
 
 This boilerplate is targeted towards large, serious projects and assumes you are somewhat familiar with Webpack and `weex-loader`. 
@@ -29,4 +27,4 @@ Then, you just need to change the `style` tag as: `<style lang="sass"><style>`.
 ## How to create your own template
 
 See [How-to-create-your-own-template](https://github.com/weex-templates/How-to-create-your-own-template).
->>>>>>> dev
+
