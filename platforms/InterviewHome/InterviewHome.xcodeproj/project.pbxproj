@@ -791,7 +791,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.weimian.mianshizhijia.InterviewHome;
+				PRODUCT_BUNDLE_IDENTIFIER = com.weimian.mianshizhijia;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -813,7 +813,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.weimian.mianshizhijia.InterviewHome;
+				PRODUCT_BUNDLE_IDENTIFIER = com.weimian.mianshizhijia;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};

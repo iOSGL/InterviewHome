@@ -37,6 +37,7 @@
 #define LOCAL_VERSION @"jsbundle_version"
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
     [self moveDB];
     [self configUM]; // 配置友盟、
     [self configUMSharePlatforms]; // 配置分享平台
