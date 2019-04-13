@@ -1,0 +1,9 @@
+{
+   "AppName":"面试之家",
+   "Version":"1.0.0",
+   "BuildVersion":"1",
+   "AppId":"com.weimian.mianshizhijia",
+   "CodeSign":"",
+   "Profile":"",
+   "WeexBundle":"index.js"
+}

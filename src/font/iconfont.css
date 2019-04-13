@@ -1,0 +1,27 @@
+
+.iconfont {
+  font-family:iconfont !important;
+}
+
+.icon-form:before { content: "&#xe6a2;"; }
+
+.icon-viewgallery:before { content: "&#xe6b4;"; }
+
+.icon-lock:before { content: "&#xeb3f;"; }
+
+.icon-iosreload:before { content: "&#xe850;"; }
+
+.icon-back:before { content: "&#xe609;"; }
+
+.icon-mine:before { content: "&#xe60d;"; }
+
+.icon-aui-icon-close:before { content: "&#xe606;"; }
+
+.icon-Home:before { content: "&#xe615;"; }
+
+.icon-jiantouyou:before { content: "&#xe62d;"; }
+
+.icon-jiantouxia:before { content: "&#xe62e;"; }
+
+/*.icon-shoucang:before { content: "&#xe66c;"; }*/
+

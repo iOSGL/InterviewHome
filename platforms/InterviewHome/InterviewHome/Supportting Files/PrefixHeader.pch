@@ -1,0 +1,65 @@
+//
+//  PrefixHeader.pch
+//  WeexDemo
+//
+//  Created by genglei on 2018/7/13.
+//  Copyright © 2018年 taobao. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+// ==============> Local Header <==============
+#import "MethodsUtil.h"
+#import "NSString+Code.h"
+#import "DataAnalytical.h"
+#import "BaseImageView.h"
+#import "Single.h"
+#import "AppConfig.h"
+
+// ==============> Pods Header <==============
+
+#import <SVProgressHUD.h>
+#import <YTKNetwork/YTKNetwork.h>
+#import <YYText/YYText.h>
+#import <YYModel.h>
+#import <YYCategories/YYCategories.h>
+#import <Masonry.h>
+
+
+//  字体自定义
+#define FONT_SYSTEM_SIZE(s)                 [UIFont systemFontOfSize:s]
+#define FONT_BOLD_SYSTEM_SIZE(s)            [UIFont boldSystemFontOfSize:s]
+
+#endif /* PrefixHeader_pch */
+
+//当前屏幕尺寸
+#define SCREEN_BOUNDS [UIScreen mainScreen].bounds
+#define SCREEN_WIDTH  [UIScreen mainScreen].bounds.size.width
+#define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
+
+#define ONE_PX_LINE 1.0f / [UIScreen mainScreen].scale
+
+// 为空时的占位
+#define PARAM_IS_NIL_ERROR(param) ((param == nil || [param isKindOfClass:[NSNull class]]) ? @"" : param)
+
+// Library路径
+#define LIBRARY_PATH [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) lastObject]
+
+// Document路径
+#define DOCUMENT_PATH [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject]
+
+#define ZIP_PATH [NSString stringWithFormat:@"%@/mianshi.zip",DOCUMENT_PATH]
+
+#define DOCUMENT_BUNDLEJS_PATH [NSString stringWithFormat:@"%@/bundlejs",DOCUMENT_PATH]
+
+#define DOCUMENT_URL [NSString stringWithFormat:@"file://%@/bundlejs",DOCUMENT_PATH]
+
+#define BUNDLE_RESOURCE_URL [NSString stringWithFormat:@"file://%@/bundlejs",[NSBundle mainBundle].bundlePath]
+
+#define DB_SANDBOX_TABLE [NSString stringWithFormat:@"%@/WX.db",DOCUMENT_PATH] // Storing data
+
+#define DB_RESOURCE_TABLE [NSString stringWithFormat:@"file://%@/WX.db",[NSBundle mainBundle].bundlePath] // get data
+
+#define WeakSelf(type) __weak typeof(type) weak##type = type;
+#define StrongSelf(type) __strong typeof(weak##type) strong##type = weak##type;
