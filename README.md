@@ -62,15 +62,28 @@ cd 到 文件夹下
 $ npm install
 ```
 
-本项目在platforms下已经有`iOS`项目，无须执行 `weex add iOS`
+本项目在platforms下已经有`iOS`项目，无须执行 `weex add iOS`，在`iOS`下如果编译报错修改
 
-编译某个文件
+``` bash
+File -> Workspace Settings -> Build System 为 Legacy Build Sysyem
+```
+
+### 常用命令
+
+编译文件
 
 `weex compile src/xxxx.vue dest -m`
 
-预览某个文件
+预览文件
 
 `weex preview src/xxx.vue`
+
+## 延伸
+
+[Weex重写WXNavigatorHandle](https://www.jianshu.com/p/ba8494d15dba)
+[Weex自定义Module](https://www.jianshu.com/p/37b884515125)
+[Weex邂逅FMDB](https://www.jianshu.com/p/11be9b4d27f0)
+[Weex采坑心得](https://www.jianshu.com/p/7ee2c7c599f8)
 
 
 
