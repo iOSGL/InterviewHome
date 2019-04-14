@@ -1,8 +1,15 @@
 # InterviewHome  ![](https://img.shields.io/badge/Weex--Toolkit-2.0.0-orange.svg)![](https://img.shields.io/badge/WeexSDK-1.8.0-blue.svg)![](https://img.shields.io/badge/node-v10.15.3-yellowgreen.svg)![](https://img.shields.io/badge/npm-6.4.1-green.svg)![](https://img.shields.io/badge/license-MIT-yellow.svg)
 
-一款用`Weex`开发的多页面`App`
+面试之家是一款用`Weex`开发的多页面`App`，题库等内容仅限于交流学习使用，不可用于商业项目。
 
-# 附小程序
+## 延伸
+* [Weex重写WXNavigatorHandle](https://www.jianshu.com/p/ba8494d15dba)
+* [Weex自定义Module](https://www.jianshu.com/p/37b884515125)
+* [Weex邂逅FMDB](https://www.jianshu.com/p/11be9b4d27f0)
+* [Weex采坑心得](https://www.jianshu.com/p/7ee2c7c599f8)
+
+
+## 附小程序
 ![](https://ws2.sinaimg.cn/large/006tNc79gy1g22jdvqpc6j30ec0emdh7.jpg)
 
 ## Install
@@ -78,12 +85,8 @@ File -> Workspace Settings -> Build System 为 Legacy Build Sysyem
 
 `weex preview src/xxx.vue`
 
-## 延伸
 
-* [Weex重写WXNavigatorHandle](https://www.jianshu.com/p/ba8494d15dba)
-* [Weex自定义Module](https://www.jianshu.com/p/37b884515125)
-* [Weex邂逅FMDB](https://www.jianshu.com/p/11be9b4d27f0)
-* [Weex采坑心得](https://www.jianshu.com/p/7ee2c7c599f8)
+
 
 
 
