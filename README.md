@@ -17,14 +17,16 @@ $ node -v
 ```
 建议使用 [n](https://github.com/tj/n)管理工具管理`node`
 
-[Weex-Toolkit 1.x]（https://github.com/weexteam/weex-toolkit/blob/v1.0/README-zh.md）
+### 安装 Weex-Tookit
 
-[Weex-Toolkit 2.x]（https://weex.apache.org/zh/tools/toolkit.html#%E7%B3%BB%E7%BB%9F%E7%BB%84%E4%BB%B6）
+[Weex-Toolkit 1.x](https://github.com/weexteam/weex-toolkit/blob/v1.0/README-zh.md)
+
+[Weex-Toolkit 2.x](https://weex.apache.org/zh/tools/toolkit.html#%E7%B3%BB%E7%BB%9F%E7%BB%84%E4%BB%B6)
 
 我本地配置环境
 ![](https://ws4.sinaimg.cn/large/006tNc79gy1g22jngb8hpj30xk0f23z9.jpg)
 
-安装2.x命令
+安装`Weex-Tookit`2.x命令
 
 ``` bash
 $ sudo npm i weex-toolkit@beta -g
@@ -35,7 +37,7 @@ $ weex repair
 $ weex doctor
 ```
 
-安装1.x命令
+安装`Weex-Tookit`1.x命令
 
 ``` bash 
 $ sudo npm i weex-toolkit@latest -g
@@ -59,7 +61,6 @@ cd 到 文件夹下
 
 $ npm install
 ```
-
 
 本项目在platforms下已经有`iOS`项目，无须执行 `weex add iOS`
 
