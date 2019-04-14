@@ -1,4 +1,4 @@
-# InterviewHome 
+# InterviewHome  ![](https://img.shields.io/badge/Weex--Toolkit-2.0.0-orange.svg)![](https://img.shields.io/badge/WeexSDK-1.8.0-blue.svg)![](https://img.shields.io/badge/node-v10.15.3-yellowgreen.svg)![](https://img.shields.io/badge/npm-6.4.1-green.svg)![](https://img.shields.io/badge/license-MIT-yellow.svg)
 
 一款用`Weex`开发的多页面`App`
 
