@@ -80,10 +80,10 @@ File -> Workspace Settings -> Build System 为 Legacy Build Sysyem
 
 ## 延伸
 
-[Weex重写WXNavigatorHandle](https://www.jianshu.com/p/ba8494d15dba)
-[Weex自定义Module](https://www.jianshu.com/p/37b884515125)
-[Weex邂逅FMDB](https://www.jianshu.com/p/11be9b4d27f0)
-[Weex采坑心得](https://www.jianshu.com/p/7ee2c7c599f8)
+* [Weex重写WXNavigatorHandle](https://www.jianshu.com/p/ba8494d15dba)
+* [Weex自定义Module](https://www.jianshu.com/p/37b884515125)
+* [Weex邂逅FMDB](https://www.jianshu.com/p/11be9b4d27f0)
+* [Weex采坑心得](https://www.jianshu.com/p/7ee2c7c599f8)
 
 
 
